@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
+import SignIn from "../../budget_website/src/components/SignIn";
+import Register from "../../budget_website/src/components/Register";
+import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
+
 
 function App() {
+  const [user, setUser] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path={'/'}>
+              <div>
+                <Link to={user ? `/userid-${user}` : '/register'}><MonetizationOnOutlinedIcon/></Link>
+                <Link to={'/sign-in'}>Sign In</Link>
+                <Link to={'/register'}>Register</Link>
+              </div>
+            </Route>
+
+            <Route path={'/sign-in'}>
+              <SignIn/>
+            </Route>
+            <Route path={'/register'}>
+              <Register user={user}/>
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </>
   );
 }
 
