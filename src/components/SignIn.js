@@ -10,7 +10,6 @@ function SignIn({ user }){
     const handleClick = () => {
         setEmail(email);
         setPassword(password);
-        console.log(`Email: ${email} - Password: ${password}`);
     }
 
     return(
