@@ -17,8 +17,8 @@ const MenuBarPosition = styled.div`
 function Dashboard({ user }) {
   return (
     <MenuBarPosition>
-      <Link to={user ? `/userid-${user}` : '/register'}><MonetizationOnOutlinedIcon style={{ fontSize: '50px' }} /></Link>
-      <Link to="/sign-in">Sign In</Link>
+      <Link to={user ? `/userid-${user}` : '/register'}><MonetizationOnOutlinedIcon data-testid="dashboard-icon" style={{ fontSize: '50px' }} /></Link>
+      <Link data-testid="dashboard-signin" to="/sign-in">Sign In</Link>
     </MenuBarPosition>
   );
 }
