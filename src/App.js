@@ -6,10 +6,17 @@ import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutline
 
 
 function App() {
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState(null);
+
+  const updateUser = (email) => {
+    setUser(email);
+  }
 
   return (
       <>
+      <div>
+        {console.log(user)}
+      </div>
         <BrowserRouter>
           <Switch>
             <Route exact path={'/'}>
@@ -21,8 +28,8 @@ function App() {
               </div>
             </Route>
 
+              <SignIn user={user} updateUser={updateUser}/>
             <Route path={'/sign-in'}>
-              <SignIn user={user}/>
             </Route>
             <Route path={'/register'}>
               <Register user={user}/>

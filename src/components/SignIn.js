@@ -1,18 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Dashboard from '../reusable components/Dashboard';
+import styled from 'styled-components';
 
-function SignIn() {
+const SignInContainer = styled.div`
+  min-width: 400px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+function SignIn(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleClick = () => {
     setEmail(email);
     setPassword(password);
+    props.updateUser(email);
   };
 
   return (
     <>
       <Dashboard />
+      <SignInContainer>
       <h1>Sign In!</h1>
       <div>
         <div data-testid="label-email">Email:</div>
@@ -21,6 +32,7 @@ function SignIn() {
         <input data-testid="input-password" type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }} />
         <button type="button" onClick={handleClick}>Sign In</button>
       </div>
+      </SignInContainer>
     </>
   );
 }

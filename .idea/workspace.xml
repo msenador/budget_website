@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="129483d1-5a32-4d1f-97ed-0ac6c998b105" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" beforeDir="false" afterPath="$PROJECT_DIR$/.firebase/hosting.YnVpbGQ.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,17 +61,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="All Front-End Tests" type="JavaScriptTestRunnerJest">
       <config-file value="$PROJECT_DIR$/src/Unit tests/" />
       <node-interpreter value="project" />
@@ -98,7 +89,8 @@
       <workItem from="1627395417472" duration="68000" />
       <workItem from="1627396154997" duration="3118000" />
       <workItem from="1627411146302" duration="47000" />
-      <workItem from="1627411463045" duration="7684000" />
+      <workItem from="1627411463045" duration="8009000" />
+      <workItem from="1627473247729" duration="162000" />
     </task>
     <servers />
   </component>
