@@ -28,8 +28,8 @@ function App() {
               </div>
             </Route>
 
-              <SignIn user={user} updateUser={updateUser}/>
             <Route path={'/sign-in'}>
+              <SignIn user={user} updateUser={updateUser}/>
             </Route>
             <Route path={'/register'}>
               <Register user={user}/>

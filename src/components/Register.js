@@ -1,6 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Dashboard from '../reusable components/Dashboard';
+import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
+import { Link } from 'react-router-dom';
+
+const MenuBarPosition = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-left: 40px;
+  padding-right: 60px;
+  min-width: 330px;
+  text-transform: uppercase;
+`;
 
 const RegisterContainer = styled.div`
   min-width: 400px;
@@ -20,7 +32,7 @@ const RegisterForm = styled.div`
   justify-content: center;
 `;
 
-function Register() {
+function Register({ user }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -47,9 +59,19 @@ function Register() {
     setFinalPassword(password);
   }, [password]);
 
+  const registerUrl = window.location.href.indexOf('register') > 0;
+
   return (
     <>
-      <Dashboard />
+      <MenuBarPosition>
+        <Link to={user ? `/userid-${user}` : '/register'}><MonetizationOnOutlinedIcon data-testid="dashboard-icon" style={{ fontSize: '50px' }} /></Link>
+        {registerUrl ? (
+          <Link data-testid="dashboard-signin" to="/sign-in">Sign In</Link>
+        ) : (
+          <Link data-testid="dashboard-register" to="/register">Register</Link>
+        )}
+
+      </MenuBarPosition>
       <RegisterContainer>
         <div style={{ marginTop: '60px', fontSize: '15px' }}>
           *No Need to link your bank accounts*
