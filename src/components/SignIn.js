@@ -2,17 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SignInSignOutPositioning = styled.div`
-  padding-top: 150px;
+  padding-top: 50px;
   display: flex;
   justify-content: center;
 `;
 
 const SignInSignOutStyling = styled.div`
   padding: 40px;
-  border-radius: 20px;
+  border-radius: 100px;
   background-color: white;
   box-shadow: 5px 5px 13px -2px gray;
-  width: 220px;
 `;
 
 const ErrorMessageStyles = styled.div`
@@ -53,6 +52,16 @@ const SignInOrSignUp = (props) => {
 
   return (
     <>
+          <PhraseStyles>
+      <div >
+      <div style={{ fontSize: '60px' }}>
+          Your money.
+        </div>
+      <div style={{ fontSize: '72px' }}>
+          Your control.
+        </div>
+        </div>
+        </PhraseStyles>
       <SignInSignOutPositioning>
       <SignInSignOutStyling>
         <h1>{hasAccount ? 'SIGN IN' : 'SIGN UP'}</h1>
@@ -81,16 +90,6 @@ const SignInOrSignUp = (props) => {
           )}
         </SignInSignOutStyling>
       </SignInSignOutPositioning>
-      <PhraseStyles>
-      <div style={{ width: '411px' }}>
-      <div style={{ fontSize: '60px' }}>
-          Your money.
-        </div>
-      <div style={{ fontSize: '72px' }}>
-          Your control.
-        </div>
-        </div>
-        </PhraseStyles>
     </>
   );
 };

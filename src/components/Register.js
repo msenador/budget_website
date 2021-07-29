@@ -10,12 +10,10 @@ const MenuBarPosition = styled.div`
   padding-top: 20px;
   padding-left: 40px;
   padding-right: 60px;
-  min-width: 330px;
   text-transform: uppercase;
 `;
 
 const RegisterContainer = styled.div`
-  min-width: 400px;
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -90,7 +88,7 @@ function Register({ user }) {
           <input data-testid="input-password" type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }} />
           <div data-testid="label-confirm-password">Confirm Password:</div>
           <input data-testid="input-confirm-password" type="password" placeholder="Confirm password" value={confirmPassword} onChange={(e) => { setConfirmPassword(e.target.value); }} />
-          <button type="button" style={{ marginTop: '25px', width: '85px', alignSelf: 'center' }} onClick={handleClick}>Register</button>
+          <button type="button" style={{ marginTop: '25px', alignSelf: 'center' }} onClick={handleClick}>Register</button>
         </RegisterForm>
       </RegisterContainer>
     </>
