@@ -1,62 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
 
-const MenuBarPosition = styled.div`
+const SignInSignOutPositioning = styled.div`
+  padding-top: 150px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-top: 20px;
-  padding-left: 40px;
-  padding-right: 60px;
-  min-width: 330px;
-  text-transform: uppercase;
+  justify-content: center;
 `;
 
-const SignInContainer = styled.div`
-  min-width: 400px;
-  text-transform: uppercase;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+const SignInSignOutStyling = styled.div`
+  padding: 40px;
+  border-radius: 20px;
+  background-color: azure;
+  box-shadow: 5px 5px 13px -2px red;
+  width: 220px;
 `;
 
-function SignIn({user, updateUser}) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const ErrorMessageStyles = styled.div`
+  font-size: 10px;
+  color: red;
+`;
 
-  const handleClick = () => {
-    setEmail(email);
-    setPassword(password);
-    updateUser(email);
-  };
-
-  const registerUrl = window.location.href.indexOf("register") > 0;
+const SignInOrSignUp = (props) => {
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    handleLogin,
+    handleSignUp,
+    hasAccount,
+    setHasAccount,
+    emailError,
+    passwordError,
+  } = props;
 
   return (
     <>
-          <MenuBarPosition>
-      <Link to={user ? `/userid-${user}` : '/register'}><MonetizationOnOutlinedIcon data-testid="dashboard-icon" style={{ fontSize: '50px' }} /></Link>
-      {registerUrl ? (
-        <Link data-testid="dashboard-signin" to="/sign-in">Sign In</Link>
-      ) : (
-        <Link data-testid="dashboard-register" to="/register">Register</Link>
-      )}
-      
-    </MenuBarPosition>
-      <SignInContainer>
-      <h1>Sign In!</h1>
-      <div>
-        <div data-testid="label-email">Email:</div>
-        <input data-testid="input-email" type="email" placeholder="Email address" value={email} onChange={(e) => { setEmail(e.target.value); }} />
-        <div data-testid="label-password">Password:</div>
-        <input data-testid="input-password" type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }} />
-        <button type="button" onClick={handleClick}>Sign In</button>
-      </div>
-      </SignInContainer>
+      <SignInSignOutPositioning>
+      <SignInSignOutStyling>
+        <div>Email</div>
+        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <ErrorMessageStyles>{emailError ? '*' + emailError : ''}</ErrorMessageStyles>
+        <div>Password</div>
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <ErrorMessageStyles>{passwordError ? '*' + passwordError : ''}</ErrorMessageStyles>
+          {hasAccount ? (
+            <>
+              <button onClick={handleLogin}>Sign In</button>
+              <p>
+                Don't have an account?
+                <div onClick={() => setHasAccount(!hasAccount)}>Sign Up</div>
+              </p>
+            </>
+          ) : (
+            <>
+              <button onClick={handleSignUp}>Sign Up</button>
+              <p>
+                Have an account?
+                <div onClick={() => setHasAccount(!hasAccount)}>Sign In</div>
+              </p>
+            </>
+          )}
+        </SignInSignOutStyling>
+      </SignInSignOutPositioning>
     </>
   );
-}
+};
 
-export default SignIn;
+export default SignInOrSignUp;
