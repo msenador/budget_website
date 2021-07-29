@@ -9,9 +9,10 @@ const SignInSignOutPositioning = styled.div`
 
 const SignInSignOutStyling = styled.div`
   padding: 40px;
-  border-radius: 100px;
+  border-radius: 50px;
   background-color: white;
-  box-shadow: 5px 5px 13px -2px gray;
+  box-shadow: 5px 5px 13px 3px gray;
+  width: 180px;
 `;
 
 const ErrorMessageStyles = styled.div`
@@ -32,8 +33,18 @@ const InputStyles = styled.input`
 `;
 
 const ButtonStyles = styled.button`
-backgroundColor: background-color: #00b712;
-background-image: linear-gradient(315deg, #00b712 0%, #5aff15 74%);
+  background: #1982C4;
+  margin-top: 20px;
+  margin-left:  50px;
+`;
+
+const FormHeaderStyles = styled.h1`
+     border-bottom: 4px solid;
+    -webkit-border-image: -webkit-linear-gradient(left, #ff2828, #F27B26);
+`;
+
+const SignInToggle = styled.div`
+  color: #18FF6D
 `;
 
 const SignInOrSignUp = (props) => {
@@ -52,31 +63,26 @@ const SignInOrSignUp = (props) => {
 
   return (
     <>
-          <PhraseStyles>
-      <div >
-      <div style={{ fontSize: '60px' }}>
-          Your money.
-        </div>
-      <div style={{ fontSize: '72px' }}>
-          Your control.
-        </div>
-        </div>
-        </PhraseStyles>
+      <PhraseStyles>
+          <div style={{ fontSize: '30px', textTransform: 'uppercase' }}>
+            Your money under your control
+          </div>
+      </PhraseStyles>
       <SignInSignOutPositioning>
-      <SignInSignOutStyling>
-        <h1>{hasAccount ? 'SIGN IN' : 'SIGN UP'}</h1>
-        <div>Email</div>
-        <InputStyles type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <ErrorMessageStyles>{emailError ? '*' + emailError : ''}</ErrorMessageStyles>
-        <div>Password</div>
-        <InputStyles type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <ErrorMessageStyles>{passwordError ? '*' + passwordError : ''}</ErrorMessageStyles>
+        <SignInSignOutStyling>
+          <FormHeaderStyles>{hasAccount ? 'SIGN IN' : 'SIGN UP'}</FormHeaderStyles>
+          <div>Email</div>
+          <InputStyles type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          <ErrorMessageStyles>{emailError ? `*${emailError}` : ''}</ErrorMessageStyles>
+          <div>Password</div>
+          <InputStyles type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          <ErrorMessageStyles>{passwordError ? `*${passwordError}` : ''}</ErrorMessageStyles>
           {hasAccount ? (
             <>
               <ButtonStyles onClick={handleLogin}>Sign In</ButtonStyles>
               <p>
                 Don't have an account?
-                <div onClick={() => setHasAccount(!hasAccount)}>Sign Up</div>
+                <SignInToggle onClick={() => setHasAccount(!hasAccount)}>Sign Up</SignInToggle>
               </p>
             </>
           ) : (
@@ -84,7 +90,7 @@ const SignInOrSignUp = (props) => {
               <ButtonStyles onClick={handleSignUp}>Sign Up</ButtonStyles>
               <p>
                 Have an account?
-                <div onClick={() => setHasAccount(!hasAccount)}>Sign In</div>
+                <SignInToggle onClick={() => setHasAccount(!hasAccount)}>Sign In</SignInToggle>
               </p>
             </>
           )}

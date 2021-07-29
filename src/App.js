@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import fire from './fire';
 import SignInOrSignUp from './components/SignIn';
 import HomePage from './components/HomePage';
-import styled from 'styled-components';
 
 const SignInPageStyles = styled.div`
   minWidth: 250px;
@@ -94,19 +94,19 @@ const App = () => {
             handleLogout={handleLogout}
           />
         ) : (
-          <SignInPageStyles style={{ minWidth: '250px', minHeight: '946px', backgroundColor: 'turquoise'}}>
-          <SignInOrSignUp
-            email={email}
-            setEmail={setEmail}
-            password={password}
-            setPassword={setPassword}
-            handleLogin={handleLogin}
-            handleSignUp={handleSignUp}
-            hasAccount={hasAccount}
-            setHasAccount={setHasAccount}
-            emailError={emailError}
-            passwordError={passwordError}
-          />
+          <SignInPageStyles style={{ minWidth: '250px', minHeight: '946px', backgroundColor: 'turquoise' }}>
+            <SignInOrSignUp
+              email={email}
+              setEmail={setEmail}
+              password={password}
+              setPassword={setPassword}
+              handleLogin={handleLogin}
+              handleSignUp={handleSignUp}
+              hasAccount={hasAccount}
+              setHasAccount={setHasAccount}
+              emailError={emailError}
+              passwordError={passwordError}
+            />
           </SignInPageStyles>
         )}
       </div>
