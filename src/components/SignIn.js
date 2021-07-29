@@ -12,9 +12,12 @@ const SignInSignOutStyling = styled.div`
   border-radius: 20px;
   background-color: azure;
   box-shadow: 5px 5px 13px -2px red;
+  width: 220px;
 `;
 
-const EmailPasswordCOntainer = styled.div`
+const ErrorMessageStyles = styled.div`
+  font-size: 10px;
+  color: red;
 `;
 
 const SignInOrSignUp = (props) => {
@@ -35,22 +38,18 @@ const SignInOrSignUp = (props) => {
     <>
       <SignInSignOutPositioning>
       <SignInSignOutStyling>
-      <EmailPasswordCOntainer>
         <div>Email</div>
         <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <p>{emailError}</p>
+        <ErrorMessageStyles>{emailError ? '*' + emailError : ''}</ErrorMessageStyles>
         <div>Password</div>
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <p>{passwordError}</p>
-        </EmailPasswordCOntainer>
-        <div>
+        <ErrorMessageStyles>{passwordError ? '*' + passwordError : ''}</ErrorMessageStyles>
           {hasAccount ? (
             <>
               <button onClick={handleLogin}>Sign In</button>
               <p>
                 Don't have an account?
-                {' '}
-                <span onClick={() => setHasAccount(!hasAccount)}>Sign In</span>
+                <div onClick={() => setHasAccount(!hasAccount)}>Sign Up</div>
               </p>
             </>
           ) : (
@@ -58,12 +57,10 @@ const SignInOrSignUp = (props) => {
               <button onClick={handleSignUp}>Sign Up</button>
               <p>
                 Have an account?
-                {' '}
-                <span onClick={() => setHasAccount(!hasAccount)}>Sign In</span>
+                <div onClick={() => setHasAccount(!hasAccount)}>Sign In</div>
               </p>
             </>
           )}
-        </div>
         </SignInSignOutStyling>
       </SignInSignOutPositioning>
     </>
