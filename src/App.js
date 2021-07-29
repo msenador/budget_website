@@ -2,6 +2,15 @@ import React, { useEffect, useState } from 'react';
 import fire from './fire';
 import SignInOrSignUp from './components/SignIn';
 import HomePage from './components/HomePage';
+import styled from 'styled-components';
+
+const SignInPageStyles = styled.div`
+  minWidth: 250px;
+  minHeight: 946px;
+  background-color: #20bf55;
+  background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+
+`;
 
 const App = () => {
   const [user, setUser] = useState('');
@@ -85,7 +94,7 @@ const App = () => {
             handleLogout={handleLogout}
           />
         ) : (
-          <div style={{ minWidth: '250px'}}>
+          <SignInPageStyles style={{ minWidth: '250px', minHeight: '946px', backgroundColor: 'turquoise'}}>
           <SignInOrSignUp
             email={email}
             setEmail={setEmail}
@@ -98,7 +107,7 @@ const App = () => {
             emailError={emailError}
             passwordError={passwordError}
           />
-          </div>
+          </SignInPageStyles>
         )}
       </div>
     </>

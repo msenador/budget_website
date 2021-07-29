@@ -10,14 +10,31 @@ const SignInSignOutPositioning = styled.div`
 const SignInSignOutStyling = styled.div`
   padding: 40px;
   border-radius: 20px;
-  background-color: azure;
-  box-shadow: 5px 5px 13px -2px red;
+  background-color: white;
+  box-shadow: 5px 5px 13px -2px gray;
   width: 220px;
 `;
 
 const ErrorMessageStyles = styled.div`
   font-size: 10px;
   color: red;
+`;
+
+const PhraseStyles = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100px;
+`;
+
+const InputStyles = styled.input`
+  border-radius: 5px;
+  border-shadow: 1px solid red;
+`;
+
+const ButtonStyles = styled.button`
+backgroundColor: background-color: #00b712;
+background-image: linear-gradient(315deg, #00b712 0%, #5aff15 74%);
 `;
 
 const SignInOrSignUp = (props) => {
@@ -38,15 +55,16 @@ const SignInOrSignUp = (props) => {
     <>
       <SignInSignOutPositioning>
       <SignInSignOutStyling>
+        <h1>{hasAccount ? 'SIGN IN' : 'SIGN UP'}</h1>
         <div>Email</div>
-        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <InputStyles type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <ErrorMessageStyles>{emailError ? '*' + emailError : ''}</ErrorMessageStyles>
         <div>Password</div>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <InputStyles type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <ErrorMessageStyles>{passwordError ? '*' + passwordError : ''}</ErrorMessageStyles>
           {hasAccount ? (
             <>
-              <button onClick={handleLogin}>Sign In</button>
+              <ButtonStyles onClick={handleLogin}>Sign In</ButtonStyles>
               <p>
                 Don't have an account?
                 <div onClick={() => setHasAccount(!hasAccount)}>Sign Up</div>
@@ -54,7 +72,7 @@ const SignInOrSignUp = (props) => {
             </>
           ) : (
             <>
-              <button onClick={handleSignUp}>Sign Up</button>
+              <ButtonStyles onClick={handleSignUp}>Sign Up</ButtonStyles>
               <p>
                 Have an account?
                 <div onClick={() => setHasAccount(!hasAccount)}>Sign In</div>
@@ -63,6 +81,14 @@ const SignInOrSignUp = (props) => {
           )}
         </SignInSignOutStyling>
       </SignInSignOutPositioning>
+      <PhraseStyles>
+      <div style={{ fontSize: '60px' }}>
+          Your money.
+        </div>
+      <div style={{ fontSize: '72px' }}>
+          Your control.
+        </div>
+        </PhraseStyles>
     </>
   );
 };
