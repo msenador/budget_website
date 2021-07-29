@@ -82,11 +82,13 @@ const SignInOrSignUp = (props) => {
         </SignInSignOutStyling>
       </SignInSignOutPositioning>
       <PhraseStyles>
+      <div style={{ width: '411px' }}>
       <div style={{ fontSize: '60px' }}>
           Your money.
         </div>
       <div style={{ fontSize: '72px' }}>
           Your control.
+        </div>
         </div>
         </PhraseStyles>
     </>
