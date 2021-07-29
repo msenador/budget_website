@@ -95,16 +95,14 @@ const SignInOrSignUp = (props) => {
 
           <FormHeaderLineGradient><h1 style={{ width: '180px', backgroundColor: 'white' }}>{hasAccount ? 'SIGN IN' : 'SIGN UP'}</h1></FormHeaderLineGradient>
 
-          <div style={{ paddingTop: '40px' }}></div>
-            <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required /></div></EmailContainer>
-            <ErrorMessageStyles>{emailError ? `*${emailError}` : null}</ErrorMessageStyles>
-          
+          <div style={{ paddingTop: '40px' }} />
+          <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required /></div></EmailContainer>
+          <ErrorMessageStyles>{emailError ? `*${emailError}` : null}</ErrorMessageStyles>
 
-          <PasswordContainer></PasswordContainer>
+          <PasswordContainer />
           <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required /></div></EmailContainer>
-            <ErrorMessageStyles>{passwordError ? `*${passwordError}` : null}</ErrorMessageStyles>
-          
-          
+          <ErrorMessageStyles>{passwordError ? `*${passwordError}` : null}</ErrorMessageStyles>
+
           {hasAccount ? (
             <>
               <ButtonStyles onClick={handleLogin}>Sign In</ButtonStyles>
