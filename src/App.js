@@ -83,10 +83,9 @@ const App = () => {
         {user ? (
           <HomePage
             handleLogout={handleLogout}
-            user={user}
           />
         ) : (
-          <div className="signin-or-signup">
+          <div style={{ minWidth: '250px'}}>
           <SignInOrSignUp
             email={email}
             setEmail={setEmail}

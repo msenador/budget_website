@@ -1,8 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const SignInSignOutContainer = styled.div`
+const SignInSignOutPositioning = styled.div`
+  padding-top: 150px;
   display: flex;
+  justify-content: center;
+`;
+
+const SignInSignOutStyling = styled.div`
+  padding: 40px;
+  border-radius: 20px;
+  background-color: azure;
+  box-shadow: 5px 5px 13px -2px red;
+`;
+
+const EmailPasswordCOntainer = styled.div`
 `;
 
 const SignInOrSignUp = (props) => {
@@ -21,13 +33,16 @@ const SignInOrSignUp = (props) => {
 
   return (
     <>
-      <SignInSignOutContainer>
-        <label>Email</label>
+      <SignInSignOutPositioning>
+      <SignInSignOutStyling>
+      <EmailPasswordCOntainer>
+        <div>Email</div>
         <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <p>{emailError}</p>
-        <label>Password</label>
+        <div>Password</div>
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <p>{passwordError}</p>
+        </EmailPasswordCOntainer>
         <div>
           {hasAccount ? (
             <>
@@ -49,7 +64,8 @@ const SignInOrSignUp = (props) => {
             </>
           )}
         </div>
-      </SignInSignOutContainer>
+        </SignInSignOutStyling>
+      </SignInSignOutPositioning>
     </>
   );
 };
