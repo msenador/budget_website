@@ -1,20 +1,15 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { fireEvent, render, screen } from '@testing-library/react';
 import SignIn from '../components/SignIn';
 
 beforeEach(() => {
-  render(<BrowserRouter><SignIn /></BrowserRouter>);
+  render(<SignIn/>);
 });
 
-test('renders inputs and labels on Sign In page', () => {
-  const emailLabel = screen.getByTestId('label-email').textContent;
-  const passwordLabel = screen.getByTestId('label-password').textContent;
+test('renders inputs on Sign In and Sign Up page', () => {
   const emailInput = screen.queryByTestId('input-email');
   const passwordInput = screen.queryByTestId('input-password');
 
-  expect(emailLabel).toEqual('Email:');
-  expect(passwordLabel).toEqual('Password:');
   expect(emailInput).toBeTruthy();
   expect(passwordInput).toBeTruthy();
 });

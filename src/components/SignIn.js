@@ -39,8 +39,9 @@ const ButtonStyles = styled.button`
     height: 45px;
     background-color: #20bf55;
     background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
-    margin-top: 50px;
+    margin-top: 40px;
     margin-left: 45px;
+    margin-bottom: 20px;
     border: transparent;
     width: 90px;
     border-radius: 100px;
@@ -93,31 +94,32 @@ const SignInOrSignUp = (props) => {
       <SignInSignOutPositioning>
         <SignInSignOutStyling>
 
-          <FormHeaderLineGradient><h1 style={{ width: '180px', backgroundColor: 'white' }}>{hasAccount ? 'SIGN IN' : 'SIGN UP'}</h1></FormHeaderLineGradient>
+          <FormHeaderLineGradient><h1 data-testid="header-signup" style={{ width: '180px', backgroundColor: 'white' }}>{hasAccount ? 'SIGN IN' : 'SIGN UP'}</h1></FormHeaderLineGradient>
 
           <div style={{ paddingTop: '40px' }} />
-          <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required /></div></EmailContainer>
+          <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles data-testid="input-email" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required /></div></EmailContainer>
           <ErrorMessageStyles>{emailError ? `*${emailError}` : null}</ErrorMessageStyles>
 
           <PasswordContainer />
-          <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required /></div></EmailContainer>
+          <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles data-testid="input-password" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required /></div></EmailContainer>
           <ErrorMessageStyles>{passwordError ? `*${passwordError}` : null}</ErrorMessageStyles>
 
           {hasAccount ? (
             <>
-              <ButtonStyles onClick={handleLogin}>Sign In</ButtonStyles>
-              <p>
+              <ButtonStyles data-testid="signin-button" onClick={handleLogin}>Sign In</ButtonStyles>
+              <div>
                 Don't have an account?
-                <SignInToggle onClick={() => setHasAccount(!hasAccount)}>Sign Up</SignInToggle>
-              </p>
+                <SignInToggle data-testid="signup-toggle" onClick={() => setHasAccount(!hasAccount)}>Sign Up</SignInToggle>
+              </div>
             </>
           ) : (
             <>
-              <ButtonStyles onClick={handleSignUp}>Sign Up</ButtonStyles>
-              <p>
+              <ButtonStyles data-testid="signinup-button" onClick={handleSignUp}>Sign Up</ButtonStyles>
+              <div>
                 Have an account?
-                <SignInToggle onClick={() => setHasAccount(!hasAccount)}>Sign In</SignInToggle>
-              </p>
+              </div>
+
+                <SignInToggle data-testid="signin-toggle" onClick={() => setHasAccount(!hasAccount)}>Sign In</SignInToggle>
             </>
           )}
         </SignInSignOutStyling>
