@@ -5,11 +5,13 @@ import SignInOrSignUp from './components/SignIn';
 import HomePage from './components/HomePage';
 
 const SignInPageStyles = styled.div`
-  minWidth: 250px;
-  minHeight: 946px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: #20bf55;
   background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
-
 `;
 
 const App = () => {
