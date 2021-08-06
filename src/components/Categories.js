@@ -10,9 +10,9 @@ const CategoryCards = styled.div`
 `;
 
 function Categories({ val }) {
-    return(
-        <CategoryCards>{val.newCategory}</CategoryCards>
-    )
+  return (
+    <CategoryCards>{val.newCategory}</CategoryCards>
+  );
 }
 
 export default Categories;

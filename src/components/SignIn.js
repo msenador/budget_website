@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import fire from '../fire';
 
 const SignInSignOutPositioning = styled.div`
   padding-top: 50px;
@@ -120,7 +119,7 @@ const SignInOrSignUp = (props) => {
                 Have an account?
               </div>
 
-                <SignInToggle data-testid="signin-toggle" onClick={() => setHasAccount(!hasAccount)}>Sign In</SignInToggle>
+              <SignInToggle data-testid="signin-toggle" onClick={() => setHasAccount(!hasAccount)}>Sign In</SignInToggle>
             </>
           )}
         </SignInSignOutStyling>

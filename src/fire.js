@@ -1,17 +1,17 @@
-import firebase from "firebase";
+import firebase from 'firebase';
 
-var firebaseConfig = {
-    apiKey: "AIzaSyDKp7wtFnlv-5ST-x99KhggEWZBqTrcmOQ",
-    authDomain: "budgetstash.firebaseapp.com",
-    databaseURL: "https://budgetstash-default-rtdb.firebaseio.com",
-    projectId: "budgetstash",
-    storageBucket: "budgetstash.appspot.com",
-    messagingSenderId: "402594121935",
-    appId: "1:402594121935:web:8c7258b728187a68f98fba"
-  };
-  const fire = firebase.initializeApp(firebaseConfig);
+const firebaseConfig = {
+  apiKey: 'AIzaSyDKp7wtFnlv-5ST-x99KhggEWZBqTrcmOQ',
+  authDomain: 'budgetstash.firebaseapp.com',
+  databaseURL: 'https://budgetstash-default-rtdb.firebaseio.com',
+  projectId: 'budgetstash',
+  storageBucket: 'budgetstash.appspot.com',
+  messagingSenderId: '402594121935',
+  appId: '1:402594121935:web:8c7258b728187a68f98fba',
+};
+const fire = firebase.initializeApp(firebaseConfig);
 
-  export default fire;
+export default fire;
 
 // import firebase from "firebase/app";
 // import "firebase/auth";
