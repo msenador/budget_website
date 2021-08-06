@@ -84,22 +84,6 @@ const SignInOrSignUp = (props) => {
     passwordError,
   } = props;
 
-  // const resetPassword = (email) => {
-  //   console.log(`EMAIL: ${email}`)
-  //   console.log('HIT')
-  //   fire.auth().sendPasswordResetEmail(email)
-  //   .then(() => {
-  //     alert('Please check your email to reset your password')
-  //   }).catch((err) => {
-  //     alert('Try again.')
-  //   })
-  // }
-
-  // useEffect(() => {
-  //   console.log(`INPUT: ${email}`)
-  //   setEmail(email)
-  // },[email])
-
   return (
     <>
       <PhraseStyles>
@@ -120,11 +104,6 @@ const SignInOrSignUp = (props) => {
           <PasswordContainer />
           <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles data-testid="input-password" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required /></div></EmailContainer>
           <ErrorMessageStyles>{passwordError ? `*${passwordError}` : null}</ErrorMessageStyles>
-          {/* {hasAccount ? (
-            <button onClick={resetPassword}>Forgot Password</button>
-          ) : (
-            <></>
-          )} */}
 
           {hasAccount ? (
             <>

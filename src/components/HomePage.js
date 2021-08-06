@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import fire from '../fire';
+import Categories from './Categories';
+import styled from 'styled-components';
 
+const CardsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr;
+  grid-gap: 100px 200px;
+  padding: 10px;
+`;
 
 const HomePage = ({ handleLogout, userId }) => {
   const [newCategory, setNewCategory] = useState('');
@@ -30,15 +38,15 @@ const HomePage = ({ handleLogout, userId }) => {
   },[])
 
   return (
-    <>
+    <div style={{ minWidth: '1200px'}}>
     <button onClick={handleLogout}>Logout</button>
     <h1>Welcome!</h1>
     <input type="text" placeholder="New Category" value={newCategory} onChange={(e) => setNewCategory(e.target.value)}/>
     <button onClick={handleNewCategory}>Add Category</button>
-    <h1>CATEGORIES</h1>
-    {/* <div>{categoryList ? categoryList.map((val, index) => <Categories val={val} key={index} />) : 'nothing'}</div> */}
-    {categoryList.length !== 0 ? categoryList.map(val => <div>{val.newCategory}</div>) : <h1>Add a budget category!</h1>}
-    </>
+    <div style={{ display: 'flex', justifyContent: 'center'}}>
+    <CardsContainer>{categoryList ? categoryList.map(val => <Categories val={val} />) : 'Create a new category!'}</CardsContainer>
+    </div>
+    </div>
   )
 };
 
