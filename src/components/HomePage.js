@@ -33,8 +33,8 @@ const HomePage = ({ handleLogout, userId }) => {
     categoriesRef.on('value', (snapshot) => {
       const categories = snapshot.val();
       const categoryList = [];
-      for (const i in categories) {
-        categoryList.push(categories[i]);
+      for (const id in categories) {
+        categoryList.push({id, ...categories[id]});
       }
       setCategoryList(categoryList);
     });

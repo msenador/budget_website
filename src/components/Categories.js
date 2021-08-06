@@ -12,11 +12,10 @@ const CategoryCards = styled.div`
   width: 150px;
 `;
 
-function Categories({ val, deleteId, userId }) {
+function Categories({ val, userId }) {
 
   const handleDelete = () => {
-    console.log(`DELETE: ${deleteId}`)
-    const deleteRef = fire.database().ref(`${userId}/categories/${deleteId}`)
+    const deleteRef = fire.database().ref(`${userId}/categories`).child(val.id)
     deleteRef.remove();
   }
 
