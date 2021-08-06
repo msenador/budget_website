@@ -15,6 +15,7 @@ const SignInPageStyles = styled.div`
 `;
 
 const App = () => {
+  const [userId, setUserId] = useState('');
   const [user, setUser] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -77,7 +78,11 @@ const App = () => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
         clearInputs();
+        console.log(userId);
+        setUserId(user.uid);
         setUser(user);
+        console.log('HIT');
+        console.log(userId);
       } else {
         setUser('');
       }
@@ -93,7 +98,8 @@ const App = () => {
       <div className="App">
         {user ? (
           <HomePage
-            handleLogout={handleLogout}
+          userId={userId}
+          handleLogout={handleLogout}
           />
         ) : (
           <SignInPageStyles style={{ minWidth: '250px', minHeight: '946px', backgroundColor: 'turquoise' }}>

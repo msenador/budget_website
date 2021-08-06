@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import fire from '../fire';
-import Categories from './Categories';
 
-const HomePage = ({ handleLogout }) => {
+
+const HomePage = ({ handleLogout, userId }) => {
   const [newCategory, setNewCategory] = useState('');
   const [categoryList, setCategoryList] = useState([]);
 
 
   const handleNewCategory = () => {
-  const categoriesRef = fire.database().ref('Categories');
+  const categoriesRef = fire.database().ref(`${userId}/categories`);
 
     const newCat = {
       newCategory,
@@ -17,7 +17,8 @@ const HomePage = ({ handleLogout }) => {
   }
 
   useEffect(() => {
-  const categoriesRef = fire.database().ref('Categories');
+    console.log(`Home: ${userId}`);
+  const categoriesRef = fire.database().ref(`${userId}/categories`);
     categoriesRef.on('value', (snapshot) => {
       const categories = snapshot.val();
       const categoryList = [];
