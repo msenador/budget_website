@@ -13,6 +13,7 @@ const CardsContainer = styled.div`
 const HomePage = ({ handleLogout, userId }) => {
   const [newCategory, setNewCategory] = useState('');
   const [categoryList, setCategoryList] = useState([]);
+  const [deleteId, setDeleteId] = useState('');
 
   const handleNewCategory = () => {
     const categoriesRef = fire.database().ref(`${userId}/categories`);
@@ -20,7 +21,10 @@ const HomePage = ({ handleLogout, userId }) => {
     const newCat = {
       newCategory,
     };
-    categoriesRef.push(newCat);
+    const newPush = categoriesRef.push(newCat);
+    const newId = newPush.key;
+    console.log(`NEW: ${newId}`)
+    setDeleteId(newId);
   };
 
   useEffect(() => {
@@ -43,7 +47,9 @@ const HomePage = ({ handleLogout, userId }) => {
       <input type="text" placeholder="New Category" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} />
       <button onClick={handleNewCategory}>Add Category</button>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <CardsContainer>{categoryList ? categoryList.map((val) => <Categories val={val} />) : 'Create a new category!'}</CardsContainer>
+        <CardsContainer>{categoryList ? categoryList.map((val) => <Categories 
+        val={val} deleteId={deleteId} userId={userId}
+        />) : 'Create a new category!'}</CardsContainer>
       </div>
     </div>
   );
