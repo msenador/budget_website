@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
 import fire from '../fire';
 
 const CategoryCards = styled.div`
@@ -10,6 +9,14 @@ const CategoryCards = styled.div`
   padding: 50px;
   border-radius: 20px;
   width: 150px;
+`;
+
+const DeleteIconStyles = styled.div`
+    color: #FF595E;
+    cursor: pointer;
+    position: absolute;
+    margin-left: 163px;
+    margin-top: -45px;
 `;
 
 function Categories({ val, userId }) {
@@ -21,10 +28,8 @@ function Categories({ val, userId }) {
 
   return (
     <>
-    
     <CategoryCards>
-    <div onClick={handleDelete}><DeleteIcon/></div>
-    <div><EditIcon/></div>
+    <DeleteIconStyles onClick={handleDelete}><DeleteIcon/></DeleteIconStyles>
       {val.newCategory}
     </CategoryCards>
     </>

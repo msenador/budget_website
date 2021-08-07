@@ -6,7 +6,7 @@ import Categories from './Categories';
 const CardsContainer = styled.div`
   display: grid;
   grid-template-columns: 3fr 3fr 3fr;
-  grid-gap: 100px 200px;
+  grid-gap: 25px 40px;
   padding: 10px;
 `;
 
@@ -41,7 +41,7 @@ const HomePage = ({ handleLogout, userId }) => {
   }, []);
 
   return (
-    <div style={{ minWidth: '1200px' }}>
+    <div style={{ minWidth: '850px' }}>
       <button onClick={handleLogout}>Logout</button>
       <h1>Welcome!</h1>
       <input type="text" placeholder="New Category" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} />
