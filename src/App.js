@@ -78,11 +78,8 @@ const App = () => {
     fire.auth().onAuthStateChanged((user) => {
       if (user) {
         clearInputs();
-        console.log(userId);
         setUserId(user.uid);
         setUser(user);
-        console.log('HIT');
-        console.log(userId);
       } else {
         setUser('');
       }
@@ -102,7 +99,7 @@ const App = () => {
           handleLogout={handleLogout}
           />
         ) : (
-          <SignInPageStyles style={{ minWidth: '250px', minHeight: '946px', backgroundColor: 'turquoise' }}>
+          <SignInPageStyles>
             <SignInOrSignUp
               email={email}
               setEmail={setEmail}
