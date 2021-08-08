@@ -13,29 +13,27 @@ const CategoryCards = styled.div`
 `;
 
 function Categories({ val, userId }) {
-  const [updateCategory, setUpdateCategory] = useState('');
+  const [newItem, setNewItem] = useState('');
 
   const handleDelete = () => {
-    const deleteRef = fire.database().ref(`${userId}/categories`).child(val.id)
+    const deleteRef = fire.database().ref(`${userId}/categories`).child(val.id);
     deleteRef.remove();
   }
 
   const handleEdit = () => {
-    const postData ={
-      newCategory: updateCategory,
+    const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${val.id}/Items`);
+    
+
+    const addItem ={
+      newItem,
     };
 
-    const editCategory = fire.database().ref(`${userId}/categories`).child(val).push().key;
-
-    const updates = {};
-    updates[editCategory] = updateCategory;
-
-    return fire.database().ref().update(updates);
+    addItemRef.push(addItem);
   }
 
   useEffect(() => {
-    setUpdateCategory(updateCategory)
-  },[updateCategory]);
+    setNewItem(newItem)
+  },[newItem]);
 
 
   return (
@@ -44,8 +42,8 @@ function Categories({ val, userId }) {
     <div onClick={handleDelete}><DeleteIcon/></div>
     <div>
       <EditIcon/>
-      <input placeholder="Edit" value={updateCategory} onChange={(e) => setUpdateCategory(e.target.value)}/>
-      <button onClick={handleEdit}>Update</button>
+      <input placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
+      <button onClick={handleEdit}>Add Item</button>
     </div>
       {val.newCategory}
     </CategoryCards>
