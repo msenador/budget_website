@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import fire from '../fire';
+import Items from './Items';
 
 const CategoryCards = styled.div`
   background-color: aliceblue;
@@ -14,6 +15,7 @@ const CategoryCards = styled.div`
 
 function Categories({ val, userId }) {
   const [newItem, setNewItem] = useState('');
+  const [itemsList, setItemList] = useState('');
 
   const handleDelete = () => {
     const deleteRef = fire.database().ref(`${userId}/categories`).child(val.id);
@@ -23,7 +25,6 @@ function Categories({ val, userId }) {
   const handleEdit = () => {
     const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${val.id}/Items`);
     
-
     const addItem ={
       newItem,
     };
@@ -32,8 +33,16 @@ function Categories({ val, userId }) {
   }
 
   useEffect(() => {
-    setNewItem(newItem)
-  },[newItem]);
+    const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${val.id}/Items`);
+    addItemRef.on('value', (snapshot) => {
+      const items = snapshot.val();
+      const itemsList = [];
+      for (const id in items) {
+        itemsList.push({id, ...items[id]});
+      }
+      setItemList(itemsList);
+    });
+  }, []);
 
 
   return (
@@ -46,6 +55,7 @@ function Categories({ val, userId }) {
       <button onClick={handleEdit}>Add Item</button>
     </div>
       {val.newCategory}
+      {itemsList ? itemsList.map((itemVal) => <Items itemVal={itemVal} />) : `Add an item!`}
     </CategoryCards>
     </>
   );
