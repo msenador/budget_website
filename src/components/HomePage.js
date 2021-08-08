@@ -39,7 +39,6 @@ const HomePage = ({ handleLogout, userId }) => {
   };
 
   useEffect(() => {
-    console.log(`Home: ${userId}`);
     const categoriesRef = fire.database().ref(`${userId}/categories`);
     categoriesRef.on('value', (snapshot) => {
       const categories = snapshot.val();
