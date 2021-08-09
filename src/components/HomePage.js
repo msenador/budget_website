@@ -48,7 +48,7 @@ const HomePage = ({ handleLogout, userId }) => {
       }
       setCategoryList(categoryList);
     });
-  }, []);
+  },[]);
 
   return (
     <HomePageContainer>

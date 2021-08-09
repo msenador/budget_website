@@ -31,11 +31,9 @@ function Categories({ categoryValue, userId }) {
 
   const handleAddItem = () => {
     const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`);
-    
     const addItem ={
       newItem,
     };
-
     addItemRef.push(addItem);
   }
 
@@ -49,7 +47,7 @@ function Categories({ categoryValue, userId }) {
       }
       setItemList(itemsList);
     });
-  }, []);
+  }, [categoryValue]);
 
 
   return (
