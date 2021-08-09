@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import DeleteIcon from '@material-ui/icons/Delete';
 import fire from '../fire';
+import CloseIcon from '@material-ui/icons/Close';
+
+const XiconStyles = styled.span`
+  color: #FF595E;
+  height: 5px;
+  cursor: pointer;
+`;
 
 function Items({itemVal, userId , categoryValue}) {
 
@@ -9,14 +15,10 @@ function Items({itemVal, userId , categoryValue}) {
     const deleteItemRef = fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`).child(itemVal.id);
     deleteItemRef.remove();
   }
-
-    useEffect(() => {
-
-    })
-
+  
   return (
     <div>
-    <span><DeleteIcon style={{ color: '#FF595E'}} onClick={handleDeleteItem}/></span>
+    <XiconStyles><CloseIcon onClick={handleDeleteItem}/></XiconStyles>
     {itemVal.newItem}
     </div>
   );
