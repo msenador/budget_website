@@ -28,7 +28,6 @@ const HomePage = ({ handleLogout, userId }) => {
 
   const handleNewCategory = () => {
     const categoriesRef = fire.database().ref(`${userId}/categories`);
-
     const newCat = {
       newCategory,
     };
@@ -57,9 +56,9 @@ const HomePage = ({ handleLogout, userId }) => {
       <input type="text" placeholder="New Category" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} />
       <button onClick={handleNewCategory}>Add Category</button>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <CardsContainer>{categoryList ? categoryList.map((categoryValue) => <Categories 
+        <CardsContainer>{categoryList.length !== 0 ? categoryList.map((categoryValue) => <Categories 
         categoryValue={categoryValue} deleteId={deleteId} userId={userId}
-        />) : 'Create a new category!'}</CardsContainer>
+        />) : <h1>Create a new category!</h1>}</CardsContainer>
       </div>
     </HomePageContainer>
   );
