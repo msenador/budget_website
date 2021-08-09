@@ -57,7 +57,6 @@ function Categories({ val, userId }) {
     <CategoryCards>
     <DeleteIconStyles onClick={handleDelete}><DeleteIcon/></DeleteIconStyles>
     <div>
-      <EditIcon/>
       <input placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
       <button onClick={handleEdit}>Add Item</button>
     </div>
