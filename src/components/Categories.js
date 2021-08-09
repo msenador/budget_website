@@ -20,17 +20,17 @@ const DeleteIconStyles = styled.div`
     margin-top: -45px;
 `;
 
-function Categories({ val, userId }) {
+function Categories({ categoryValue, userId }) {
   const [newItem, setNewItem] = useState('');
   const [itemsList, setItemList] = useState('');
 
   const handleDelete = () => {
-    const deleteRef = fire.database().ref(`${userId}/categories`).child(val.id);
+    const deleteRef = fire.database().ref(`${userId}/categories`).child(categoryValue.id);
     deleteRef.remove();
   }
 
-  const handleEdit = () => {
-    const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${val.id}/Items`);
+  const handleAddItem = () => {
+    const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`);
     
     const addItem ={
       newItem,
@@ -40,7 +40,7 @@ function Categories({ val, userId }) {
   }
 
   useEffect(() => {
-    const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${val.id}/Items`);
+    const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`);
     addItemRef.on('value', (snapshot) => {
       const items = snapshot.val();
       const itemsList = [];
@@ -56,12 +56,12 @@ function Categories({ val, userId }) {
     <>
     <CategoryCards>
     <DeleteIconStyles onClick={handleDelete}><DeleteIcon/></DeleteIconStyles>
+    <h1>{categoryValue.newCategory}</h1>
     <div>
       <input placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
-      <button onClick={handleEdit}>Add Item</button>
+      <button onClick={handleAddItem}>Add Item</button>
     </div>
-      {val.newCategory}
-      {itemsList ? itemsList.map((itemVal) => <Items itemVal={itemVal} />) : `Add an item!`}
+      {itemsList ? itemsList.map((itemVal) => <Items itemVal={itemVal} userId={userId} categoryValue={categoryValue} />) : `Add an item!`}
     </CategoryCards>
     </>
   );

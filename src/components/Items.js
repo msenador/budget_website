@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
 import fire from '../fire';
 
-function Items({itemVal}) {
+function Items({itemVal, userId , categoryValue}) {
+
+  const handleDeleteItem = () => {
+    const deleteItemRef = fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`).child(itemVal.id);
+    deleteItemRef.remove();
+  }
 
     useEffect(() => {
 
@@ -12,6 +16,7 @@ function Items({itemVal}) {
 
   return (
     <div>
+    <span><DeleteIcon style={{ color: '#FF595E'}} onClick={handleDeleteItem}/></span>
     {itemVal.newItem}
     </div>
   );

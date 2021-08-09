@@ -57,8 +57,8 @@ const HomePage = ({ handleLogout, userId }) => {
       <input type="text" placeholder="New Category" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} />
       <button onClick={handleNewCategory}>Add Category</button>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <CardsContainer>{categoryList ? categoryList.map((val) => <Categories 
-        val={val} deleteId={deleteId} userId={userId}
+        <CardsContainer>{categoryList ? categoryList.map((categoryValue) => <Categories 
+        categoryValue={categoryValue} deleteId={deleteId} userId={userId}
         />) : 'Create a new category!'}</CardsContainer>
       </div>
     </HomePageContainer>
