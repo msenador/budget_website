@@ -94,14 +94,14 @@ const SignInOrSignUp = (props) => {
       <SignInSignOutPositioning>
         <SignInSignOutStyling>
 
-          <FormHeaderLineGradient><h1 data-testid="header-signup" style={{ width: '180px', backgroundColor: 'white' }}>{hasAccount ? 'SIGN IN' : 'SIGN UP'}</h1></FormHeaderLineGradient>
+          <FormHeaderLineGradient><h1 data-testid="signup-header" style={{ width: '180px', backgroundColor: 'white' }}>{hasAccount ? 'SIGN IN' : 'SIGN UP'}</h1></FormHeaderLineGradient>
 
           <div style={{ paddingTop: '40px' }} />
-          <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles data-testid="input-email" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required /></div></EmailContainer>
+          <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles data-testid="email-input" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required /></div></EmailContainer>
           <ErrorMessageStyles>{emailError ? `*${emailError}` : null}</ErrorMessageStyles>
 
           <PasswordContainer />
-          <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles data-testid="input-password" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required /></div></EmailContainer>
+          <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles data-testid="password-input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required /></div></EmailContainer>
           <ErrorMessageStyles>{passwordError ? `*${passwordError}` : null}</ErrorMessageStyles>
 
           {hasAccount ? (

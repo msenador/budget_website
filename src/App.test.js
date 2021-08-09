@@ -4,7 +4,7 @@ import App from './App';
 
 test('renders app', () => {
   render(<App />);
-  const signupHeader = screen.queryByTestId('header-signup').textContent;
+  const { getByText } = screen;
 
-  expect(signupHeader).toBeTruthy;
+  expect(getByText('Sign Up')).toBeTruthy;
 });
