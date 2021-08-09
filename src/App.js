@@ -41,7 +41,8 @@ const App = () => {
       .catch((err) => {
         switch (err.code) {
           case 'auth/invalid-email':
-          case 'auth/user-disabled':
+            setEmailError('Invalid Email');
+            break;
           case 'auth/user-not-found':
             setEmailError(err.message);
             break;
@@ -60,8 +61,10 @@ const App = () => {
       .catch((err) => {
         switch (err.code) {
           case 'auth/email-already-in-use':
-          case 'auth/invalid-email':
             setEmailError(err.message);
+            break;
+          case 'auth/invalid-email':
+            setEmailError('Invalid Email');
             break;
           case 'auth/weak-password':
             setPasswordError(err.message);
