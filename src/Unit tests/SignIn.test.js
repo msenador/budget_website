@@ -1,15 +1,16 @@
 import React from 'react';
-import { fireEvent, getByText, queryByTestId, render, screen } from '@testing-library/react';
+import { fireEvent, getByText, queryByTestId, queryByText, render, screen } from '@testing-library/react';
 import SignIn from '../components/SignIn';
 
 beforeEach(() => {
   render(<SignIn/>);
 });
 
-test('renders inputs on Sign In page', () => {
+test('displays inputs on Sign In page', () => {
   const { getByText, queryByTestId } = screen;
-  getByText('Sign Up');
 
+  getByText(`Have an account?`)
+  expect(queryByTestId('signup-header').textContent).toEqual('SIGN UP');
   expect(queryByTestId('email-input')).toBeTruthy();
   expect(queryByTestId('password-input')).toBeTruthy();
 });
