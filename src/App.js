@@ -53,6 +53,10 @@ const App = () => {
       });
   };
 
+  const handleToggle = () => {
+    setHasAccount(!hasAccount)
+  };
+
   const handleSignUp = () => {
     clearErrors();
     fire
@@ -114,6 +118,7 @@ const App = () => {
               setHasAccount={setHasAccount}
               emailError={emailError}
               passwordError={passwordError}
+              handleToggle={handleToggle}
             />
           </SignInPageStyles>
         )}

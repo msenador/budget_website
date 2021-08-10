@@ -64,9 +64,12 @@ const PasswordContainer = styled.div`
   margin-top: 23px;
 `;
 
-const SignInToggle = styled.div`
+const SignInToggle = styled.button`
   cursor: pointer;
   color: #F19A3E;
+  border: none;
+  background: transparent;
+  font-size: 15px;
 `;
 
 const SignInOrSignUp = (props) => {
@@ -81,6 +84,7 @@ const SignInOrSignUp = (props) => {
     setHasAccount,
     emailError,
     passwordError,
+    handleToggle,
   } = props;
 
   return (
@@ -109,7 +113,7 @@ const SignInOrSignUp = (props) => {
               <ButtonStyles data-testid="signin-button" onClick={handleLogin}>Sign In</ButtonStyles>
               <div>
                 Don't have an account?
-                <SignInToggle data-testid="signup-toggle" onClick={() => setHasAccount(!hasAccount)}>Sign Up</SignInToggle>
+                <SignInToggle data-testid="signup-toggle" onClick={handleToggle}>Sign Up</SignInToggle>
               </div>
             </>
           ) : (
@@ -119,7 +123,7 @@ const SignInOrSignUp = (props) => {
                 Have an account?
               </div>
 
-              <SignInToggle data-testid="signin-toggle" onClick={() => setHasAccount(!hasAccount)}>Sign In</SignInToggle>
+              <SignInToggle data-testid="signin-toggle" onClick={handleToggle}>Sign In</SignInToggle>
             </>
           )}
         </SignInSignOutStyling>
