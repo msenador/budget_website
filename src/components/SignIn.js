@@ -25,6 +25,7 @@ const PhraseStyles = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 100px;
+  font-size: 30px;
 `;
 
 const InputStyles = styled.input`
@@ -81,7 +82,6 @@ const SignInOrSignUp = (props) => {
     handleLogin,
     handleSignUp,
     hasAccount,
-    setHasAccount,
     emailError,
     passwordError,
     handleToggle,
@@ -90,9 +90,7 @@ const SignInOrSignUp = (props) => {
   return (
     <>
       <PhraseStyles>
-        <div style={{ fontSize: '30px', textTransform: 'uppercase' }}>
-          Your money under your control
-        </div>
+        YOUR MONEY UNDER YOUR CONTROL.
       </PhraseStyles>
 
       <SignInSignOutPositioning>
