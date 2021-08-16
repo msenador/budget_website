@@ -100,11 +100,11 @@ const SignInOrSignUp = (props) => {
 
           <div style={{ paddingTop: '40px' }} />
           <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles data-testid="email-input" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required /></div></EmailContainer>
-          <ErrorMessageStyles>{emailError ? `*${emailError}` : null}</ErrorMessageStyles>
+          <ErrorMessageStyles data-testid="email-error" >{emailError ? `*${emailError}` : null}</ErrorMessageStyles>
 
           <PasswordContainer />
           <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles data-testid="password-input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required /></div></EmailContainer>
-          <ErrorMessageStyles>{passwordError ? `*${passwordError}` : null}</ErrorMessageStyles>
+          <ErrorMessageStyles data-testid="password-error" >{passwordError ? `*${passwordError}` : null}</ErrorMessageStyles>
 
           {hasAccount ? (
             <>
@@ -116,7 +116,7 @@ const SignInOrSignUp = (props) => {
             </>
           ) : (
             <>
-              <ButtonStyles data-testid="signinup-button" onClick={handleSignUp}>Sign Up</ButtonStyles>
+              <ButtonStyles data-testid="signup-button" onClick={handleSignUp}>Sign Up</ButtonStyles>
               <div>
                 Have an account?
               </div>
