@@ -44,13 +44,17 @@ const App = () => {
             setEmailError('Invalid Email');
             break;
           case 'auth/user-not-found':
-            setEmailError(err.message);
+            setEmailError('User not found');
             break;
           case 'auth/wrong-password':
-            setPasswordError(err.message);
+            setPasswordError('Wrong password');
             break;
         }
       });
+  };
+
+  const handleToggle = () => {
+    setHasAccount(!hasAccount)
   };
 
   const handleSignUp = () => {
@@ -114,6 +118,7 @@ const App = () => {
               setHasAccount={setHasAccount}
               emailError={emailError}
               passwordError={passwordError}
+              handleToggle={handleToggle}
             />
           </SignInPageStyles>
         )}

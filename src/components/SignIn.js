@@ -25,6 +25,7 @@ const PhraseStyles = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 100px;
+  font-size: 30px;
 `;
 
 const InputStyles = styled.input`
@@ -64,9 +65,12 @@ const PasswordContainer = styled.div`
   margin-top: 23px;
 `;
 
-const SignInToggle = styled.div`
+const SignInToggle = styled.button`
   cursor: pointer;
   color: #F19A3E;
+  border: none;
+  background: transparent;
+  font-size: 15px;
 `;
 
 const SignInOrSignUp = (props) => {
@@ -78,48 +82,46 @@ const SignInOrSignUp = (props) => {
     handleLogin,
     handleSignUp,
     hasAccount,
-    setHasAccount,
     emailError,
     passwordError,
+    handleToggle,
   } = props;
 
   return (
     <>
       <PhraseStyles>
-        <div style={{ fontSize: '30px', textTransform: 'uppercase' }}>
-          Your money under your control
-        </div>
+        YOUR MONEY UNDER YOUR CONTROL.
       </PhraseStyles>
 
       <SignInSignOutPositioning>
         <SignInSignOutStyling>
 
-          <FormHeaderLineGradient><h1 data-testid="signup-header" style={{ width: '180px', backgroundColor: 'white' }}>{hasAccount ? 'SIGN IN' : 'SIGN UP'}</h1></FormHeaderLineGradient>
+          <FormHeaderLineGradient><h1 name="signup-header" data-testid="signup-header" style={{ width: '180px', backgroundColor: 'white' }}>{hasAccount ? 'SIGN IN' : 'SIGN UP'}</h1></FormHeaderLineGradient>
 
           <div style={{ paddingTop: '40px' }} />
-          <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles data-testid="email-input" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required /></div></EmailContainer>
-          <ErrorMessageStyles>{emailError ? `*${emailError}` : null}</ErrorMessageStyles>
+          <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles data-testid="email-input" name="email-input" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required /></div></EmailContainer>
+          <ErrorMessageStyles name="email-error" data-testid="email-error" >{emailError ? `*${emailError}` : null}</ErrorMessageStyles>
 
           <PasswordContainer />
-          <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles data-testid="password-input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required /></div></EmailContainer>
-          <ErrorMessageStyles>{passwordError ? `*${passwordError}` : null}</ErrorMessageStyles>
+          <EmailContainer><div style={{ backgroundColor: 'white', paddingBottom: '3px' }}><InputStyles data-testid="password-input" name="password-input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required /></div></EmailContainer>
+          <ErrorMessageStyles name="password-error" data-testid="password-error" >{passwordError ? `*${passwordError}` : null}</ErrorMessageStyles>
 
           {hasAccount ? (
             <>
-              <ButtonStyles data-testid="signin-button" onClick={handleLogin}>Sign In</ButtonStyles>
+              <ButtonStyles name="signin-button" data-testid="signin-button" onClick={handleLogin}>Sign In</ButtonStyles>
               <div>
                 Don't have an account?
-                <SignInToggle data-testid="signup-toggle" onClick={() => setHasAccount(!hasAccount)}>Sign Up</SignInToggle>
+                <SignInToggle data-testid="signup-toggle" onClick={handleToggle}>Sign Up</SignInToggle>
               </div>
             </>
           ) : (
             <>
-              <ButtonStyles data-testid="signinup-button" onClick={handleSignUp}>Sign Up</ButtonStyles>
+              <ButtonStyles data-testid="signup-button" name="signup-button" onClick={handleSignUp}>Sign Up</ButtonStyles>
               <div>
                 Have an account?
               </div>
 
-              <SignInToggle data-testid="signin-toggle" onClick={() => setHasAccount(!hasAccount)}>Sign In</SignInToggle>
+              <SignInToggle name="signin-toggle" data-testid="signin-toggle" onClick={handleToggle}>Sign In</SignInToggle>
             </>
           )}
         </SignInSignOutStyling>
