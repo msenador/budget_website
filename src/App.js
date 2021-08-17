@@ -118,7 +118,6 @@ const App = () => {
               setHasAccount={setHasAccount}
               emailError={emailError}
               passwordError={passwordError}
-              handleToggle={handleToggle}
             />
           </SignInPageStyles>
         )}

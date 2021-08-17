@@ -81,10 +81,10 @@ const SignInOrSignUp = (props) => {
     setPassword,
     handleLogin,
     handleSignUp,
+    setHasAccount,
     hasAccount,
     emailError,
     passwordError,
-    handleToggle,
   } = props;
 
   return (
@@ -111,7 +111,7 @@ const SignInOrSignUp = (props) => {
               <ButtonStyles name="signin-button" data-testid="signin-button" onClick={handleLogin}>Sign In</ButtonStyles>
               <div>
                 Don't have an account?
-                <SignInToggle data-testid="signup-toggle" onClick={handleToggle}>Sign Up</SignInToggle>
+                <SignInToggle data-testid="signup-toggle" onClick={() => setHasAccount(!hasAccount)}>Sign Up</SignInToggle>
               </div>
             </>
           ) : (
@@ -121,7 +121,7 @@ const SignInOrSignUp = (props) => {
                 Have an account?
               </div>
 
-              <SignInToggle name="signin-toggle" data-testid="signin-toggle" onClick={handleToggle}>Sign In</SignInToggle>
+              <SignInToggle name="signin-toggle" data-testid="signin-toggle" onClick={() => setHasAccount(!hasAccount)}>Sign In</SignInToggle>
             </>
           )}
         </SignInSignOutStyling>
