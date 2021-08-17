@@ -1,41 +1,61 @@
 import React from 'react';
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import SignIn from '../components/SignIn';
 
-beforeEach(() => {
-  const setEmail = jest.fn
-  const setPassword = jest.fn
-  render(<SignIn setEmail={setEmail} setPassword={setPassword}/>);
-});
+describe('sign up page', () => {
+  beforeEach(() => {
+    render(<SignIn />);
+  });
 
-test('displays inputs and header on Sign In page', () => {
-  const { getByText, queryByTestId } = screen;
+  afterEach(() => {
+    cleanup();
+  })
 
-  getByText('YOUR MONEY UNDER YOUR CONTROL.')
-  getByText(`Have an account?`);
-  getByText('Sign In')
-  expect(queryByTestId('signup-header').textContent).toEqual('SIGN UP');
-  expect(queryByTestId('email-input')).toBeTruthy();
-  expect(queryByTestId('password-input')).toBeTruthy();
-});
+  test('displays inputs and header on Sign Up page', () => {
+    const { getByText, queryByTestId } = screen;
 
-test('displays invalid email warning if email is invalid', async () => {
-  const { getByTestId, getByText } = screen;
-  const email = getByTestId('email-input');
-  const password = getByTestId('password-input');
+    getByText('YOUR MONEY UNDER YOUR CONTROL.')
+    getByText(`Have an account?`);
+    getByText('Sign In')
+    expect(queryByTestId('signup-header').textContent).toEqual('SIGN UP');
+    expect(queryByTestId('email-input')).toBeTruthy();
+    expect(queryByTestId('password-input')).toBeTruthy();
+  });
 
-  expect(email.value).toBe('');
-  fireEvent.change(email, {target: {value: 'morian'}});
-  expect(email.value).toBe('morian');
-  expect(password.value).toBe('');
-  fireEvent.change(password, {target: {value: '1234'}});
-  expect(password.value).toBe('1234');
-  fireEvent.click(getByTestId('signup-button'));
+  // test('displays invalid email warning if email is invalid', async () => {
+  //   const { getByTestId, getByText } = screen;
+  //   const email = getByTestId('email-input');
+  //   const password = getByTestId('password-input');
 
-  await screen.findByText('*Invalid email')
+  //   expect(email.value).toBe('');
+  //   fireEvent.change(email, {target: {value: 'morian'}});
+  //   expect(email.value).toBe('morian');
+  //   expect(password.value).toBe('');
+  //   fireEvent.change(password, {target: {value: '1234'}});
+  //   expect(password.value).toBe('1234');
+  //   fireEvent.click(getByTestId('signup-button'));
 
-  // const error = await getByTestId('email-error').textContent;
+  //   await waitFor(() => getByText('*Invalid email'));
 
-  // expect(error).toEqual('here')
+    // const error = await getByTestId('email-error').textContent;
+
+    // expect(error).toEqual('here')
+  // })
+
+  // test('Does not call handleSignUp function if one or more inputs are invalid', () => {
+  //   const { getByTestId } = screen;
+  //   const email = getByTestId('email-input');
+  //   const password = getByTestId('password-input');
+
+  //   expect(email.value).toBe('');
+  //   fireEvent.change(email, {target: {value: 'morian'}});
+  //   expect(email.value).toBe('morian');
+  //   expect(password.value).toBe('');
+  //   fireEvent.change(password, {target: {value: '1234'}});
+  //   expect(password.value).toBe('1234');
+  //   fireEvent.click(getByTestId('signup-button'));
+
+  //   expect(handleSignUp).toHaveBeenCalledTimes(0);
+  // })
 })
 

@@ -44,10 +44,10 @@ const App = () => {
             setEmailError('Invalid Email');
             break;
           case 'auth/user-not-found':
-            setEmailError(err.message);
+            setEmailError('User not found');
             break;
           case 'auth/wrong-password':
-            setPasswordError(err.message);
+            setPasswordError('Wrong password');
             break;
         }
       });
