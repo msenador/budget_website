@@ -10,6 +10,7 @@ const CategoryCards = styled.div`
   padding: 50px;
   border-radius: 20px;
   width: 150px;
+  text-transform: uppercase;
 `;
 
 const DeleteIconStyles = styled.div`
