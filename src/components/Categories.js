@@ -32,6 +32,20 @@ const InputStyles = styled.input`
   }
 `;
 
+const AddItemButtonStyles = styled.div`
+  margin-top: 10px; 
+  margin-bottom: 10px; 
+  background-color: lightgreen;
+  borderRadius: 20px; 
+  border: none;
+  box-shadow: 5px 5px 13px 3px gray;
+  :active {
+    border-style: unset;
+    box-shadow: 4px 4px 5px -2px rgba(0, 0, 0, 0.85), inset 2px 2px 2px rgba(0, 0, 0, 0.3),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.15);
+  }
+`;
+
 function Categories({ categoryValue, userId }) {
   const [newItem, setNewItem] = useState('');
   const [itemsList, setItemList] = useState('');
@@ -80,7 +94,7 @@ function Categories({ categoryValue, userId }) {
     <div>
       <InputStyles placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
       <InputStyles placeholder="Item price" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} required/>
-      <button style={{ marginTop: '10px', marginBottom: '10px' }} onClick={handleAddItem}>Add Item</button>
+      <AddItemButtonStyles onClick={handleAddItem}>Add Item</AddItemButtonStyles>
     </div>
       {itemsList ? itemsList.map((itemVal, index) => <Items key={index} itemVal={itemVal} userId={userId} categoryValue={categoryValue} />) : `Add an item!`}
     </CategoryCards>
