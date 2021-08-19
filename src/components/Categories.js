@@ -21,9 +21,21 @@ const DeleteIconStyles = styled.div`
     margin-top: -45px;
 `;
 
+const InputStyles = styled.input`
+  border: none;
+  margin-bottom: 5px;
+  border-radius: 20px;
+  width: 100px;
+  height: 30px;
+  ::-webkit-input-placeholder {
+    text-align: center;
+  }
+`;
+
 function Categories({ categoryValue, userId }) {
   const [newItem, setNewItem] = useState('');
   const [itemsList, setItemList] = useState('');
+  const [itemPrice, setItemPrice] = useState('');
 
   const handleDelete = () => {
     const deleteRef = fire.database().ref(`${userId}/categories`).child(categoryValue.id);
@@ -31,11 +43,20 @@ function Categories({ categoryValue, userId }) {
   }
 
   const handleAddItem = () => {
-    const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`);
-    const addItem ={
-      newItem,
-    };
-    addItemRef.push(addItem);
+    if (newItem === '') {
+      alert('**Item is empty')
+    } else if (itemPrice === '') {
+      alert('**Please enter item price')
+    } else {
+      const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`);
+      const addItem ={
+        newItem,
+        itemPrice,
+      };
+      addItemRef.push(addItem);
+      setNewItem('');
+      setItemPrice('');
+    }
   }
 
   useEffect(() => {
@@ -57,10 +78,11 @@ function Categories({ categoryValue, userId }) {
     <DeleteIconStyles onClick={handleDelete}><DeleteIcon/></DeleteIconStyles>
     <h1>{categoryValue.newCategory}</h1>
     <div>
-      <input placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
-      <button onClick={handleAddItem}>Add Item</button>
+      <InputStyles placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
+      <InputStyles placeholder="Item price" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} required/>
+      <button style={{ marginTop: '10px', marginBottom: '10px' }} onClick={handleAddItem}>Add Item</button>
     </div>
-      {itemsList ? itemsList.map((itemVal) => <Items itemVal={itemVal} userId={userId} categoryValue={categoryValue} />) : `Add an item!`}
+      {itemsList ? itemsList.map((itemVal, index) => <Items key={index} itemVal={itemVal} userId={userId} categoryValue={categoryValue} />) : `Add an item!`}
     </CategoryCards>
     </>
   );

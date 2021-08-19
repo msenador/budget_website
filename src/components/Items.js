@@ -9,6 +9,13 @@ const XiconStyles = styled.span`
   cursor: pointer;
 `;
 
+const ItemsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3px;
+  margin-bottom: 3px;
+`;
+
 function Items({itemVal, userId , categoryValue}) {
 
   const handleDeleteItem = () => {
@@ -17,10 +24,11 @@ function Items({itemVal, userId , categoryValue}) {
   }
   
   return (
-    <div>
+    <ItemsContainer>
     <XiconStyles><CloseIcon onClick={handleDeleteItem}/></XiconStyles>
-    {itemVal.newItem}
-    </div>
+    <div>{itemVal.newItem}</div>
+    <div>{itemVal.itemPrice}</div>
+    </ItemsContainer>
   );
 }
 
