@@ -36,13 +36,14 @@ const AddItemButtonStyles = styled.div`
   margin-top: 10px; 
   margin-bottom: 10px; 
   background-color: lightgreen;
-  borderRadius: 20px; 
+  border-radius: 20px; 
   border: none;
-  box-shadow: 5px 5px 13px 3px gray;
+  box-shadow: -1px 3px 4px 0px grey;
   :active {
     border-style: unset;
-    box-shadow: 4px 4px 5px -2px rgba(0, 0, 0, 0.85), inset 2px 2px 2px rgba(0, 0, 0, 0.3),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.15);
+    box-shadow: -4px 4px 4px 0px grey, 
+    inset -2px 3px 1px rgb(0 0 0 / 30%), 
+    inset 17px 2px 31px rgb(255 255 255 / 16%)
   }
 `;
 
