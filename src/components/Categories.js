@@ -74,6 +74,30 @@ function Categories({ categoryValue, userId }) {
     }
   }
 
+  const getItemPrice = () => {
+    fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`).on('value', function(snap){
+
+      snap.forEach(function(childNodes){
+  
+        console.log(childNodes.key)
+   
+         //This loop iterates over children of user_id
+         //childNodes.key is key of the children of userid such as (20170710)
+         //childNodes.val().name;
+         //childNodes.val().time;
+         //childNodes.val().rest_time;
+         //childNodes.val().interval_time;
+   
+   
+     });
+   });
+  }
+
+  useEffect(() => {
+    getItemPrice();
+  },[newItem])
+  
+
   useEffect(() => {
     const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`);
     addItemRef.on('value', (snapshot) => {
