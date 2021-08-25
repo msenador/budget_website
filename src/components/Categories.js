@@ -72,6 +72,7 @@ function Categories({ categoryValue, userId }) {
       addItemRef.push(addItem);
       setNewItem('');
       setItemPrice('');
+      location.reload();
     }
   }
 
@@ -79,25 +80,20 @@ function Categories({ categoryValue, userId }) {
     fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`).on('value', function(snap){
       snap.forEach(function(childNodes){
         const current = parseFloat(childNodes.val().itemPrice);
-        setItemPriceList([]);
         itemPriceList.push(current);
-        console.log(itemPriceList)
-   
+  
          //This loop iterates over children of user_id
          //childNodes.key is key of the children of userid such as (20170710)
          //childNodes.val().name;
          //childNodes.val().time;
          //childNodes.val().rest_time;
          //childNodes.val().interval_time;
-   
-   
      });
    });
   }
   
-  const add = () => {
-    let sum = itemPriceList.reduce((pv, cv) => pv + cv, 0);
-    console.log(sum);
+  const totalSpentPerCategory = () => {
+    return itemPriceList.reduce((a, b) => a + b, 0)
   }
 
   useEffect(() => {
@@ -119,17 +115,21 @@ function Categories({ categoryValue, userId }) {
 
   return (
     <>
-    {/* {getItemPrice()} */}
-    {add()}
     <CategoryCards>
     <DeleteIconStyles onClick={handleDelete}><DeleteIcon/></DeleteIconStyles>
     <h1>{categoryValue.newCategory}</h1>
+    <h1>Total spent: {totalSpentPerCategory() > 0 ? `$${totalSpentPerCategory()}` : `$0`}</h1>
     <div>
       <InputStyles placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
       <InputStyles placeholder="Item price" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} required/>
       <AddItemButtonStyles onClick={handleAddItem}>Add Item</AddItemButtonStyles>
     </div>
-      {itemsList ? itemsList.map((itemVal, index) => <Items key={index} itemVal={itemVal} userId={userId} categoryValue={categoryValue} />) : `Add an item!`}
+      {itemsList ? itemsList.map((itemVal, index) => 
+      <Items 
+      key={index} 
+      itemVal={itemVal} 
+      userId={userId} 
+      categoryValue={categoryValue} />) : `Add an item!`}
     </CategoryCards>
     </>
   );

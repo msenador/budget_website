@@ -21,13 +21,14 @@ function Items({itemVal, userId , categoryValue}) {
   const handleDeleteItem = () => {
     const deleteItemRef = fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`).child(itemVal.id);
     deleteItemRef.remove();
+    location.reload();
   }
   
   return (
     <ItemsContainer>
     <XiconStyles><CloseIcon onClick={handleDeleteItem}/></XiconStyles>
     <div>{itemVal.newItem}</div>
-    <div>{itemVal.itemPrice}</div>
+    <div>${itemVal.itemPrice}</div>
     </ItemsContainer>
   );
 }

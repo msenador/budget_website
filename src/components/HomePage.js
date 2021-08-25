@@ -33,7 +33,6 @@ const HomePage = ({ handleLogout, userId }) => {
     };
     const newPush = categoriesRef.push(newCat);
     const newId = newPush.key;
-    console.log(`NEW: ${newId}`)
     setDeleteId(newId);
   };
 
