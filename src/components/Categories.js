@@ -93,7 +93,7 @@ function Categories({ categoryValue, userId }) {
   }
   
   const totalSpentPerCategory = () => {
-    return itemPriceList.reduce((a, b) => a + b, 0)
+    return parseFloat(itemPriceList.reduce((a, b) => a + b, 0)).toFixed(2);
   }
 
   useEffect(() => {
