@@ -118,7 +118,7 @@ function Categories({ categoryValue, userId }) {
     <CategoryCards>
     <DeleteIconStyles onClick={handleDelete}><DeleteIcon/></DeleteIconStyles>
     <h1>{categoryValue.newCategory}</h1>
-    <h1>Total spent: {totalSpentPerCategory() > 0 ? `$${totalSpentPerCategory()}` : `$0`}</h1>
+    <h4 style={{ marginTop: '-20px' }}>Total spent: {totalSpentPerCategory() > 0 ? `$${totalSpentPerCategory()}` : `$0`}</h4>
     <div>
       <InputStyles placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
       <InputStyles placeholder="Item price" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} required/>
