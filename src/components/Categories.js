@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import DeleteIcon from '@material-ui/icons/Delete';
 import fire from '../fire';
 import Items from './Items';
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 
 const CategoryCards = styled.div`
   background-color: aliceblue;
@@ -30,6 +31,12 @@ const InputStyles = styled.input`
   ::-webkit-input-placeholder {
     text-align: center;
   }
+  &.placeholder {
+    text-indent: 25px;
+    ::placeholder {
+      padding-right: 30px;
+    }
+  }
 `;
 
 const AddItemButtonStyles = styled.div`
@@ -52,10 +59,13 @@ function Categories({ categoryValue, userId }) {
   const [itemsList, setItemList] = useState('');
   const [itemPrice, setItemPrice] = useState('');
   const [itemPriceList, setItemPriceList] = useState([]);
+  const [totalSpentPerCategory, setTotalSpentPerCategory] = useState('');
+  const [totalSpent, setTotalSpent] = useState([]);
 
   const handleDelete = () => {
     const deleteRef = fire.database().ref(`${userId}/categories`).child(categoryValue.id);
     deleteRef.remove();
+    location.reload();
   }
 
   const handleAddItem = () => {
@@ -92,13 +102,15 @@ function Categories({ categoryValue, userId }) {
    });
   }
   
-  const totalSpentPerCategory = () => {
-    return parseFloat(itemPriceList.reduce((a, b) => a + b, 0)).toFixed(2);
+  const add = () => {
+    setTotalSpentPerCategory(parseFloat(itemPriceList.reduce((a, b) => a + b, 0)).toFixed(2));
+    totalSpent.push(totalSpentPerCategory);
   }
 
   useEffect(() => {
     getItemPrice();
-  },[])
+    add();
+  },[categoryValue])
 
   useEffect(() => {
     const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`);
@@ -115,13 +127,15 @@ function Categories({ categoryValue, userId }) {
 
   return (
     <>
+    {console.log(totalSpent)}
     <CategoryCards>
     <DeleteIconStyles onClick={handleDelete}><DeleteIcon/></DeleteIconStyles>
     <h1>{categoryValue.newCategory}</h1>
-    <h4 style={{ marginTop: '-20px' }}>Total spent: {totalSpentPerCategory() > 0 ? `$${totalSpentPerCategory()}` : `$0`}</h4>
+    <h4 style={{ marginTop: '-20px' }}>Total spent: {totalSpentPerCategory > 0 ? `$${totalSpentPerCategory}` : `$0`}</h4>
     <div>
       <InputStyles placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
-      <InputStyles placeholder="Item price" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} required/>
+      <InputStyles className="placeholder" placeholder="Item price" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} required/>
+      <LocalAtmIcon style={{ position: 'absolute', marginLeft: '-102px', marginTop: '4px' }} />
       <AddItemButtonStyles onClick={handleAddItem}>Add Item</AddItemButtonStyles>
     </div>
       {itemsList ? itemsList.map((itemVal, index) => 
