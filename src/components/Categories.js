@@ -62,6 +62,7 @@ function Categories({ categoryValue, userId }) {
   const [itemPriceList, setItemPriceList] = useState([]);
   const [totalSpentPerCategory, setTotalSpentPerCategory] = useState('');
   const [totalSpent, setTotalSpent] = useState([]);
+  const [priceError, setPriceError] = useState(false);
 
   const handleDelete = () => {
     const deleteRef = fire.database().ref(`${userId}/categories`).child(categoryValue.id);
@@ -108,6 +109,16 @@ function Categories({ categoryValue, userId }) {
     totalSpent.push(totalSpentPerCategory);
   }
 
+  const validateItemPrice = (e) => {
+    const regex = /^[0-9]+$/;
+    if (isNaN(e.target.value)){
+      setPriceError(true);
+    } else {
+      setPriceError(false);
+      setItemPrice(e.target.value);
+    }
+  }
+
   useEffect(() => {
     getItemPrice();
     add();
@@ -136,8 +147,9 @@ function Categories({ categoryValue, userId }) {
     <div>
       <InputStyles className="placeholder" placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
       <PostAddIcon style={{ color: 'gray', borderRight: 'solid gray 3px', position: 'absolute', marginLeft: '-102px', marginTop: '4px' }} />
-      <InputStyles className="placeholder" placeholder="Item price" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} required/>
+      <InputStyles className="placeholder" placeholder="Item price" value={itemPrice} onChange={validateItemPrice} required/>
       <AttachMoneyIcon style={{ color: 'gray', borderRight: 'solid gray 3px', position: 'absolute', marginLeft: '-102px', marginTop: '4px' }} />
+      <div style={{ color: 'red', fontSize: '10px' }}>{priceError ? '*Input must be a number' : ''}</div>
       <AddItemButtonStyles onClick={handleAddItem}>Add Item</AddItemButtonStyles>
     </div>
       {itemsList ? itemsList.map((itemVal, index) => 
