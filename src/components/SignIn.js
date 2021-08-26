@@ -97,7 +97,7 @@ const SignInOrSignUp = (props) => {
         <SignInSignOutStyling>
 
           <FormHeaderLineGradient>
-            <h1 name="signup-header" data-testid="signup-header" style={{ width: '180px', backgroundColor: 'white' }}>
+            <h1 name="signup-header" data-testid="signup-header" style={{ width: '180px', backgroundColor: 'white', textAlign: 'center' }}>
               {hasAccount ? 'SIGN IN' : 'SIGN UP'}
             </h1>
           </FormHeaderLineGradient>
