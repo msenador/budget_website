@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import DeleteIcon from '@material-ui/icons/Delete';
 import fire from '../fire';
 import Items from './Items';
-import LocalAtmIcon from '@material-ui/icons/LocalAtm';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import PostAddIcon from '@material-ui/icons/PostAdd';
 
 const CategoryCards = styled.div`
   background-color: aliceblue;
@@ -25,14 +26,14 @@ const DeleteIconStyles = styled.div`
 const InputStyles = styled.input`
   border: none;
   margin-bottom: 5px;
-  border-radius: 20px;
+  border-radius: 5px;
   width: 100px;
   height: 30px;
   ::-webkit-input-placeholder {
     text-align: center;
   }
   &.placeholder {
-    text-indent: 25px;
+    text-indent: 35px;
     ::placeholder {
       padding-right: 30px;
     }
@@ -133,9 +134,10 @@ function Categories({ categoryValue, userId }) {
     <h1>{categoryValue.newCategory}</h1>
     <h4 style={{ marginTop: '-20px' }}>Total spent: {totalSpentPerCategory > 0 ? `$${totalSpentPerCategory}` : `$0`}</h4>
     <div>
-      <InputStyles placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
+      <InputStyles className="placeholder" placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
+      <PostAddIcon style={{ color: 'gray', borderRight: 'solid gray 3px', position: 'absolute', marginLeft: '-102px', marginTop: '4px' }} />
       <InputStyles className="placeholder" placeholder="Item price" value={itemPrice} onChange={(e) => setItemPrice(e.target.value)} required/>
-      <LocalAtmIcon style={{ position: 'absolute', marginLeft: '-102px', marginTop: '4px' }} />
+      <AttachMoneyIcon style={{ color: 'gray', borderRight: 'solid gray 3px', position: 'absolute', marginLeft: '-102px', marginTop: '4px' }} />
       <AddItemButtonStyles onClick={handleAddItem}>Add Item</AddItemButtonStyles>
     </div>
       {itemsList ? itemsList.map((itemVal, index) => 
