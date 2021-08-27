@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import fire from '../fire';
 import Categories from './Categories';
 import Modal from 'react-modal';
+import { MicNone } from '@material-ui/icons';
 
 const CardsContainer = styled.div`
   display: grid;
@@ -22,6 +23,25 @@ const HomePageContainer = styled.div`
   background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
 `;
 
+const ConfirmLogout = styled.button`
+    cursor: pointer;
+    height: 45px;
+    background-color: #20bf55;
+    background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+    border: transparent;
+    width: 90px;
+    border-radius: 20px;
+`;
+
+const CancelLogout = styled.button`
+  border: transparent; 
+  width: 90px;
+  borderRadius: 20px;
+  cursor: pointer;
+  height: 45px;
+  border-radius: 20px;
+`;
+
 const customStyles = {
   content: {
     top: '50%',
@@ -30,6 +50,8 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    borderRadius: '20px',
+    border: 'none',
   },
 };
 
@@ -65,11 +87,6 @@ const HomePage = ({ handleLogout, userId }) => {
     setIsOpen(true);
   }
 
-  // const afterOpenModal = () => {
-  //   // references are now sync'd and can be accessed.
-  //   subtitle.style.color = '#f00';
-  // }
-
   const closeModal = () => {
     setIsOpen(false);
   }
@@ -89,10 +106,14 @@ const HomePage = ({ handleLogout, userId }) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal">
-          Are you sure you want to logout?
-          <button onClick={handleLogout}>YES</button>
-          <button onClick={closeModal}>NO</button>
+        contentLabel="Example Modal"
+        ariaHideApp={false}
+        >
+          <div>Are you sure you want to logout?</div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
+          <ConfirmLogout onClick={handleLogout}>YES</ConfirmLogout>
+          <CancelLogout onClick={closeModal}>NO</CancelLogout>
+          </div>
       </Modal>
     </HomePageContainer>
   );
