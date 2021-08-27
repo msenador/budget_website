@@ -40,6 +40,7 @@ const CancelLogout = styled.button`
   cursor: pointer;
   height: 45px;
   border-radius: 20px;
+  background-color: #EFF2EF;
 `;
 
 const customStyles = {
