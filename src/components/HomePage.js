@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import fire from '../fire';
 import Categories from './Categories';
+import Modal from 'react-modal';
 
 const CardsContainer = styled.div`
   display: grid;
@@ -21,10 +22,22 @@ const HomePageContainer = styled.div`
   background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
 `;
 
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+
 const HomePage = ({ handleLogout, userId }) => {
   const [newCategory, setNewCategory] = useState('');
   const [categoryList, setCategoryList] = useState([]);
   const [deleteId, setDeleteId] = useState('');
+  const [modalIsOpen, setIsOpen] = useState(false);
 
   const handleNewCategory = () => {
     const categoriesRef = fire.database().ref(`${userId}/categories`);
@@ -48,9 +61,22 @@ const HomePage = ({ handleLogout, userId }) => {
     });
   },[]);
 
+  const openModal = () => {
+    setIsOpen(true);
+  }
+
+  // const afterOpenModal = () => {
+  //   // references are now sync'd and can be accessed.
+  //   subtitle.style.color = '#f00';
+  // }
+
+  const closeModal = () => {
+    setIsOpen(false);
+  }
+
   return (
     <HomePageContainer>
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={openModal}>Logout</button>
       <h1>Welcome!</h1>
       <input type="text" placeholder="New Category" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} />
       <button onClick={handleNewCategory}>Add Category</button>
@@ -59,6 +85,15 @@ const HomePage = ({ handleLogout, userId }) => {
         key={index} categoryValue={categoryValue} deleteId={deleteId} userId={userId}
         />) : <h1>Create a new category!</h1>}</CardsContainer>
       </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal">
+          Are you sure you want to logout?
+          <button onClick={handleLogout}>YES</button>
+          <button onClick={closeModal}>NO</button>
+      </Modal>
     </HomePageContainer>
   );
 };
