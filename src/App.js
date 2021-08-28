@@ -12,6 +12,7 @@ const SignInPageStyles = styled.div`
   right: 0;
   background-color: #20bf55;
   background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+  overflow-y: auto;
 `;
 
 const App = () => {
