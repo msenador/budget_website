@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 
 const CardsContainer = styled.div`
   display: grid;
-  grid-template-columns: 3fr 3fr 3fr;
+  grid-template-columns: 3fr 3fr;
   grid-gap: 25px 40px;
   padding: 10px;
 `;
