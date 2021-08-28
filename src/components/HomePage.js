@@ -56,6 +56,16 @@ const customStyles = {
   },
 };
 
+const AddCategoryPosition = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 150px;
+  margin: auto;
+  gap: 10px;
+  padding: 40px 0px;
+`;
+
 const HomePage = ({ handleLogout, userId }) => {
   const [newCategory, setNewCategory] = useState('');
   const [categoryList, setCategoryList] = useState([]);
@@ -95,9 +105,22 @@ const HomePage = ({ handleLogout, userId }) => {
   return (
     <HomePageContainer>
       <button onClick={openModal}>Logout</button>
-      <h1>Welcome!</h1>
-      <input type="text" placeholder="New Category" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} />
-      <button onClick={handleNewCategory}>Add Category</button>
+      <h1 style={{ textAlign: 'center' }}>Welcome!</h1>
+      <AddCategoryPosition>
+      <input 
+        type="text" 
+        placeholder="New Category" 
+        value={newCategory} 
+        onChange={(e) => setNewCategory(e.target.value)} 
+        style={{ borderRadius: '5px', border: 'none', height: '30px' }}
+      />
+      <button 
+      onClick={handleNewCategory}
+      style={{ borderRadius: '5px', border: 'none', height: '30px', backgroundColor: '#FFC43D' }}
+      >
+        Add Category
+      </button>
+      </AddCategoryPosition>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <CardsContainer>{categoryList.length !== 0 ? categoryList.map((categoryValue, index) => <Categories 
         key={index} categoryValue={categoryValue} deleteId={deleteId} userId={userId}
