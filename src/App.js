@@ -53,10 +53,6 @@ const App = () => {
       });
   };
 
-  const handleToggle = () => {
-    setHasAccount(!hasAccount)
-  };
-
   const handleSignUp = () => {
     clearErrors();
     fire

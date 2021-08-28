@@ -80,6 +80,7 @@ const HomePage = ({ handleLogout, userId }) => {
     const newPush = categoriesRef.push(newCat);
     const newId = newPush.key;
     setDeleteId(newId);
+    setNewCategory('');
   };
 
   useEffect(() => {
