@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import fire from '../fire';
 import Categories from './Categories';
 import Modal from 'react-modal';
-import { MicNone } from '@material-ui/icons';
 
 const CardsContainer = styled.div`
   display: grid;
@@ -21,6 +20,7 @@ const HomePageContainer = styled.div`
   right: 0;
   background-color: #20bf55;
   background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+  overflow-y: auto;
 `;
 
 const ConfirmLogout = styled.button`
@@ -140,6 +140,7 @@ const HomePage = ({ handleLogout, userId }) => {
           <CancelLogout onClick={closeModal}>NO</CancelLogout>
           </div>
       </Modal>
+      <div style={{ paddingBottom: '50px' }}/>
     </HomePageContainer>
   );
 };
