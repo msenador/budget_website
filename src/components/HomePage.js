@@ -12,7 +12,7 @@ const CardsContainer = styled.div`
 `;
 
 const HomePageContainer = styled.div`
-  min-width: 850px;
+  min-width: 570px;
   position: absolute;
   top: 0;
   bottom: 0;
