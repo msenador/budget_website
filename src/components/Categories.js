@@ -5,22 +5,25 @@ import fire from '../fire';
 import Items from './Items';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import PostAddIcon from '@material-ui/icons/PostAdd';
+import Expand from 'react-expand-animated';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const CategoryCards = styled.div`
   background-color: aliceblue;
   text-align: center;
-  padding: 50px;
+  padding: 0px 50px;
   border-radius: 20px;
   width: 150px;
   text-transform: uppercase;
+  min-height: 160px;
 `;
 
 const DeleteIconStyles = styled.div`
     color: #FF595E;
     cursor: pointer;
     position: absolute;
-    margin-left: 163px;
-    margin-top: -45px;
+    margin-left: 167px;
+    margin-top: 3px;
 `;
 
 const InputStyles = styled.input`
@@ -63,6 +66,11 @@ function Categories({ categoryValue, userId }) {
   const [totalSpentPerCategory, setTotalSpentPerCategory] = useState('');
   const [totalSpent, setTotalSpent] = useState([]);
   const [priceError, setPriceError] = useState(false);
+  const [expand, setExpand] = useState(false);
+
+  const handleExpand = () => {
+    setExpand(!expand);
+  }
 
   const handleDelete = () => {
     const deleteRef = fire.database().ref(`${userId}/categories`).child(categoryValue.id);
@@ -144,6 +152,8 @@ function Categories({ categoryValue, userId }) {
     <DeleteIconStyles onClick={handleDelete}><DeleteIcon/></DeleteIconStyles>
     <h1>{categoryValue.newCategory}</h1>
     <h4 style={{ marginTop: '-20px' }}>Total spent: {totalSpentPerCategory > 0 ? `$${totalSpentPerCategory}` : `$0`}</h4>
+    <Expand open={expand}>
+      <div>
     <div>
       <InputStyles className="placeholder" placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
       <PostAddIcon style={{ color: 'gray', borderRight: 'solid gray 3px', position: 'absolute', marginLeft: '-102px', marginTop: '4px' }} />
@@ -158,6 +168,13 @@ function Categories({ categoryValue, userId }) {
       itemVal={itemVal} 
       userId={userId} 
       categoryValue={categoryValue} />) : `Add an item!`}
+      </div>
+      </Expand>
+      {expand ? (
+        <ExpandMoreIcon style={{ transform: 'rotate(-180deg)', marginTop: '-8px', fontSize: '50px' }} onClick={handleExpand}>expand</ExpandMoreIcon>
+      ) : (
+        <ExpandMoreIcon style={{ marginTop: '-8px', fontSize: '50px' }} onClick={handleExpand}>expand</ExpandMoreIcon>
+      )}
     </CategoryCards>
     </>
   );
