@@ -105,7 +105,7 @@ const HomePage = ({ handleLogout, userId }) => {
 
   return (
     <HomePageContainer>
-      <button onClick={openModal}>Logout</button>
+      <button style={{ marginLeft: '20px', marginTop: '20px', backgroundColor: '#FFC43D', border: 'none', borderRadius: '5px', cursor: 'pointer' }} onClick={openModal}>Logout</button>
       <h1 style={{ textAlign: 'center' }}>Welcome!</h1>
       <AddCategoryPosition>
       <input 
@@ -125,7 +125,7 @@ const HomePage = ({ handleLogout, userId }) => {
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <CardsContainer>{categoryList.length !== 0 ? categoryList.map((categoryValue, index) => <Categories 
         key={index} categoryValue={categoryValue} deleteId={deleteId} userId={userId}
-        />) : <h1>Create a new category!</h1>}</CardsContainer>
+        />) : <h1 style={{ position: 'absolute', marginLeft: '-122px' }} >Create a new category!</h1>}</CardsContainer>
       </div>
       <Modal
         isOpen={modalIsOpen}
