@@ -136,7 +136,7 @@ const HomePage = ({ handleLogout, userId }) => {
       />
       <button 
       onClick={handleNewCategory}
-      style={{ borderRadius: '5px', border: 'none', height: '30px', backgroundColor: '#FFC43D' }}
+      style={{ borderRadius: '5px', border: 'none', height: '30px', backgroundColor: '#FFC43D', cursor: 'pointer' }}
       >
         Add Category
       </button>

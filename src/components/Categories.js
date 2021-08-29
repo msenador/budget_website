@@ -50,6 +50,7 @@ const AddItemButtonStyles = styled.div`
   border-radius: 20px; 
   border: none;
   box-shadow: -1px 3px 4px 0px grey;
+  cursor: pointer;
   :active {
     border-style: unset;
     box-shadow: -4px 4px 4px 0px grey, 
@@ -176,9 +177,9 @@ function Categories({ categoryValue, userId }) {
       categoryValue={categoryValue} />) : `Add an item!`}
       </Expand>
       {expand ? (
-        <ExpandMoreIcon style={{ transform: 'rotate(-180deg)', marginTop: '-8px', fontSize: '50px' }} onClick={handleExpand}>expand</ExpandMoreIcon>
+        <ExpandMoreIcon style={{ transform: 'rotate(-180deg)', marginTop: '-8px', fontSize: '50px', cursor: 'pointer' }} onClick={handleExpand}>expand</ExpandMoreIcon>
       ) : (
-        <ExpandMoreIcon style={{ marginTop: '-8px', fontSize: '50px' }} onClick={handleExpand}>expand</ExpandMoreIcon>
+        <ExpandMoreIcon style={{ marginTop: '-8px', fontSize: '50px', cursor: 'pointer' }} onClick={handleExpand}>expand</ExpandMoreIcon>
       )}
     </CategoryCards>
     </>
