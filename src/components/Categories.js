@@ -127,6 +127,12 @@ function Categories({ categoryValue, userId }) {
     }
   }
 
+  const handleAddItemEnterKey = (e) => {
+    if (e.key === 'Enter'){
+      handleAddItem();
+    }
+  }
+
   useEffect(() => {
     getItemPrice();
     add();
@@ -154,9 +160,9 @@ function Categories({ categoryValue, userId }) {
     <h4 style={{ marginTop: '-20px' }}>Total spent: {totalSpentPerCategory > 0 ? `$${totalSpentPerCategory}` : `$0`}</h4>
     
     <div>
-      <InputStyles className="placeholder" placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
+      <InputStyles className="placeholder" placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)} onKeyDown={handleAddItemEnterKey}/>
       <PostAddIcon style={{ color: 'gray', borderRight: 'solid gray 3px', position: 'absolute', marginLeft: '-102px', marginTop: '4px' }} />
-      <InputStyles className="placeholder" placeholder="Item price" value={itemPrice} onChange={validateItemPrice} required/>
+      <InputStyles className="placeholder" placeholder="Item price" value={itemPrice} onChange={validateItemPrice} onKeyDown={handleAddItemEnterKey} required/>
       <AttachMoneyIcon style={{ color: 'gray', borderRight: 'solid gray 3px', position: 'absolute', marginLeft: '-102px', marginTop: '4px' }} />
       <div style={{ color: 'red', fontSize: '10px' }}>{priceError ? '*Input must be a number' : ''}</div>
       <AddItemButtonStyles onClick={handleAddItem}>Add Item</AddItemButtonStyles>

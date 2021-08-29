@@ -115,6 +115,12 @@ const HomePage = ({ handleLogout, userId }) => {
     setIsOpen(false);
   }
 
+  const handleAddCategoryEnterKey = (e) => {
+    if (e.key === 'Enter'){
+      handleNewCategory();
+    }
+  }
+
   return (
     <HomePageContainer>
       <LogoutButtonStyles onClick={openModal}>Logout</LogoutButtonStyles>
@@ -125,6 +131,7 @@ const HomePage = ({ handleLogout, userId }) => {
         placeholder="New Category" 
         value={newCategory} 
         onChange={(e) => setNewCategory(e.target.value)} 
+        onKeyDown={handleAddCategoryEnterKey}
         style={{ borderRadius: '5px', border: 'none', height: '30px' }}
       />
       <button 

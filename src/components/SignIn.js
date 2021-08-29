@@ -87,6 +87,18 @@ const SignInOrSignUp = (props) => {
     passwordError,
   } = props;
 
+  const handleSignUpEnterKey = (e) => {
+    if (e.key === 'Enter'){
+      handleSignUp();
+    }
+  }
+
+  const handleLoginEnterKey = (e) => {
+    if (e.key === 'Enter'){
+      handleLogin();
+    }
+  }
+
   return (
     <>
       <PhraseStyles>
@@ -105,7 +117,15 @@ const SignInOrSignUp = (props) => {
           <div style={{ paddingTop: '40px' }} />
           <EmailContainer>
             <div style={{ backgroundColor: 'white', paddingBottom: '3px' }}>
-              <InputStyles data-testid="email-input" name="email-input" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              <InputStyles 
+              data-testid="email-input" 
+              name="email-input" 
+              type="email" 
+              placeholder="Email" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)}  
+              onKeyDown={hasAccount ? handleLoginEnterKey : handleSignUpEnterKey}
+              />
             </div>
           </EmailContainer>
           <ErrorMessageStyles name="email-error" data-testid="email-error" >
@@ -115,7 +135,15 @@ const SignInOrSignUp = (props) => {
           <PasswordContainer />
           <EmailContainer>
             <div style={{ backgroundColor: 'white', paddingBottom: '3px' }}>
-              <InputStyles data-testid="password-input" name="password-input" type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              <InputStyles 
+              data-testid="password-input" 
+              name="password-input" 
+              type="password" 
+              placeholder="Password" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+              onKeyDown={hasAccount ? handleLoginEnterKey : handleSignUpEnterKey}
+              />
             </div>
           </EmailContainer>
           <ErrorMessageStyles name="password-error" data-testid="password-error" >
