@@ -152,8 +152,7 @@ function Categories({ categoryValue, userId }) {
     <DeleteIconStyles onClick={handleDelete}><DeleteIcon/></DeleteIconStyles>
     <h1>{categoryValue.newCategory}</h1>
     <h4 style={{ marginTop: '-20px' }}>Total spent: {totalSpentPerCategory > 0 ? `$${totalSpentPerCategory}` : `$0`}</h4>
-    <Expand open={expand}>
-      <div>
+    
     <div>
       <InputStyles className="placeholder" placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)}/>
       <PostAddIcon style={{ color: 'gray', borderRight: 'solid gray 3px', position: 'absolute', marginLeft: '-102px', marginTop: '4px' }} />
@@ -162,13 +161,13 @@ function Categories({ categoryValue, userId }) {
       <div style={{ color: 'red', fontSize: '10px' }}>{priceError ? '*Input must be a number' : ''}</div>
       <AddItemButtonStyles onClick={handleAddItem}>Add Item</AddItemButtonStyles>
     </div>
+    <Expand open={expand}>
       {itemsList ? itemsList.map((itemVal, index) => 
       <Items 
       key={index} 
       itemVal={itemVal} 
       userId={userId} 
       categoryValue={categoryValue} />) : `Add an item!`}
-      </div>
       </Expand>
       {expand ? (
         <ExpandMoreIcon style={{ transform: 'rotate(-180deg)', marginTop: '-8px', fontSize: '50px' }} onClick={handleExpand}>expand</ExpandMoreIcon>

@@ -66,6 +66,17 @@ const AddCategoryPosition = styled.div`
   padding: 40px 0px;
 `;
 
+const LogoutButtonStyles = styled.button`
+margin-left: 20px; 
+margin-top: 20px; 
+background-color: #FFC43D;
+border: none; 
+border-radius: 5px; 
+cursor: pointer;
+height: 30px;
+width: 150px;
+`;
+
 const HomePage = ({ handleLogout, userId }) => {
   const [newCategory, setNewCategory] = useState('');
   const [categoryList, setCategoryList] = useState([]);
@@ -81,6 +92,7 @@ const HomePage = ({ handleLogout, userId }) => {
     const newId = newPush.key;
     setDeleteId(newId);
     setNewCategory('');
+    location.reload();
   };
 
   useEffect(() => {
@@ -105,7 +117,7 @@ const HomePage = ({ handleLogout, userId }) => {
 
   return (
     <HomePageContainer>
-      <button style={{ marginLeft: '20px', marginTop: '20px', backgroundColor: '#FFC43D', border: 'none', borderRadius: '5px', cursor: 'pointer' }} onClick={openModal}>Logout</button>
+      <LogoutButtonStyles onClick={openModal}>Logout</LogoutButtonStyles>
       <h1 style={{ textAlign: 'center' }}>Welcome!</h1>
       <AddCategoryPosition>
       <input 
