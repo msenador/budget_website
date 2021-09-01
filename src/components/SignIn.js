@@ -72,6 +72,17 @@ const SignInToggle = styled.button`
   border: none;
   background: transparent;
   font-size: 15px;
+  margin-left: -6px;
+`;
+
+const ForgotPasswordButton = styled.button`
+  cursor: pointer;
+  color: #F19A3E;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  margin-left: -6px;
+  margin-top: 2px;
 `;
 
 const SignInOrSignUp = (props) => {
@@ -161,9 +172,9 @@ const SignInOrSignUp = (props) => {
             {passwordError ? `*${passwordError}` : null}
           </ErrorMessageStyles>
           {hasAccount ? 
-          <button onClick={handleForgotPassword}>
+          <ForgotPasswordButton onClick={handleForgotPassword}>
             Forgot password
-          </button> : <></>}
+          </ForgotPasswordButton> : <></>}
 
           {hasAccount ? (
             <>
