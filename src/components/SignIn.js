@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import fire from '../fire';
 
 const SignInSignOutPositioning = styled.div`
   padding-top: 50px;
@@ -99,6 +100,16 @@ const SignInOrSignUp = (props) => {
     }
   }
 
+  const handleForgotPassword = () => {
+    fire.auth().sendPasswordResetEmail(email)
+    .then(function() {
+      alert('Check your email to reset your password!')
+    })
+    .catch(function(err) {
+      alert(err.code)
+    });
+  }
+
   return (
     <>
       <PhraseStyles>
@@ -149,6 +160,10 @@ const SignInOrSignUp = (props) => {
           <ErrorMessageStyles name="password-error" data-testid="password-error" >
             {passwordError ? `*${passwordError}` : null}
           </ErrorMessageStyles>
+          {hasAccount ? 
+          <button onClick={handleForgotPassword}>
+            Forgot password
+          </button> : <></>}
 
           {hasAccount ? (
             <>
