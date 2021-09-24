@@ -84,15 +84,19 @@ const HomePage = ({ handleLogout, userId }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const handleNewCategory = () => {
-    const categoriesRef = fire.database().ref(`${userId}/categories`);
-    const newCat = {
-      newCategory,
-    };
-    const newPush = categoriesRef.push(newCat);
-    const newId = newPush.key;
-    setDeleteId(newId);
-    setNewCategory('');
-    location.reload();
+    if (newCategory === ''){
+      alert('*Please enter a new category*')
+    } else {
+      const categoriesRef = fire.database().ref(`${userId}/categories`);
+      const newCat = {
+        newCategory,
+      };
+      const newPush = categoriesRef.push(newCat);
+      const newId = newPush.key;
+      setDeleteId(newId);
+      setNewCategory('');
+      location.reload();
+    }
   };
 
   useEffect(() => {
