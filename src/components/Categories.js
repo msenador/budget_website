@@ -81,9 +81,9 @@ function Categories({ categoryValue, userId }) {
 
   const handleAddItem = () => {
     if (newItem === '') {
-      alert('*Please enter an item*')
+      alert('*Please emter')
     } else if (itemPrice === '') {
-      alert('*Please enter item price*')
+      alert('**Please enter item price')
     } else {
       const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`);
       const addItem ={
