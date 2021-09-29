@@ -26,8 +26,7 @@ const HomePageContainer = styled.div`
 const ConfirmLogout = styled.button`
     cursor: pointer;
     height: 45px;
-    background-color: #20bf55;
-    background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+    background-color: #FFC43D;
     border: transparent;
     width: 90px;
     border-radius: 20px;
@@ -40,7 +39,7 @@ const CancelLogout = styled.button`
   cursor: pointer;
   height: 45px;
   border-radius: 20px;
-  border: 3px solid gray;
+  // border: 3px solid gray;
 `;
 
 const customStyles = {
@@ -53,6 +52,7 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     borderRadius: '20px',
     border: 'none',
+    padding: '100px'
   },
 };
 
@@ -128,7 +128,8 @@ const HomePage = ({ handleLogout, userId }) => {
   return (
     <HomePageContainer>
       <LogoutButtonStyles onClick={openModal}>Logout</LogoutButtonStyles>
-      <h1 style={{ textAlign: 'center' }}>Welcome!</h1>
+      <h1 style={{ textAlign: 'center' }}>Welcome to</h1>
+      <h1 style={{ textAlign: 'center', color: '#FFC43D', fontSize: '50px' }}>BUDGETSTASH</h1>
       <AddCategoryPosition>
       <input 
         type="text" 
@@ -154,10 +155,9 @@ const HomePage = ({ handleLogout, userId }) => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
         ariaHideApp={false}
         >
-          <div>Are you sure you want to logout?</div>
+          <div style={{ marginBottom: '25px', fontSize: '20px' }}>Are you sure you want to logout?</div>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '10px' }}>
           <ConfirmLogout onClick={handleLogout}>YES</ConfirmLogout>
           <CancelLogout onClick={closeModal}>NO</CancelLogout>
