@@ -33,13 +33,13 @@ const ConfirmLogout = styled.button`
 `;
 
 const CancelLogout = styled.button`
+  background-color: #DCE0D9;
   border: transparent; 
   width: 90px;
   borderRadius: 20px;
   cursor: pointer;
   height: 45px;
   border-radius: 20px;
-  // border: 3px solid gray;
 `;
 
 const customStyles = {
