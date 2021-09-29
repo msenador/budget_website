@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import fire from '../fire';
+import Modal from 'react-modal';
 
 const SignInSignOutPositioning = styled.div`
   padding-top: 50px;
@@ -85,6 +86,30 @@ const ForgotPasswordButton = styled.button`
   margin-top: 2px;
 `;
 
+const ForgotPasswordOKButton = styled.button`
+    cursor: pointer;
+    height: 45px;
+    background-color: #FFC43D;
+    border: transparent;
+    width: 185px;
+    border-radius: 5px;
+    margin-top: 25px;
+`;
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    borderRadius: '20px',
+    border: 'none',
+    padding: '100px'
+  },
+};
+
 const SignInOrSignUp = (props) => {
   const {
     email,
@@ -98,6 +123,9 @@ const SignInOrSignUp = (props) => {
     emailError,
     passwordError,
   } = props;
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [forgotPasswordMessage, setForgotPasswordMessage] = useState('');
 
   const handleSignUpEnterKey = (e) => {
     if (e.key === 'Enter'){
@@ -114,11 +142,24 @@ const SignInOrSignUp = (props) => {
   const handleForgotPassword = () => {
     fire.auth().sendPasswordResetEmail(email)
     .then(function() {
-      alert('*Check your email to reset your password*')
+      setForgotPasswordMessage('CHECK YOUR EMAIL TO RESET YOUR PASSWORD');
     })
     .catch(function(err) {
-      alert('*Email invalid or not found*')
+      setForgotPasswordMessage('EMAIL INVALID OR NOT FOUND');
     });
+  }
+
+  const openModal = () => {
+    setIsOpen(true);
+  }
+
+  const closeModal = () => {
+    setIsOpen(false);
+  }
+
+  const forgotPasswordOnClick = () => {
+    handleForgotPassword();
+    openModal();
   }
 
   return (
@@ -171,8 +212,19 @@ const SignInOrSignUp = (props) => {
           <ErrorMessageStyles name="password-error" data-testid="password-error" >
             {passwordError ? `*${passwordError}` : null}
           </ErrorMessageStyles>
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStyles}
+            ariaHideApp={false}
+            >
+              <div style={{ textAlign: 'center' }}>
+              <div>{forgotPasswordMessage}</div>
+              <ForgotPasswordOKButton onClick={closeModal}>OK</ForgotPasswordOKButton>
+              </div>
+          </Modal>
           {hasAccount ? 
-          <ForgotPasswordButton onClick={handleForgotPassword}>
+          <ForgotPasswordButton onClick={forgotPasswordOnClick}>
             Forgot password
           </ForgotPasswordButton> : <></>}
 
