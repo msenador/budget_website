@@ -82,10 +82,11 @@ const HomePage = ({ handleLogout, userId }) => {
   const [categoryList, setCategoryList] = useState([]);
   const [deleteId, setDeleteId] = useState('');
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [emptyCategory, setEmptyCategory] = useState(false);
 
   const handleNewCategory = () => {
     if (newCategory === ''){
-      alert('*Please enter a new category*')
+      setEmptyCategory(true);
     } else {
       const categoriesRef = fire.database().ref(`${userId}/categories`);
       const newCat = {
@@ -139,6 +140,7 @@ const HomePage = ({ handleLogout, userId }) => {
         onKeyDown={handleAddCategoryEnterKey}
         style={{ borderRadius: '5px', border: 'none', height: '30px' }}
       />
+      { emptyCategory ? (<div style={{ color: 'black', fontSize: '10px', marginTop: '-11px' }}>*Please enter a new category</div>) : (<></>)}
       <button 
       onClick={handleNewCategory}
       style={{ borderRadius: '5px', border: 'none', height: '30px', backgroundColor: '#FFC43D', cursor: 'pointer' }}
