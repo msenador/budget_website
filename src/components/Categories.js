@@ -68,6 +68,8 @@ function Categories({ categoryValue, userId }) {
   const [totalSpent, setTotalSpent] = useState([]);
   const [priceError, setPriceError] = useState(false);
   const [expand, setExpand] = useState(false);
+  const [emptyItem, setEmptyItem] = useState(false);
+  const [emptyItemPrice, setEmptyItemPrice] = useState(false);
 
   const handleExpand = () => {
     setExpand(!expand);
@@ -81,10 +83,13 @@ function Categories({ categoryValue, userId }) {
 
   const handleAddItem = () => {
     if (newItem === '') {
-      alert('*Please enter an item*')
-    } else if (itemPrice === '') {
-      alert('*Please enter item price*')
+      setEmptyItem(true);
+    } else if (itemPrice === '' && newItem !== '') {
+      setEmptyItem(false);
+      setEmptyItemPrice(true);
     } else {
+      // setEmptyItemPrice(false);
+      // setItemPrice(false);
       const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`);
       const addItem ={
         newItem,
@@ -163,8 +168,10 @@ function Categories({ categoryValue, userId }) {
     <div>
       <InputStyles className="placeholder" placeholder="Add Item" value={newItem} onChange={(e) => setNewItem(e.target.value)} onKeyDown={handleAddItemEnterKey}/>
       <PostAddIcon style={{ color: 'gray', borderRight: 'solid gray 3px', position: 'absolute', marginLeft: '-102px', marginTop: '4px' }} />
+      {emptyItem ? (<div style={{ color: 'red', fontSize: '8px', marginTop: '-5px' }}>*Please enter an item</div>) : (<></>)}
       <InputStyles className="placeholder" placeholder="Item price" value={itemPrice} onChange={validateItemPrice} onKeyDown={handleAddItemEnterKey} required/>
       <AttachMoneyIcon style={{ color: 'gray', borderRight: 'solid gray 3px', position: 'absolute', marginLeft: '-102px', marginTop: '4px' }} />
+      {emptyItemPrice ? (<div style={{ color: 'red', fontSize: '8px', marginTop: '-5px' }}>*Please enter item price</div>) : (<></>)}
       <div style={{ color: 'red', fontSize: '10px' }}>{priceError ? '*Input must be a number' : ''}</div>
       <AddItemButtonStyles onClick={handleAddItem}>Add Item</AddItemButtonStyles>
     </div>
