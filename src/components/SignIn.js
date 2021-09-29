@@ -114,10 +114,10 @@ const SignInOrSignUp = (props) => {
   const handleForgotPassword = () => {
     fire.auth().sendPasswordResetEmail(email)
     .then(function() {
-      alert('Check your email to reset your password!')
+      alert('*Check your email to reset your password*')
     })
     .catch(function(err) {
-      alert(err.code)
+      alert('*Email invalid or not found*')
     });
   }
 
