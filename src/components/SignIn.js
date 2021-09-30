@@ -26,7 +26,6 @@ const PhraseStyles = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 100px;
   font-size: 30px;
 `;
 
@@ -161,6 +160,7 @@ const SignInOrSignUp = (props) => {
 
   return (
     <>
+      <h1 style={{ textAlign: 'center', color: '#FFC43D', fontSize: '50px' }}>BUDGETSTASH</h1>
       <PhraseStyles>
         YOUR MONEY UNDER YOUR CONTROL.
       </PhraseStyles>
