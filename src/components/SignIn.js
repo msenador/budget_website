@@ -143,9 +143,11 @@ const SignInOrSignUp = (props) => {
     fire.auth().sendPasswordResetEmail(email)
     .then(function() {
       setForgotPasswordMessage('CHECK YOUR EMAIL TO RESET YOUR PASSWORD');
+      openModal();
     })
     .catch(function(err) {
       setForgotPasswordMessage('EMAIL INVALID OR NOT FOUND');
+      openModal();
     });
   }
 
@@ -155,11 +157,6 @@ const SignInOrSignUp = (props) => {
 
   const closeModal = () => {
     setIsOpen(false);
-  }
-
-  const forgotPasswordOnClick = () => {
-    handleForgotPassword();
-    openModal();
   }
 
   return (
@@ -224,7 +221,7 @@ const SignInOrSignUp = (props) => {
               </div>
           </Modal>
           {hasAccount ? 
-          <ForgotPasswordButton onClick={forgotPasswordOnClick}>
+          <ForgotPasswordButton onClick={handleForgotPassword}>
             Forgot password
           </ForgotPasswordButton> : <></>}
 
