@@ -14,6 +14,9 @@ const ItemsContainer = styled.div`
   justify-content: space-between;
   margin-top: 3px;
   margin-bottom: 3px;
+  margin-left: -50px;
+  width: 240px;
+  padding: 5px;
 `;
 
 function Items({itemVal, userId , categoryValue}) {
@@ -26,9 +29,11 @@ function Items({itemVal, userId , categoryValue}) {
   
   return (
     <ItemsContainer>
+    {/* <div> */}
     <XiconStyles><CloseIcon onClick={handleDeleteItem}/></XiconStyles>
     <div>{itemVal.newItem}</div>
     <div>${itemVal.itemPrice}</div>
+    {/* </div> */}
     </ItemsContainer>
   );
 }
