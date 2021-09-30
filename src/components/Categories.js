@@ -7,6 +7,7 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import Expand from 'react-expand-animated';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import CloseIcon from '@material-ui/icons/Close';
 
 const CategoryCards = styled.div`
   background-color: aliceblue;
@@ -88,8 +89,6 @@ function Categories({ categoryValue, userId }) {
       setEmptyItem(false);
       setEmptyItemPrice(true);
     } else {
-      // setEmptyItemPrice(false);
-      // setItemPrice(false);
       const addItemRef = fire.database().ref(`${userId}/categories/`).child(`${categoryValue.id}/Items`);
       const addItem ={
         newItem,
@@ -177,12 +176,13 @@ function Categories({ categoryValue, userId }) {
     </div>
     <Expand open={expand}>
       {itemsList ? itemsList.map((itemVal, index) => 
+      <div style={{ backgroundColor: index % 2 === 0 ? 'lightblue' : '', width: '200px' }}>
       <Items 
       key={index} 
       itemVal={itemVal} 
       userId={userId} 
-      categoryValue={categoryValue} />) : `Add an item!`}
-      </Expand>
+      categoryValue={categoryValue} /></div>) : `Add an item!`}
+    </Expand>
       {expand ? (
         <ExpandMoreIcon style={{ transform: 'rotate(-180deg)', marginTop: '-8px', fontSize: '50px', cursor: 'pointer' }} onClick={handleExpand}>expand</ExpandMoreIcon>
       ) : (

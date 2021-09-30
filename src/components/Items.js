@@ -5,8 +5,9 @@ import CloseIcon from '@material-ui/icons/Close';
 
 const XiconStyles = styled.span`
   color: #FF595E;
-  height: 5px;
+  height: 25px;
   cursor: pointer;
+  border: solid 3px gray
 `;
 
 const ItemsContainer = styled.div`
@@ -29,11 +30,9 @@ function Items({itemVal, userId , categoryValue}) {
   
   return (
     <ItemsContainer>
-    {/* <div> */}
     <XiconStyles><CloseIcon onClick={handleDeleteItem}/></XiconStyles>
-    <div>{itemVal.newItem}</div>
-    <div>${itemVal.itemPrice}</div>
-    {/* </div> */}
+    <div style={{ marginTop: '6px' }}>{itemVal.newItem}</div>
+    <div style={{ marginTop: '6px' }}>${itemVal.itemPrice}</div>
     </ItemsContainer>
   );
 }
