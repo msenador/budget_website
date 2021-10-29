@@ -24,8 +24,17 @@ const NavbarLinks = styled.div`
   height: 35px;
   display: flex;
   justify-content: space-around;
-  background-color: #78c091;
+  background-color: #6e9075;
   width: 100%;
+`;
+
+const LinksStyles = styled(Link)`
+  text-decoration: none;
+  // color: #78c091;
+  color: #fff;
+  "&.hover" {
+    background-color: #78c091;
+  }
 `;
 
 const App = () => {
@@ -36,14 +45,14 @@ const App = () => {
       <NavbarLinks>
         <Switch>
           <Route>
-            <Link to="contact" className="border">
+            <LinksStyles to="contact" className="border">
               Contact Us
-            </Link>
+            </LinksStyles>
           </Route>
         </Switch>
         <Switch>
           <Route>
-            <Link to="login">Log in</Link>
+            <LinksStyles to="login">Log in</LinksStyles>
           </Route>
         </Switch>
       </NavbarLinks>
