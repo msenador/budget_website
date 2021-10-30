@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage";
 import Contact from "./components/Contact";
 import { Icon } from "@iconify/react";
 import Login from "./components/Login";
+import { useMediaQuery } from "react-responsive";
 
 const Logo = styled.img`
   src: "budgetstashlogo.png";
@@ -30,18 +31,28 @@ const NavbarLinks = styled.div`
 
 const LinksStyles = styled(Link)`
   text-decoration: none;
-  // color: #78c091;
+  // color: #78c091; //lighter green color that i like.
   color: #fff;
-  "&.hover" {
-    background-color: #78c091;
+  :hover {
+    text-decoration: underline;
   }
 `;
 
 const App = () => {
   // const [user, setUser] = useState(false)
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 1224px)",
+  });
+  const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  // const isPortrait = useMediaQuery({ query: "(orientation: portrait)" }); //EXAMPLES
+  // const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });  //EXAMPLES
 
   return (
     <Router>
+      {isDesktopOrLaptop && <div>you or on destop</div>}
+      {isBigScreen && <div>you are a big screen</div>}
+      {isTabletOrMobile && <div>you are on mobile</div>}
       <NavbarLinks>
         <Switch>
           <Route>
