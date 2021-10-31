@@ -3,15 +3,33 @@ import styled from "styled-components";
 import fire from "./fire";
 import SignInOrSignUp from "./components/SignIn";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
-import About from "./components/About";
 import HomePage from "./components/HomePage";
 import Contact from "./components/Contact";
-import { Icon } from "@iconify/react";
 import Login from "./components/Login";
 import { useMediaQuery } from "react-responsive";
 
 const Logo = styled.img`
-  src: "budgetstashlogo.png";
+  &.desktop {
+    src: "budgetstashlogo.png";
+    height: 200px;
+    width: 185px;
+    padding-left: 30px;
+    background-color: red;
+  }
+  &.tablet {
+    src: "budgetstashlogo.png";
+    height: 200px;
+    width: 185px;
+    padding-left: 30px;
+    background-color: green;
+  }
+  &.phone {
+    src: "budgetstashlogo.png";
+    height: 200px;
+    width: 185px;
+    padding-left: 30px;
+    background-color: blue;
+  }
 `;
 
 const NavbarLogo = styled.div`
@@ -40,19 +58,22 @@ const LinksStyles = styled(Link)`
 
 const App = () => {
   // const [user, setUser] = useState(false)
-  const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-width: 1224px)",
+  // const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
+  const mobilePhone = useMediaQuery({ query: "(max-width: 540px)" });
+  const mobileTablet = useMediaQuery({
+    query: "(min-width: 541px)",
   });
-  const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  const laptopOrDesktop = useMediaQuery({
+    query: "(min-width: 1025px)",
+  });
   // const isPortrait = useMediaQuery({ query: "(orientation: portrait)" }); //EXAMPLES
   // const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });  //EXAMPLES
 
   return (
     <Router>
-      {isDesktopOrLaptop && <div>you or on destop</div>}
-      {isBigScreen && <div>you are a big screen</div>}
-      {isTabletOrMobile && <div>you are on mobile</div>}
+      {laptopOrDesktop && <div>you or on destop</div>}
+      {mobilePhone && <div>you are a mobile phone</div>}
+      {mobileTablet && <div>you are on tablet</div>}
       <NavbarLinks>
         <Switch>
           <Route>
@@ -69,7 +90,12 @@ const App = () => {
       </NavbarLinks>
       <NavbarLogo>
         <Link to="/">
-          <Logo src="logo.png" />
+          <Logo
+            className={
+              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+            }
+            src="logo.png"
+          />
         </Link>
         <div
           style={{
