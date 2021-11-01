@@ -134,6 +134,7 @@ const App = () => {
       <NavbarLogo>
         <Link to="/">
           <Logo
+            data-testid="home-logo"
             className={
               laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
             }
@@ -141,6 +142,7 @@ const App = () => {
           />
         </Link>
         <QuotesStyles
+          data-testid="quotes"
           className={
             laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
           }

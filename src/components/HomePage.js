@@ -24,7 +24,15 @@ const HomeVideo = styled.video`
 // `;
 
 const HomePage = () => {
-  return <HomeVideo loop src="./lightBulbHand.mp4" autoPlay muted />;
+  return (
+    <HomeVideo
+      data-testid="main-video"
+      loop
+      src="./lightBulbHand.mp4"
+      autoPlay
+      muted
+    />
+  );
   // return (
   //   <>
   //     <Container>
