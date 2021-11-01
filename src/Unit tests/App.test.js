@@ -14,8 +14,11 @@ describe("App/Home", () => {
   });
 
   test("renders Contact Us and Log in links", () => {
-    const contactUs = screen.getByText("Contact Us");
-    const login = screen.getByText("Log in");
+    const contactUsLink = screen.getByTestId("contact-us-link");
+    const loginLink = screen.getByTestId("login-link");
+
+    expect(contactUsLink.textContent).toEqual("Contact Us");
+    expect(loginLink.textContent).toEqual("Log in");
   });
 
   test("renders quotes", () => {

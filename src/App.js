@@ -120,14 +120,21 @@ const App = () => {
       <NavbarLinks>
         <Switch>
           <Route>
-            <LinksStyles to="contact" className="border">
+            <LinksStyles
+              data-testid="contact-us-link"
+              id="contact-us-link"
+              to="contact"
+              className="border"
+            >
               Contact Us
             </LinksStyles>
           </Route>
         </Switch>
         <Switch>
           <Route>
-            <LinksStyles to="login">Log in</LinksStyles>
+            <LinksStyles id="login-link" data-testid="login-link" to="login">
+              Log in
+            </LinksStyles>
           </Route>
         </Switch>
       </NavbarLinks>
