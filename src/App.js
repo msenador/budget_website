@@ -9,7 +9,6 @@ import Login from "./components/Login";
 import { useMediaQuery } from "react-responsive";
 
 const Logo = styled.img`
-  src: "budgetstashlogo.png";
   &.desktop {
     width: 300px;
     padding-left: 100px;
@@ -100,8 +99,6 @@ const QuoteAuthor = styled.p`
 `;
 
 const App = () => {
-  // const [user, setUser] = useState(false)
-  // const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
   const mobilePhone = useMediaQuery({ query: "(max-width: 540px)" });
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
@@ -109,6 +106,8 @@ const App = () => {
   const laptopOrDesktop = useMediaQuery({
     query: "(min-width: 1025px)",
   });
+  // const [user, setUser] = useState(false)
+  // const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
   // const isPortrait = useMediaQuery({ query: "(orientation: portrait)" }); //EXAMPLES
   // const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });  //EXAMPLES
 

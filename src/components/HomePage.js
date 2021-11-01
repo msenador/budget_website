@@ -3,6 +3,8 @@ import styled from "styled-components";
 import fire from "../fire";
 import Categories from "./Categories";
 import Modal from "react-modal";
+import { Button } from "../globalStyles";
+import { useMediaQuery } from "react-responsive";
 
 const HomeVideo = styled.video`
   // object-fit: cover;
@@ -14,24 +16,59 @@ const HomeVideo = styled.video`
   z-index: -1;
 `;
 
-// const Container = styled.div`
-//   width: 100%;
-//   position: absolute;
-//   z-index: -1;
-//   background-color: #6e9075;
-//   width: 100%;
-//   height: 100%;
-// `;
+const SignupButton = styled(Button)`
+  &.desktop {
+    height: 40px;
+  }
+
+  &.tablet {
+  }
+
+  &.phone {
+    position: absolute;
+    margin-top: -132px;
+    font-size: 10px;
+    margin-left: 22px;
+  }
+`;
+
+const Container = styled.div`
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+`;
 
 const HomePage = () => {
+  const mobilePhone = useMediaQuery({ query: "(max-width: 540px)" });
+  const mobileTablet = useMediaQuery({
+    query: "(min-width: 541px)",
+  });
+  const laptopOrDesktop = useMediaQuery({
+    query: "(min-width: 1025px)",
+  });
+
   return (
-    <HomeVideo
-      data-testid="main-video"
-      loop
-      src="./lightBulbHand.mp4"
-      autoPlay
-      muted
-    />
+    <>
+      <HomeVideo
+        data-testid="main-video"
+        loop
+        src="./lightBulbHand.mp4"
+        autoPlay
+        muted
+      />
+      <Container>
+        <SignupButton
+          className={
+            laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+          }
+        >
+          Sign Up!
+        </SignupButton>
+      </Container>
+    </>
   );
   // return (
   //   <>
