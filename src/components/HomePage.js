@@ -4,8 +4,34 @@ import fire from "../fire";
 import Categories from "./Categories";
 import Modal from "react-modal";
 
+const HomeVideo = styled.video`
+  // object-fit: cover;
+  width: 100%;
+  // height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1));
+  // top: 0;
+  position: absolute;
+  z-index: -1;
+`;
+
+// const Container = styled.div`
+//   width: 100%;
+//   position: absolute;
+//   z-index: -1;
+//   background-color: #6e9075;
+//   width: 100%;
+//   height: 100%;
+// `;
+
 const HomePage = () => {
-  return <div>Home page</div>;
+  return <HomeVideo loop src="./lightBulbHand.mp4" autoPlay muted />;
+  // return (
+  //   <>
+  //     <Container>
+  //       hello
+  //     </Container>
+  //   </>
+  // );
 };
 
 export default HomePage;

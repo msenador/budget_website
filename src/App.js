@@ -9,26 +9,21 @@ import Login from "./components/Login";
 import { useMediaQuery } from "react-responsive";
 
 const Logo = styled.img`
+  src: "budgetstashlogo.png";
   &.desktop {
-    src: "budgetstashlogo.png";
-    height: 200px;
-    width: 185px;
-    padding-left: 30px;
-    background-color: red;
+    width: 300px;
+    padding-left: 100px;
+    margin-top: 53px;
   }
   &.tablet {
-    src: "budgetstashlogo.png";
-    height: 200px;
     width: 185px;
-    padding-left: 30px;
-    background-color: green;
+    padding-left: 45px;
+    margin-top: 65px;
   }
   &.phone {
-    src: "budgetstashlogo.png";
-    height: 200px;
     width: 185px;
-    padding-left: 30px;
-    background-color: blue;
+    padding-left: 5px;
+    margin-top: 65px;
   }
 `;
 
@@ -36,6 +31,7 @@ const NavbarLogo = styled.div`
   display: flex;
   width: 100%;
   margin-top: -50px;
+  height: 125px;
 `;
 
 const NavbarLinks = styled.div`
@@ -43,16 +39,63 @@ const NavbarLinks = styled.div`
   height: 35px;
   display: flex;
   justify-content: space-around;
-  background-color: #6e9075;
+  // background-color: #6e9075; // dark green;
+  background-color: #344966;
   width: 100%;
 `;
 
 const LinksStyles = styled(Link)`
+  z-index: 99;
   text-decoration: none;
   // color: #78c091; //lighter green color that i like.
   color: #fff;
   :hover {
     text-decoration: underline;
+  }
+`;
+
+const QuotesStyles = styled.div`
+  padding-right: 10px;
+  padding-left: 15px;
+  &.desktop {
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 900;
+    font-family: Josefin Sans, sans-serif;
+    font-size: 20px;
+  }
+  &.tablet {
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 900;
+    font-family: Josefin Sans, sans-serif;
+  }
+  &.phone {
+    margin-top: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 900;
+    font-family: Josefin Sans, sans-serif;
+    font-size: 12px;
+  }
+`;
+
+const QuoteAuthor = styled.p`
+  float: right;
+  &.desktop {
+    padding-right: 25px;
+    margin-top: -5px;
+  }
+  &.tablet {
+    padding-right: 25px;
+    margin-top: -5px;
+  }
+  &.phone {
+    padding-right: 25px;
+    margin-top: -5px;
+    font-size: 12px;
   }
 `;
 
@@ -71,9 +114,9 @@ const App = () => {
 
   return (
     <Router>
-      {laptopOrDesktop && <div>you or on destop</div>}
+      {/* {laptopOrDesktop && <div>you or on destop</div>}
       {mobilePhone && <div>you are a mobile phone</div>}
-      {mobileTablet && <div>you are on tablet</div>}
+      {mobileTablet && <div>you are on tablet</div>} */}
       <NavbarLinks>
         <Switch>
           <Route>
@@ -94,20 +137,24 @@ const App = () => {
             className={
               laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
             }
-            src="logo.png"
+            src="logo3.png"
           />
         </Link>
-        <div
-          style={{
-            marginTop: "30px",
-            margin: "auto",
-            fontWeight: "900",
-            fontFamily: "Josefin Sans, sans-serif",
-          }}
+        <QuotesStyles
+          className={
+            laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+          }
         >
-          “A budget doesn’t limit your freedom; it gives you freedom.” – Rachel
-          Cruze
-        </div>
+          <p>“A budget doesn’t limit your freedom; it gives you freedom.”</p>
+          <QuoteAuthor
+            className={
+              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+            }
+          >
+            {" "}
+            – Rachel Cruze
+          </QuoteAuthor>
+        </QuotesStyles>
       </NavbarLogo>
 
       <Route exact path="/">
