@@ -17,8 +17,11 @@ const HomeVideo = styled.video`
 `;
 
 const SignupButton = styled(Button)`
+  margin-top: -60px;
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
   &.desktop {
-    height: 40px;
     margin-left: 60px;
   }
 
@@ -83,7 +86,7 @@ const HomePage = () => {
             laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
           }
         >
-          Sign Up!
+          Register Now!
         </SignupButton>
       </Container>
     </>
