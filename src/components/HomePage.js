@@ -60,6 +60,20 @@ const HomePage = () => {
         muted
       />
       <Container>
+        <div
+          style={{
+            position: "absolute",
+            display: "flex",
+            gap: "50px",
+            marginBottom: "40px",
+            fontSize: "35px",
+            fontWeight: "bold",
+          }}
+        >
+          <div>Be confident.</div>
+          <div>Be free.</div>
+          <div>Be ready.</div>
+        </div>
         <SignupButton
           className={
             laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
