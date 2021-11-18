@@ -19,6 +19,7 @@ const HomeVideo = styled.video`
 const SignupButton = styled(Button)`
   &.desktop {
     height: 40px;
+    margin-left: 60px;
   }
 
   &.tablet {
@@ -39,6 +40,18 @@ const Container = styled.div`
   position: absolute;
   display: flex;
   justify-content: space-around;
+  margin-bottom: 80px;
+`;
+
+const Slogan = styled.div`
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 40px;
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: -170px;
 `;
 
 const HomePage = () => {
@@ -60,20 +73,11 @@ const HomePage = () => {
         muted
       />
       <Container>
-        <div
-          style={{
-            position: "absolute",
-            display: "flex",
-            gap: "50px",
-            marginBottom: "40px",
-            fontSize: "35px",
-            fontWeight: "bold",
-          }}
-        >
+        <Slogan>
           <div>Be confident.</div>
           <div>Be free.</div>
           <div>Be ready.</div>
-        </div>
+        </Slogan>
         <SignupButton
           className={
             laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
