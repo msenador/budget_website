@@ -27,6 +27,12 @@ describe("App/Home", () => {
     expect(quotes).toBeTruthy();
   });
 
+  test("renders slogan", () => {
+    const slogan = screen.queryByTestId("slogan");
+
+    expect(slogan).toBeTruthy();
+  });
+
   test("renders the main video", () => {
     const mainVid = screen.queryByTestId("main-video");
 

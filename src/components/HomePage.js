@@ -17,7 +17,6 @@ const HomeVideo = styled.video`
 `;
 
 const SignupButton = styled(Button)`
-  margin-top: -60px;
   height: 200px;
   width: 200px;
   border-radius: 100px;
@@ -54,7 +53,7 @@ const Slogan = styled.div`
   margin-bottom: 40px;
   font-size: 35px;
   font-weight: bold;
-  margin-top: -170px;
+  margin-top: -80px;
 `;
 
 const HomePage = () => {
@@ -76,7 +75,7 @@ const HomePage = () => {
         muted
       />
       <Container>
-        <Slogan>
+        <Slogan data-testid="slogan">
           <div>Be confident.</div>
           <div>Be free.</div>
           <div>Be ready.</div>
