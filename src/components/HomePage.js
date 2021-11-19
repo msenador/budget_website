@@ -7,13 +7,14 @@ import { Button } from "../globalStyles";
 import { useMediaQuery } from "react-responsive";
 
 const HomeVideo = styled.video`
-  // object-fit: cover;
+  object-fit: cover;
   width: 100%;
   // height: 100%;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1));
   // top: 0;
-  position: absolute;
+  position: sticky;
   z-index: -1;
+  height: 700px;
 `;
 
 const SignupButton = styled(Button)`
@@ -102,6 +103,7 @@ const HomePage = () => {
           Register Now!
         </SignupButton>
       </Container>
+      <div style={{ height: "700px", backgroundColor: "green" }}>about</div>
     </>
   );
   // return (
