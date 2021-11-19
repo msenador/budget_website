@@ -31,6 +31,7 @@ const NavbarLogo = styled.div`
   width: 100%;
   margin-top: -50px;
   height: 125px;
+  justify-content: space-around;
 `;
 
 const NavbarLinks = styled.div`
@@ -54,46 +55,46 @@ const LinksStyles = styled(Link)`
 `;
 
 const QuotesStyles = styled.div`
+  font-family: "Caveat", cursive;
   padding-right: 10px;
   padding-left: 15px;
   &.desktop {
-    margin-top: 45px;
+    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     font-weight: 900;
-    font-family: Josefin Sans, sans-serif;
     font-size: 20px;
   }
   &.tablet {
-    margin-top: 45px;
+    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     font-weight: 900;
-    font-family: Josefin Sans, sans-serif;
   }
   &.phone {
-    margin-top: 45px;
+    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     font-weight: 900;
-    font-family: Josefin Sans, sans-serif;
     font-size: 12px;
   }
 `;
 
 const QuoteAuthor = styled.p`
+  font-size: 15px;
   float: right;
+  font-family: "Caveat", cursive;
   &.desktop {
     padding-right: 25px;
-    margin-top: -5px;
+    margin-top: -10px;
   }
   &.tablet {
     padding-right: 25px;
-    margin-top: -5px;
+    margin-top: -10px;
   }
   &.phone {
     padding-right: 25px;
-    margin-top: -5px;
+    margin-top: -10px;
     font-size: 12px;
   }
 `;
@@ -147,22 +148,23 @@ const App = () => {
             src="logo3.png"
           />
         </Link>
-        <QuotesStyles
-          data-testid="quotes"
-          className={
-            laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-          }
-        >
-          <p>“A budget doesn’t limit your freedom; it gives you freedom.”</p>
-          <QuoteAuthor
+        <div>
+          <QuotesStyles
+            data-testid="quotes"
             className={
               laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
             }
           >
-            {" "}
-            – Rachel Cruze
-          </QuoteAuthor>
-        </QuotesStyles>
+            <p>“A budget doesn’t limit your freedom; it gives you freedom.”</p>
+            <QuoteAuthor
+              className={
+                laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+              }
+            >
+              – Rachel Cruze
+            </QuoteAuthor>
+          </QuotesStyles>
+        </div>
       </NavbarLogo>
 
       <Route exact path="/">

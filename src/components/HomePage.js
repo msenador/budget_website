@@ -29,9 +29,12 @@ const SignupButton = styled(Button)`
 
   &.phone {
     position: absolute;
-    margin-top: -132px;
+    margin-top: -58px;
     font-size: 10px;
     margin-left: 22px;
+    height: 80px;
+    width: 105px;
+    border-radius: 100px;
   }
 `;
 
@@ -54,6 +57,12 @@ const Slogan = styled.div`
   font-size: 35px;
   font-weight: bold;
   margin-top: -80px;
+  &.tablet {
+  }
+  &.phone {
+    font-size: 15px;
+    margin-top: -95px;
+  }
 `;
 
 const HomePage = () => {
@@ -75,7 +84,12 @@ const HomePage = () => {
         muted
       />
       <Container>
-        <Slogan data-testid="slogan">
+        <Slogan
+          data-testid="slogan"
+          className={
+            laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+          }
+        >
           <div>Be confident.</div>
           <div>Be free.</div>
           <div>Be ready.</div>
