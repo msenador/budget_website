@@ -5,6 +5,7 @@ import Categories from "./Categories";
 import Modal from "react-modal";
 import { Button } from "../globalStyles";
 import { useMediaQuery } from "react-responsive";
+import WhyUs from "./About/WhyUs";
 
 const HomeVideo = styled.video`
   object-fit: cover;
@@ -73,6 +74,10 @@ const Slogan = styled.div`
   }
 `;
 
+const WhyUsContainer = styled.div`
+  height: 600px;
+`;
+
 const HomePage = () => {
   const mobilePhone = useMediaQuery({ query: "(max-width: 540px)" });
   const mobileTablet = useMediaQuery({
@@ -113,7 +118,9 @@ const HomePage = () => {
           Register Now!
         </SignupButton>
       </Container>
-      <div style={{ height: "700px", backgroundColor: "green" }}>about</div>
+      <WhyUsContainer>
+        <WhyUs />
+      </WhyUsContainer>
     </>
   );
   // return (
