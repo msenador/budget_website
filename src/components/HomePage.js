@@ -9,12 +9,19 @@ import { useMediaQuery } from "react-responsive";
 const HomeVideo = styled.video`
   object-fit: cover;
   width: 100%;
-  // height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1));
-  // top: 0;
   position: sticky;
   z-index: -1;
-  height: 700px;
+  &.desktop {
+    height: 600px;
+  }
+
+  &.tablet {
+    height: 500px;
+  }
+
+  &.phone {
+    height: 300px;
+  }
 `;
 
 const SignupButton = styled(Button)`
@@ -78,6 +85,9 @@ const HomePage = () => {
   return (
     <>
       <HomeVideo
+        className={
+          laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+        }
         data-testid="main-video"
         loop
         src="./lightBulbHand.mp4"
