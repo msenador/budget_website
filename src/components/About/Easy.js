@@ -13,7 +13,10 @@ const Easy = () => {
     <ReactCardFlip isFlipped={flip} flipDirection="horizontal">
       <CardContainer style={{ backgroundColor: "aliceblue" }} key="front">
         <h1>User Friendly</h1>
-        <Icon icon="lucide:mouse-pointer-click" fontSize="200px" />
+        <Icon
+          icon="lucide:mouse-pointer-click"
+          style={{ fontSize: "200px", margin: "auto" }}
+        />
         <FlipCardBtn onClick={handleFlip}>Learn more</FlipCardBtn>
       </CardContainer>
 

@@ -13,7 +13,10 @@ const Security = () => {
     <ReactCardFlip isFlipped={flip} flipDirection="horizontal">
       <CardContainer style={{ backgroundColor: "aliceblue" }} key="front">
         <h1>Guaranteed Security</h1>
-        <Icon icon="bi:shield-lock" fontSize="200px" />
+        <Icon
+          icon="bi:shield-lock"
+          style={{ fontSize: "200px", margin: "auto" }}
+        />
         <FlipCardBtn onClick={handleFlip}>Learn more</FlipCardBtn>
       </CardContainer>
 

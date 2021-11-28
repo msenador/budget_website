@@ -15,7 +15,10 @@ const Price = () => {
       <CardContainer style={{ backgroundColor: "aliceblue" }} key="front">
         <h1>Free to use</h1>
         <div>
-          <Icon icon="dashicons:money-alt" fontSize="200px" />
+          <Icon
+            icon="dashicons:money-alt"
+            style={{ fontSize: "200px", margin: "auto" }}
+          />
         </div>
         <FlipCardBtn onClick={handleFlip}>Learn more</FlipCardBtn>
       </CardContainer>
