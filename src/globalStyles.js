@@ -39,6 +39,7 @@ export const FlipCardBtn = styled.button`
   background-color: transparent;
   cursor: pointer;
   color: blue;
+  font-size: 20px;
 `;
 
 export const CardContainer = styled.div`

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactCardFlip from "react-card-flip";
-import styled from "styled-components";
 import { FlipCardBtn, CardContainer } from "../../globalStyles";
+import { Icon } from "@iconify/react";
 
 const Security = () => {
   const [flip, setFlip] = useState(false);
@@ -12,12 +12,17 @@ const Security = () => {
   return (
     <ReactCardFlip isFlipped={flip} flipDirection="horizontal">
       <CardContainer style={{ backgroundColor: "aliceblue" }} key="front">
-        <div>Security (FRONT)</div>
+        <h1>Guaranteed Security</h1>
+        <Icon icon="bi:shield-lock" fontSize="200px" />
         <FlipCardBtn onClick={handleFlip}>Learn more</FlipCardBtn>
       </CardContainer>
 
       <CardContainer style={{ backgroundColor: "aliceblue" }} key="back">
-        <div>BACK</div>
+        <h3>Secured by Google's realtime database</h3>
+        <div style={{ fontFamily: "serif" }}>
+          We offer the best data security to our clients by utilizing Google's
+          realtime database to store data.
+        </div>
         <FlipCardBtn onClick={handleFlip}>Back</FlipCardBtn>
       </CardContainer>
     </ReactCardFlip>
