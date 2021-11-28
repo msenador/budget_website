@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import styled from "styled-components";
-
-const Container = styled.div`
-  border-radius: 10px;
-  box-shadow: 1px 1px 20px -1px grey;
-  height: 250px;
-`;
+import { FlipCardBtn, CardContainer } from "../../globalStyles";
 
 const Easy = () => {
   const [flip, setFlip] = useState(false);
@@ -16,15 +11,15 @@ const Easy = () => {
   };
   return (
     <ReactCardFlip isFlipped={flip} flipDirection="horizontal">
-      <Container style={{ backgroundColor: "aliceblue" }} key="front">
+      <CardContainer style={{ backgroundColor: "aliceblue" }} key="front">
         <div>Easy (FRONT)</div>
-        <button onClick={handleFlip}>Learn more</button>
-      </Container>
+        <FlipCardBtn onClick={handleFlip}>Learn more</FlipCardBtn>
+      </CardContainer>
 
-      <Container style={{ backgroundColor: "aliceblue" }} key="back">
+      <CardContainer style={{ backgroundColor: "aliceblue" }} key="back">
         <div>BACK</div>
-        <button onClick={handleFlip}>Back</button>
-      </Container>
+        <FlipCardBtn onClick={handleFlip}>Back</FlipCardBtn>
+      </CardContainer>
     </ReactCardFlip>
   );
 };

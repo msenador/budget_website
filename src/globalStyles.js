@@ -32,3 +32,21 @@ export const Button = styled.button`
     color: black;
   }
 `;
+
+export const FlipCardBtn = styled.button`
+  border: none;
+  text-decoration: underline;
+  background-color: transparent;
+  cursor: pointer;
+  color: blue;
+`;
+
+export const CardContainer = styled.div`
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px -1px grey;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 30px 30px;
+`;
