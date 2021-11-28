@@ -64,7 +64,7 @@ const DonateBtn = styled.button`
   box-shadow: 1px 1px 20px -1px grey;
 `;
 
-const WhyUs = () => {
+const AboutUs = () => {
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
   });
@@ -108,4 +108,4 @@ const WhyUs = () => {
   );
 };
 
-export default WhyUs;
+export default AboutUs;

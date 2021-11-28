@@ -5,7 +5,7 @@ import Categories from "./Categories";
 import Modal from "react-modal";
 import { Button } from "../globalStyles";
 import { useMediaQuery } from "react-responsive";
-import WhyUs from "./About/WhyUs";
+import AboutUs from "./About/AboutUs";
 
 const HomeVideo = styled.video`
   object-fit: cover;
@@ -74,7 +74,7 @@ const Slogan = styled.div`
   }
 `;
 
-const WhyUsContainer = styled.div`
+const AboutUsContainer = styled.div`
   &.desktop {
     height: 700px;
   }
@@ -87,8 +87,9 @@ const WhyUsContainer = styled.div`
 `;
 
 const FooterContainer = styled.div`
-  height: 200px;
-  background-color: #087e8b;
+  // height: 150px;
+  // background-color: #087e8b;
+  padding-bottom: 20px;
 `;
 
 const HomePage = () => {
@@ -131,14 +132,14 @@ const HomePage = () => {
           Register Now!
         </SignupButton>
       </Container>
-      <WhyUsContainer
+      <AboutUsContainer
         className={
           laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
         }
       >
-        <WhyUs />
-      </WhyUsContainer>
-      <FooterContainer>Footer</FooterContainer>
+        <AboutUs />
+      </AboutUsContainer>
+      <FooterContainer />
     </>
   );
   // return (
