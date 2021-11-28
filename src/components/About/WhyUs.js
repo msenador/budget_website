@@ -10,7 +10,7 @@ const SmallParagraph = styled.div`
   justify-content: center;
   margin-bottom: 40px;
   padding: 0 200px;
-  font-family: cursive;
+  font-family: "Avenir Next";
   &.tablet {
     padding: 0 100px;
     margin-bottom: 20px;
@@ -49,6 +49,21 @@ const Content = styled.div`
   }
 `;
 
+const DonateBtnPositioning = styled.div`
+  width: 80%;
+  margin: auto;
+  margin-top: 35px;
+`;
+
+const DonateBtn = styled.button`
+  width: 100%;
+  height: 50px;
+  background-color: #1ac8ed;
+  border: none;
+  cursor: pointer;
+  box-shadow: 1px 1px 20px -1px grey;
+`;
+
 const WhyUs = () => {
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
@@ -85,6 +100,9 @@ const WhyUs = () => {
           <Security />
           <Easy />
         </Content>
+        <DonateBtnPositioning>
+          <DonateBtn>Donate Today!</DonateBtn>
+        </DonateBtnPositioning>
       </div>
     </>
   );

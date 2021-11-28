@@ -25,7 +25,7 @@ const Price = () => {
 
       <CardContainer style={{ backgroundColor: "aliceblue" }} key="back">
         <h3>Our services are completely FREE!</h3>
-        <div style={{ fontFamily: "serif" }}>
+        <div style={{ fontFamily: "Avenir Next" }}>
           You should be saving money, not spending it! However, donations are
           always welcomed to help keep our budgeting services free of charge!
         </div>

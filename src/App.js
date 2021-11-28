@@ -39,7 +39,6 @@ const NavbarLinks = styled.div`
   height: 35px;
   display: flex;
   justify-content: space-around;
-  // background-color: #6e9075; // dark green;
   background-color: #344966;
   width: 100%;
 `;
@@ -47,7 +46,6 @@ const NavbarLinks = styled.div`
 const LinksStyles = styled(Link)`
   z-index: 99;
   text-decoration: none;
-  // color: #78c091; //lighter green color that i like.
   color: #fff;
   :hover {
     text-decoration: underline;
@@ -55,27 +53,24 @@ const LinksStyles = styled(Link)`
 `;
 
 const QuotesStyles = styled.div`
-  font-family: "Caveat", cursive;
+  font-family: "Avenir Next";
   padding-right: 10px;
   padding-left: 15px;
   &.desktop {
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    font-weight: 900;
     font-size: 20px;
   }
   &.tablet {
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    font-weight: 900;
   }
   &.phone {
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
-    font-weight: 900;
     font-size: 12px;
   }
 `;
@@ -83,7 +78,7 @@ const QuotesStyles = styled.div`
 const QuoteAuthor = styled.p`
   font-size: 15px;
   float: right;
-  font-family: "Caveat", cursive;
+  font-family: "Avenir Next";
   &.desktop {
     padding-right: 25px;
     margin-top: -10px;
