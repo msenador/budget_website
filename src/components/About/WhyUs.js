@@ -5,7 +5,21 @@ import Price from "./Price";
 import Security from "./Security";
 import Easy from "./Easy";
 
-const Container = styled.div``;
+const SmallParagraph = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  padding: 0 200px;
+  font-family: cursive;
+  &.tablet {
+    padding: 0 100px;
+    margin-bottom: 20px;
+  }
+  &.phone {
+    padding: 0 50px;
+    margin-bottom: 20px;
+  }
+`;
 
 const Header = styled.h1`
   margin-top: 20px;
@@ -43,7 +57,7 @@ const WhyUs = () => {
     query: "(min-width: 1025px)",
   });
   return (
-    <Container>
+    <>
       <Header
         className={
           laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
@@ -51,6 +65,16 @@ const WhyUs = () => {
       >
         What We Offer
       </Header>
+      <SmallParagraph
+        className={
+          laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+        }
+      >
+        Our team believes in providing free and easy to use services to those
+        who are taking steps to improve their financial stability. Our budgeting
+        services are completely FREE! Donations are welcomed to help our team
+        continue providing free budgeting services.
+      </SmallParagraph>
       <div>
         <Content
           className={
@@ -62,7 +86,7 @@ const WhyUs = () => {
           <Easy />
         </Content>
       </div>
-    </Container>
+    </>
   );
 };
 
