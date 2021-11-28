@@ -18,12 +18,12 @@ const Security = () => {
     <ReactCardFlip isFlipped={flip} flipDirection="horizontal">
       <Container style={{ backgroundColor: "aliceblue" }} key="front">
         <div>Security (FRONT)</div>
-        <button onClick={handleFlip}>FLIP</button>
+        <button onClick={handleFlip}>Learn more</button>
       </Container>
 
       <Container style={{ backgroundColor: "aliceblue" }} key="back">
         <div>BACK</div>
-        <button onClick={handleFlip}>flip</button>
+        <button onClick={handleFlip}>Back</button>
       </Container>
     </ReactCardFlip>
   );
