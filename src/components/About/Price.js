@@ -5,8 +5,20 @@ import { Icon } from "@iconify/react";
 
 const Container = styled.div`
   border-radius: 10px;
-  box-shadow: 1px 1px 13px 5px grey;
-  height: 250px;
+  box-shadow: 1px 1px 20px -1px grey;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 30px 30px;
+`;
+
+const FlipCardBtn = styled.button`
+  border: none;
+  text-decoration: underline;
+  background-color: transparent;
+  cursor: pointer;
+  color: blue;
 `;
 
 const Price = () => {
@@ -19,16 +31,21 @@ const Price = () => {
   return (
     <ReactCardFlip isFlipped={flip} flipDirection="horizontal">
       <Container style={{ backgroundColor: "aliceblue" }} key="front">
-        <div>Price (FRONT)</div>
+        <h2>Free of charge!</h2>
         <div>
-          <Icon icon="dashicons:money-alt" />
+          <Icon icon="dashicons:money-alt" fontSize="150px" />
         </div>
-        <button onClick={handleFlip}>Learn more</button>
+        <FlipCardBtn onClick={handleFlip}>Learn more</FlipCardBtn>
       </Container>
 
       <Container style={{ backgroundColor: "aliceblue" }} key="back">
-        <div>BACK</div>
-        <button onClick={handleFlip}>Back</button>
+        <h3>Our services are completely FREE!</h3>
+        <div>
+          Nobody should have to spend money on a budgeting service. However,
+          donations are always welcomed to help keep our budgeting services free
+          of charge!
+        </div>
+        <FlipCardBtn onClick={handleFlip}>Back</FlipCardBtn>
       </Container>
     </ReactCardFlip>
   );

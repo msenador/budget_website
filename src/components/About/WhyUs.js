@@ -25,6 +25,14 @@ const Content = styled.div`
   text-align: center;
   column-gap: 85px;
   padding: 0 50px;
+  &.tablet {
+    grid-template-columns: 3fr 3fr;
+    row-gap: 50px;
+  }
+  &.phone {
+    grid-template-columns: 3fr;
+    row-gap: 50px;
+  }
 `;
 
 const WhyUs = () => {
@@ -44,7 +52,11 @@ const WhyUs = () => {
         What We Offer
       </Header>
       <div>
-        <Content>
+        <Content
+          className={
+            laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+          }
+        >
           <Price />
           <Security />
           <Easy />
