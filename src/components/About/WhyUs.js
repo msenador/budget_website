@@ -23,6 +23,8 @@ const Content = styled.div`
   display: grid;
   grid-template-columns: 3fr 3fr 3fr;
   text-align: center;
+  column-gap: 85px;
+  padding: 0 50px;
 `;
 
 const WhyUs = () => {
