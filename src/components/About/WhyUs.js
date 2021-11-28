@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
+import Price from "./Price";
+import Security from "./Security";
+import Easy from "./Easy";
 
 const Container = styled.div``;
 
@@ -40,9 +43,9 @@ const WhyUs = () => {
       </Header>
       <div>
         <Content>
-          <div>Price (FREE) </div>
-          <div>security.</div>
-          <div> Easy to use.</div>
+          <Price />
+          <Security />
+          <Easy />
         </Content>
       </div>
     </Container>
