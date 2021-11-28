@@ -75,7 +75,20 @@ const Slogan = styled.div`
 `;
 
 const WhyUsContainer = styled.div`
-  height: 600px;
+  &.desktop {
+    height: 700px;
+  }
+  &.tablet {
+    height: 1100px;
+  }
+  &.phone {
+    height: 1550px;
+  }
+`;
+
+const FooterContainer = styled.div`
+  height: 200px;
+  background-color: #087e8b;
 `;
 
 const HomePage = () => {
@@ -118,9 +131,14 @@ const HomePage = () => {
           Register Now!
         </SignupButton>
       </Container>
-      <WhyUsContainer>
+      <WhyUsContainer
+        className={
+          laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+        }
+      >
         <WhyUs />
       </WhyUsContainer>
+      <FooterContainer>Footer</FooterContainer>
     </>
   );
   // return (
