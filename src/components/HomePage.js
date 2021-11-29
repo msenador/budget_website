@@ -6,6 +6,7 @@ import Modal from "react-modal";
 import { Button } from "../globalStyles";
 import { useMediaQuery } from "react-responsive";
 import AboutUs from "./About/AboutUs";
+import { Link } from "react-router-dom";
 
 const HomeVideo = styled.video`
   object-fit: cover;
@@ -129,7 +130,9 @@ const HomePage = () => {
             laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
           }
         >
-          Register Now!
+          <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
+            Register Now!
+          </Link>
         </SignupButton>
       </Container>
       <AboutUsContainer
