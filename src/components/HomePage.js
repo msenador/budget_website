@@ -125,7 +125,7 @@ const HomePage = () => {
           <div>Be free.</div>
           <div>Be ready.</div>
         </Slogan>
-        <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
+        <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
           <SignupButton
             className={
               laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"

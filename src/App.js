@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import Contact from "./components/Contact";
 import Login from "./components/Login";
+import Register from "./components/Credentials/Register";
 import { useMediaQuery } from "react-responsive";
 
 const Logo = styled.img`
@@ -172,6 +173,10 @@ const App = () => {
 
       <Route path="/login">
         <Login />
+      </Route>
+
+      <Route path="/register">
+        <Register />
       </Route>
     </Router>
   );
