@@ -62,6 +62,9 @@ const DonateBtn = styled.button`
   border: none;
   cursor: pointer;
   box-shadow: 1px 1px 20px -1px grey;
+  color: white;
+  font-size: 30px;
+  font-weight: 900;
 `;
 
 const AboutUs = () => {
