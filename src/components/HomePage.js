@@ -125,15 +125,15 @@ const HomePage = () => {
           <div>Be free.</div>
           <div>Be ready.</div>
         </Slogan>
-        <SignupButton
-          className={
-            laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-          }
-        >
-          <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
+        <Link to="/login" style={{ textDecoration: "none", color: "black" }}>
+          <SignupButton
+            className={
+              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+            }
+          >
             Register Now!
-          </Link>
-        </SignupButton>
+          </SignupButton>
+        </Link>
       </Container>
       <AboutUsContainer
         className={
