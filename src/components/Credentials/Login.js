@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 const CreateAccountContainer = styled.div`
-  height: 300px;
+  height: 380px;
   background-color: #84bc9c;
   border-radius: 20px;
   margin: auto;
@@ -47,6 +47,29 @@ const InputContainer = styled.div`
   }
 `;
 
+const ForgotPasswordStyles = styled.button`
+  background-color: transparent;
+  border: none;
+  color: blue;
+  cursor: pointer;
+`;
+
+const ForgotPasswordPosition = styled.div`
+  margin-top: -30px;
+  width: 80%;
+`;
+
+const LoginBtn = styled.button`
+  border-radius: 10px;
+  height: 40px;
+  width: 30%;
+  background-color: transparent;
+  border: none;
+  background-color: #067bc2;
+  color: white;
+  cursor: pointer;
+`;
+
 const Login = () => {
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
@@ -70,6 +93,10 @@ const Login = () => {
         >
           <InputStyles placeholder="Email" />
           <InputStyles placeholder="Password" />
+          <ForgotPasswordPosition>
+            <ForgotPasswordStyles>Forgot password</ForgotPasswordStyles>
+          </ForgotPasswordPosition>
+          <LoginBtn>LOG IN</LoginBtn>
           <div style={{ padding: "0 30px" }}>
             Don't have an account? <Link to="/register">Register</Link>
           </div>

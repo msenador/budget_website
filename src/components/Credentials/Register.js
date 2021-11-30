@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 const CreateAccountContainer = styled.div`
-  height: 400px;
+  height: 480px;
   background-color: #84bc9c;
   border-radius: 20px;
   margin: auto;
@@ -47,6 +47,17 @@ const InputContainer = styled.div`
   }
 `;
 
+const RegisterBtn = styled.button`
+  border-radius: 10px;
+  height: 40px;
+  width: 30%;
+  background-color: transparent;
+  border: none;
+  background-color: #067bc2;
+  color: white;
+  cursor: pointer;
+`;
+
 const Register = () => {
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
@@ -72,6 +83,7 @@ const Register = () => {
           <InputStyles placeholder="Email" />
           <InputStyles placeholder="Password" />
           <InputStyles placeholder="Confirm Password" />
+          <RegisterBtn>REGISTER</RegisterBtn>
           <div style={{ padding: "0 30px" }}>
             Already have an account? <Link to="/login">Log in</Link>
           </div>
