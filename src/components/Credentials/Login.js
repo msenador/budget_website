@@ -13,7 +13,7 @@ const Container = styled.div`
 `;
 
 const CreateAccountContainer = styled.div`
-  height: 400px;
+  height: 300px;
   background-color: #84bc9c;
   border-radius: 20px;
   margin: auto;
@@ -47,7 +47,7 @@ const InputContainer = styled.div`
   }
 `;
 
-const Register = () => {
+const Login = () => {
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
   });
@@ -62,18 +62,16 @@ const Register = () => {
           laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
         }
       >
-        <h1 style={{ textAlign: "center", color: "white" }}>Create Account</h1>
+        <h1 style={{ textAlign: "center", color: "white" }}>Log in</h1>
         <InputContainer
           className={
             laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
           }
         >
-          <InputStyles placeholder="First Name" />
           <InputStyles placeholder="Email" />
           <InputStyles placeholder="Password" />
-          <InputStyles placeholder="Confirm Password" />
           <div style={{ padding: "0 30px" }}>
-            Already have an account? <Link to="/login">Log in</Link>
+            Don't have an account? <Link to="/register">Register</Link>
           </div>
         </InputContainer>
       </CreateAccountContainer>
@@ -81,4 +79,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

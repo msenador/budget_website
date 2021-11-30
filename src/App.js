@@ -5,7 +5,7 @@ import SignInOrSignUp from "./components/SignIn";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import Contact from "./components/Contact";
-import Login from "./components/Login";
+import Login from "./components/Credentials/Login";
 import Register from "./components/Credentials/Register";
 import { useMediaQuery } from "react-responsive";
 
