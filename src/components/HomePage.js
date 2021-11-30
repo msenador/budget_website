@@ -31,47 +31,59 @@ const SignupButton = styled(Button)`
   width: 200px;
   border-radius: 100px;
   &.desktop {
-    margin-left: 60px;
   }
-
+  margin-top: -100px;
+  margin-bottom: 70px;
   &.tablet {
+    margin-left: 50px;
   }
 
   &.phone {
-    position: absolute;
-    margin-top: -58px;
     font-size: 10px;
-    margin-left: 22px;
-    height: 80px;
-    width: 105px;
+    height: 100px;
+    width: 100px;
     border-radius: 100px;
+    margin-left: 25px;
+  }
+`;
+
+const RegisterBtnPosition = styled.div`
+  width: 100%;
+  text-align: center;
+  &.desktop {
+    margin-left: 30px;
   }
 `;
 
 const Container = styled.div`
+  margin-top: -590px;
   width: 100%;
-  height: 50%;
-  bottom: 0;
-  position: absolute;
+  height: 600px;
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 80px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  &.tablet {
+  }
+  &.phone {
+    margin-top: -325px;
+    height: 325px;
+    row-gap: 20px;
+  }
 `;
 
 const Slogan = styled.div`
-  position: absolute;
   display: flex;
   width: 100%;
   justify-content: space-around;
-  margin-bottom: 40px;
   font-size: 35px;
   font-weight: bold;
-  margin-top: -80px;
+  &.desktop {
+    margin-top: -140px;
+  }
   &.tablet {
   }
   &.phone {
     font-size: 15px;
-    margin-top: -95px;
   }
 `;
 
@@ -114,7 +126,11 @@ const HomePage = () => {
         autoPlay
         muted
       />
-      <Container>
+      <Container
+        className={
+          laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+        }
+      >
         <Slogan
           data-testid="slogan"
           className={
@@ -126,13 +142,19 @@ const HomePage = () => {
           <div>Be ready.</div>
         </Slogan>
         <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
-          <SignupButton
+          <RegisterBtnPosition
             className={
               laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
             }
           >
-            Register Now!
-          </SignupButton>
+            <SignupButton
+              className={
+                laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+              }
+            >
+              Register Now!
+            </SignupButton>
+          </RegisterBtnPosition>
         </Link>
       </Container>
       <AboutUsContainer
