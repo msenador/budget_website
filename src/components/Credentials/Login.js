@@ -54,11 +54,6 @@ const ForgotPasswordStyles = styled.button`
   cursor: pointer;
 `;
 
-const ForgotPasswordPosition = styled.div`
-  margin-top: -30px;
-  width: 80%;
-`;
-
 const LoginBtn = styled.button`
   border-radius: 10px;
   height: 40px;
@@ -93,11 +88,14 @@ const Login = () => {
         >
           <InputStyles placeholder="Email" />
           <InputStyles placeholder="Password" />
-          <ForgotPasswordPosition>
-            <ForgotPasswordStyles>Forgot password</ForgotPasswordStyles>
-          </ForgotPasswordPosition>
+          <ForgotPasswordStyles>Forgot password?</ForgotPasswordStyles>
           <LoginBtn>LOG IN</LoginBtn>
-          <div style={{ padding: "0 30px" }}>
+          <div
+            style={{
+              padding: "0 30px",
+              marginTop: mobileTablet ? "0" : "-10px",
+            }}
+          >
             Don't have an account? <Link to="/register">Register</Link>
           </div>
         </InputContainer>
