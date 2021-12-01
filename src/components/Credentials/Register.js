@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
 import fire from "../../fire";
@@ -58,13 +58,86 @@ const RegisterBtn = styled.button`
   cursor: pointer;
 `;
 
-const Register = () => {
+const Register = (props) => {
+  const [user, setUser] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
+  const [emailErr, setEmailErr] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [confirmPasswordErr, setConfirmPasswordErr] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
   });
   const laptopOrDesktop = useMediaQuery({
     query: "(min-width: 1025px)",
   });
+
+  const clearErrors = () => {
+    setEmailErr("");
+    setPasswordErr("");
+    setConfirmPasswordErr("");
+  };
+
+  const clearInputs = () => {
+    setFirstName("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+  };
+
+  const passwordsMatch = (password, confirmPassword) => {
+    if (password !== confirmPassword) {
+      setConfirmPasswordErr("Passwords do not match");
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  const handleRegister = () => {
+    if (passwordsMatch(password, confirmPassword) === true) {
+      fire
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
+        .catch((err) => {
+          switch (err.code) {
+            case "auth/email-already-in-use":
+              setEmailErr(err.message);
+              break;
+            case "auth/invalid-email":
+              setEmailErr(err.message);
+              break;
+            case "auth/weak-password":
+              setPasswordErr(err.message);
+              break;
+          }
+        });
+    }
+  };
+
+  const handleRegisterEnterKey = (e) => {
+    if (e.key === "Enter") {
+      handleRegister();
+    }
+  };
+
+  const authListener = () => {
+    fire.auth().onAuthStateChanged((user) => {
+      if (user) {
+        clearInputs();
+        clearErrors();
+        setUser(firstName);
+      } else {
+        setUser("");
+      }
+    });
+  };
+
+  useEffect(() => {
+    authListener();
+  }, []);
 
   return (
     <Container>
@@ -79,11 +152,44 @@ const Register = () => {
             laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
           }
         >
-          <InputStyles placeholder="First Name" />
-          <InputStyles placeholder="Email" />
-          <InputStyles placeholder="Password" />
-          <InputStyles placeholder="Confirm Password" />
-          <RegisterBtn>REGISTER</RegisterBtn>
+          <InputStyles
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => {
+              setFirstName(e.target.value);
+            }}
+            onKeyDown={handleRegisterEnterKey}
+          />
+          <InputStyles
+            placeholder="Email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            onKeyDown={handleRegisterEnterKey}
+          />
+          {emailErr ? <div>{emailErr}</div> : <></>}
+          <InputStyles
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            onKeyDown={handleRegisterEnterKey}
+          />
+          {passwordErr ? <div>{passwordErr}</div> : <></>}
+          <InputStyles
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => {
+              setConfirmPassword(e.target.value);
+            }}
+            onKeyDown={handleRegisterEnterKey}
+          />
+          {confirmPasswordErr ? <div>{confirmPasswordErr}</div> : <></>}
+          <RegisterBtn onClick={handleRegister}>REGISTER</RegisterBtn>
           <div style={{ padding: "0 30px" }}>
             Already have an account? <Link to="/login">Log in</Link>
           </div>

@@ -107,6 +107,10 @@ const App = () => {
   const [user, setUser] = useState("");
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
+  const [emailErr, setEmailErr] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
 
   return (
     <Router>
@@ -176,7 +180,22 @@ const App = () => {
       </Route>
 
       <Route path="/register">
-        <Register />
+        <Register
+          user={user}
+          setUser={setUser}
+          firstname={firstName}
+          setFirstName={setFirstName}
+          email={email}
+          setEmail={setEmail}
+          emailErr={emailErr}
+          setEmailErr={setEmailErr}
+          password={password}
+          setPassword={setPassword}
+          confirmPassword={confirmPassword}
+          setConfirmPassword={setConfirmPassword}
+          passwordErr={passwordErr}
+          setPasswordErr={setPasswordErr}
+        />
       </Route>
 
       <Route path="/user-in">
