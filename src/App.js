@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Login from "./components/Credentials/Login";
 import Register from "./components/Credentials/Register";
 import { useMediaQuery } from "react-responsive";
+import HomeUserIn from "./components/HomeUserIn/HomeUserIn";
 
 const Logo = styled.img`
   &.desktop {
@@ -103,10 +104,9 @@ const App = () => {
   const laptopOrDesktop = useMediaQuery({
     query: "(min-width: 1025px)",
   });
-  // const [user, setUser] = useState(false)
-  // const isBigScreen = useMediaQuery({ query: "(min-width: 1824px)" });
-  // const isPortrait = useMediaQuery({ query: "(orientation: portrait)" }); //EXAMPLES
-  // const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });  //EXAMPLES
+  const [user, setUser] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
 
   return (
     <Router>
@@ -135,7 +135,7 @@ const App = () => {
         </Switch>
       </NavbarLinks>
       <NavbarLogo>
-        <Link to="/">
+        <Link to={user ? "/user-in" : "/"}>
           <Logo
             data-testid="home-logo"
             className={
@@ -177,6 +177,10 @@ const App = () => {
 
       <Route path="/register">
         <Register />
+      </Route>
+
+      <Route path="/user-in">
+        <HomeUserIn />
       </Route>
     </Router>
   );
