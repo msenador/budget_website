@@ -58,15 +58,23 @@ const RegisterBtn = styled.button`
   cursor: pointer;
 `;
 
+const ErrMessagePosition = styled.div`
+  margin-top: -30px;
+  width: 80%;
+  font-size: 12px;
+  color: red;
+`;
+
 const Register = (props) => {
   const [user, setUser] = useState("");
   const [firstName, setFirstName] = useState("");
+  const [firstNameErr, setFirstNameErr] = useState("");
   const [email, setEmail] = useState("");
   const [emailErr, setEmailErr] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordErr, setConfirmPasswordErr] = useState("");
-  const [passwordErr, setPasswordErr] = useState("");
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
   });
@@ -75,6 +83,7 @@ const Register = (props) => {
   });
 
   const clearErrors = () => {
+    setFirstNameErr("");
     setEmailErr("");
     setPasswordErr("");
     setConfirmPasswordErr("");
@@ -89,31 +98,43 @@ const Register = (props) => {
 
   const passwordsMatch = (password, confirmPassword) => {
     if (password !== confirmPassword) {
-      setConfirmPasswordErr("Passwords do not match");
+      setConfirmPasswordErr("*Passwords do not match");
       return false;
     } else {
       return true;
     }
   };
 
+  const firstNameNull = (firstName) => {
+    if (firstName === "") {
+      setFirstNameErr("*First name is empty");
+      return true;
+    } else {
+      false;
+    }
+  };
+
   const handleRegister = () => {
-    if (passwordsMatch(password, confirmPassword) === true) {
-      fire
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
-        .catch((err) => {
-          switch (err.code) {
-            case "auth/email-already-in-use":
-              setEmailErr(err.message);
-              break;
-            case "auth/invalid-email":
-              setEmailErr(err.message);
-              break;
-            case "auth/weak-password":
-              setPasswordErr(err.message);
-              break;
-          }
-        });
+    clearErrors();
+    if (firstNameNull(firstName) !== true) {
+      if (passwordsMatch(password, confirmPassword) === true) {
+        fire
+          .auth()
+          .createUserWithEmailAndPassword(email, password)
+          .catch((err) => {
+            switch (err.code) {
+              case "auth/email-already-in-use":
+                setEmailErr("*" + err.message);
+                break;
+              case "auth/invalid-email":
+                setEmailErr("*" + err.message);
+                break;
+              case "auth/weak-password":
+                setPasswordErr("*" + err.message);
+                break;
+            }
+          });
+      }
     }
   };
 
@@ -160,6 +181,11 @@ const Register = (props) => {
             }}
             onKeyDown={handleRegisterEnterKey}
           />
+          {firstNameErr ? (
+            <ErrMessagePosition>{firstNameErr}</ErrMessagePosition>
+          ) : (
+            <></>
+          )}
           <InputStyles
             placeholder="Email"
             value={email}
@@ -168,7 +194,11 @@ const Register = (props) => {
             }}
             onKeyDown={handleRegisterEnterKey}
           />
-          {emailErr ? <div>{emailErr}</div> : <></>}
+          {emailErr ? (
+            <ErrMessagePosition>{emailErr}</ErrMessagePosition>
+          ) : (
+            <></>
+          )}
           <InputStyles
             type="password"
             placeholder="Password"
@@ -178,7 +208,11 @@ const Register = (props) => {
             }}
             onKeyDown={handleRegisterEnterKey}
           />
-          {passwordErr ? <div>{passwordErr}</div> : <></>}
+          {passwordErr ? (
+            <ErrMessagePosition>{passwordErr}</ErrMessagePosition>
+          ) : (
+            <></>
+          )}
           <InputStyles
             type="password"
             placeholder="Confirm Password"
@@ -188,9 +222,26 @@ const Register = (props) => {
             }}
             onKeyDown={handleRegisterEnterKey}
           />
-          {confirmPasswordErr ? <div>{confirmPasswordErr}</div> : <></>}
+          {confirmPasswordErr ? (
+            <ErrMessagePosition>{confirmPasswordErr}</ErrMessagePosition>
+          ) : (
+            <></>
+          )}
           <RegisterBtn onClick={handleRegister}>REGISTER</RegisterBtn>
-          <div style={{ padding: "0 30px" }}>
+          <div
+            style={{
+              padding: "0 30px",
+              marginTop: firstNameErr
+                ? "-10px"
+                : emailErr
+                ? "-10px"
+                : passwordErr
+                ? "-10px"
+                : confirmPasswordErr
+                ? "-10px"
+                : "0",
+            }}
+          >
             Already have an account? <Link to="/login">Log in</Link>
           </div>
         </InputContainer>
