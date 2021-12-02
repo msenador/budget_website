@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
 import fire from "../../fire";
 import { Link } from "react-router-dom";
+import Modal from "react-modal";
 
 const Container = styled.div`
   height: 100vh;
@@ -65,6 +66,20 @@ const ErrMessagePosition = styled.div`
   color: red;
 `;
 
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "20px",
+    border: "none",
+    padding: "100px",
+  },
+};
+
 const Register = (props) => {
   const [user, setUser] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -75,9 +90,20 @@ const Register = (props) => {
   const [passwordErr, setPasswordErr] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordErr, setConfirmPasswordErr] = useState("");
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
   });
+
   const laptopOrDesktop = useMediaQuery({
     query: "(min-width: 1025px)",
   });
@@ -136,6 +162,7 @@ const Register = (props) => {
           });
       }
     }
+    openModal();
   };
 
   const handleRegisterEnterKey = (e) => {
@@ -168,6 +195,7 @@ const Register = (props) => {
         }
       >
         <h1 style={{ textAlign: "center", color: "white" }}>Create Account</h1>
+
         <InputContainer
           className={
             laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
@@ -181,11 +209,13 @@ const Register = (props) => {
             }}
             onKeyDown={handleRegisterEnterKey}
           />
+
           {firstNameErr ? (
             <ErrMessagePosition>{firstNameErr}</ErrMessagePosition>
           ) : (
             <></>
           )}
+
           <InputStyles
             placeholder="Email"
             value={email}
@@ -194,11 +224,13 @@ const Register = (props) => {
             }}
             onKeyDown={handleRegisterEnterKey}
           />
+
           {emailErr ? (
             <ErrMessagePosition>{emailErr}</ErrMessagePosition>
           ) : (
             <></>
           )}
+
           <InputStyles
             type="password"
             placeholder="Password"
@@ -208,11 +240,13 @@ const Register = (props) => {
             }}
             onKeyDown={handleRegisterEnterKey}
           />
+
           {passwordErr ? (
             <ErrMessagePosition>{passwordErr}</ErrMessagePosition>
           ) : (
             <></>
           )}
+
           <InputStyles
             type="password"
             placeholder="Confirm Password"
@@ -222,12 +256,15 @@ const Register = (props) => {
             }}
             onKeyDown={handleRegisterEnterKey}
           />
+
           {confirmPasswordErr ? (
             <ErrMessagePosition>{confirmPasswordErr}</ErrMessagePosition>
           ) : (
             <></>
           )}
+
           <RegisterBtn onClick={handleRegister}>REGISTER</RegisterBtn>
+
           <div
             style={{
               padding: "0 30px",
@@ -244,6 +281,20 @@ const Register = (props) => {
           >
             Already have an account? <Link to="/login">Log in</Link>
           </div>
+
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStyles}
+            ariaHideApp={false}
+          >
+            <div style={{ textAlign: "center" }}>
+              <div>
+                You've successfully created your FREE account! Navigate to the{" "}
+                <Link to="/login">Log in</Link> page
+              </div>
+            </div>
+          </Modal>
         </InputContainer>
       </CreateAccountContainer>
     </Container>
