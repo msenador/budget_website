@@ -112,11 +112,12 @@ const App = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordErr, setPasswordErr] = useState("");
 
+  const handleLogout = () => {
+    fire.auth().signOut();
+  };
+
   return (
     <Router>
-      {/* {laptopOrDesktop && <div>you or on destop</div>}
-      {mobilePhone && <div>you are a mobile phone</div>}
-      {mobileTablet && <div>you are on tablet</div>} */}
       <NavbarLinks>
         <Switch>
           <Route>
@@ -132,9 +133,13 @@ const App = () => {
         </Switch>
         <Switch>
           <Route>
-            <LinksStyles id="login-link" data-testid="login-link" to="login">
-              Log in
-            </LinksStyles>
+            {user ? (
+              <LinksStyles onClick={handleLogout}>Log out</LinksStyles>
+            ) : (
+              <LinksStyles id="login-link" data-testid="login-link" to="login">
+                Log in
+              </LinksStyles>
+            )}
           </Route>
         </Switch>
       </NavbarLinks>
