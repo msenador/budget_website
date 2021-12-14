@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
 import fire from "../../fire";
@@ -65,13 +65,49 @@ const LoginBtn = styled.button`
   cursor: pointer;
 `;
 
+const ErrMessagePosition = styled.div`
+  margin-top: -30px;
+  width: 80%;
+  font-size: 12px;
+  color: red;
+`;
+
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailErr, setEmailErr] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
   });
   const laptopOrDesktop = useMediaQuery({
     query: "(min-width: 1025px)",
   });
+
+  const handleLoginEnterKey = (e) => {
+    if (e.key === "Enter") {
+      handleLogin();
+    }
+  };
+
+  const handleLogin = () => {
+    fire
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .catch((err) => {
+        switch (err.code) {
+          case "auth/email-already-in-use":
+            setEmailErr("*" + err.message);
+            break;
+          case "auth/invalid-email":
+            setEmailErr("*" + err.message);
+            break;
+          case "auth/weak-password":
+            setPasswordErr("*" + err.message);
+            break;
+        }
+      });
+  };
 
   return (
     <Container>
@@ -86,10 +122,39 @@ const Login = () => {
             laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
           }
         >
-          <InputStyles placeholder="Email" />
-          <InputStyles placeholder="Password" />
+          <InputStyles
+            placeholder="Email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            onKeyDown={handleLoginEnterKey}
+          />
+
+          {emailErr ? (
+            <ErrMessagePosition>{emailErr}</ErrMessagePosition>
+          ) : (
+            <></>
+          )}
+
+          <InputStyles
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            onKeyDown={handleLoginEnterKey}
+          />
+
+          {passwordErr ? (
+            <ErrMessagePosition>{passwordErr}</ErrMessagePosition>
+          ) : (
+            <></>
+          )}
+
           <ForgotPasswordStyles>Forgot password?</ForgotPasswordStyles>
-          <LoginBtn>LOG IN</LoginBtn>
+          <LoginBtn onClick={handleLogin}>LOG IN</LoginBtn>
           <div
             style={{
               padding: "0 30px",
