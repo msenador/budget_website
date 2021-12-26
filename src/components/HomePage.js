@@ -8,175 +8,188 @@ import { useMediaQuery } from "react-responsive";
 import AboutUs from "./About/AboutUs";
 import { Link } from "react-router-dom";
 
-const HomeVideo = styled.video`
-  object-fit: cover;
-  width: 100%;
-  position: sticky;
-  z-index: -1;
-  &.desktop {
-    height: 600px;
-  }
-
-  &.tablet {
-    height: 500px;
-  }
-
-  &.phone {
-    height: 300px;
-  }
-`;
-
-const SignupButton = styled(Button)`
-  height: 200px;
-  width: 200px;
-  border-radius: 100px;
-  &.desktop {
-  }
-  margin-top: -100px;
-  margin-bottom: 70px;
-  &.tablet {
-    margin-left: 50px;
-  }
-
-  &.phone {
-    font-size: 10px;
-    height: 100px;
-    width: 100px;
-    border-radius: 100px;
-    margin-left: 25px;
-  }
-`;
-
-const RegisterBtnPosition = styled.div`
-  width: 100%;
-  text-align: center;
-  &.desktop {
-    margin-left: 30px;
-  }
-`;
-
-const Container = styled.div`
-  margin-top: -590px;
-  width: 100%;
-  height: 600px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  &.tablet {
-  }
-  &.phone {
-    margin-top: -325px;
-    height: 325px;
-    row-gap: 20px;
-  }
-`;
-
-const Slogan = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
-  font-size: 35px;
-  font-weight: bold;
-  &.desktop {
-    margin-top: -140px;
-  }
-  &.tablet {
-  }
-  &.phone {
-    font-size: 15px;
-  }
-`;
-
-const AboutUsContainer = styled.div`
-  &.desktop {
-    height: 700px;
-  }
-  &.tablet {
-    height: 1100px;
-  }
-  &.phone {
-    height: 1550px;
-  }
-`;
-
-const FooterContainer = styled.div`
-  // height: 150px;
-  // background-color: #087e8b;
-  padding-bottom: 20px;
-`;
-
-const HomePage = () => {
-  const mobilePhone = useMediaQuery({ query: "(max-width: 540px)" });
-  const mobileTablet = useMediaQuery({
-    query: "(min-width: 541px)",
-  });
-  const laptopOrDesktop = useMediaQuery({
-    query: "(min-width: 1025px)",
-  });
+const HomePage = (props) => {
+  const { handleLogout } = props;
 
   return (
     <>
-      <HomeVideo
-        className={
-          laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-        }
-        data-testid="main-video"
-        loop
-        src="./lightBulbHand.mp4"
-        autoPlay
-        muted
-      />
-      <Container
-        className={
-          laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-        }
-      >
-        <Slogan
-          data-testid="slogan"
-          className={
-            laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-          }
-        >
-          <div>Be confident.</div>
-          <div>Be free.</div>
-          <div>Be ready.</div>
-        </Slogan>
-        <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
-          <RegisterBtnPosition
-            className={
-              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-            }
-          >
-            <SignupButton
-              className={
-                laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-              }
-            >
-              Register Now!
-            </SignupButton>
-          </RegisterBtnPosition>
-        </Link>
-      </Container>
-      <AboutUsContainer
-        className={
-          laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-        }
-      >
-        <AboutUs />
-      </AboutUsContainer>
-      <FooterContainer />
+      <button onClick={handleLogout}>logout</button>
+      <div>in</div>
     </>
   );
-  // return (
-  //   <>
-  //     <Container>
-  //       hello
-  //     </Container>
-  //   </>
-  // );
 };
 
 export default HomePage;
+
+// const HomeVideo = styled.video`
+//   object-fit: cover;
+//   width: 100%;
+//   position: sticky;
+//   z-index: -1;
+//   &.desktop {
+//     height: 600px;
+//   }
+
+//   &.tablet {
+//     height: 500px;
+//   }
+
+//   &.phone {
+//     height: 300px;
+//   }
+// `;
+
+// const SignupButton = styled(Button)`
+//   height: 200px;
+//   width: 200px;
+//   border-radius: 100px;
+//   &.desktop {
+//   }
+//   margin-top: -100px;
+//   margin-bottom: 70px;
+//   &.tablet {
+//     margin-left: 50px;
+//   }
+
+//   &.phone {
+//     font-size: 10px;
+//     height: 100px;
+//     width: 100px;
+//     border-radius: 100px;
+//     margin-left: 25px;
+//   }
+// `;
+
+// const RegisterBtnPosition = styled.div`
+//   width: 100%;
+//   text-align: center;
+//   &.desktop {
+//     margin-left: 30px;
+//   }
+// `;
+
+// const Container = styled.div`
+//   margin-top: -590px;
+//   width: 100%;
+//   height: 600px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-evenly;
+//   &.tablet {
+//   }
+//   &.phone {
+//     margin-top: -325px;
+//     height: 325px;
+//     row-gap: 20px;
+//   }
+// `;
+
+// const Slogan = styled.div`
+//   display: flex;
+//   width: 100%;
+//   justify-content: space-around;
+//   font-size: 35px;
+//   font-weight: bold;
+//   &.desktop {
+//     margin-top: -140px;
+//   }
+//   &.tablet {
+//   }
+//   &.phone {
+//     font-size: 15px;
+//   }
+// `;
+
+// const AboutUsContainer = styled.div`
+//   &.desktop {
+//     height: 700px;
+//   }
+//   &.tablet {
+//     height: 1100px;
+//   }
+//   &.phone {
+//     height: 1550px;
+//   }
+// `;
+
+// const FooterContainer = styled.div`
+//   // height: 150px;
+//   // background-color: #087e8b;
+//   padding-bottom: 20px;
+// `;
+
+// const HomePage = () => {
+//   const mobilePhone = useMediaQuery({ query: "(max-width: 540px)" });
+//   const mobileTablet = useMediaQuery({
+//     query: "(min-width: 541px)",
+//   });
+//   const laptopOrDesktop = useMediaQuery({
+//     query: "(min-width: 1025px)",
+//   });
+
+//   return (
+//     <>
+//       <HomeVideo
+//         className={
+//           laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+//         }
+//         data-testid="main-video"
+//         loop
+//         src="./lightBulbHand.mp4"
+//         autoPlay
+//         muted
+//       />
+//       <Container
+//         className={
+//           laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+//         }
+//       >
+//         <Slogan
+//           data-testid="slogan"
+//           className={
+//             laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+//           }
+//         >
+//           <div>Be confident.</div>
+//           <div>Be free.</div>
+//           <div>Be ready.</div>
+//         </Slogan>
+//         <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
+//           <RegisterBtnPosition
+//             className={
+//               laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+//             }
+//           >
+//             <SignupButton
+//               className={
+//                 laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+//               }
+//             >
+//               Register Now!
+//             </SignupButton>
+//           </RegisterBtnPosition>
+//         </Link>
+//       </Container>
+//       <AboutUsContainer
+//         className={
+//           laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+//         }
+//       >
+//         <AboutUs />
+//       </AboutUsContainer>
+//       <FooterContainer />
+//     </>
+//   );
+// return (
+//   <>
+//     <Container>
+//       hello
+//     </Container>
+//   </>
+// );
+// };
+
+// export default HomePage;
 
 // const CardsContainer = styled.div`
 //   display: grid;
