@@ -9,6 +9,8 @@ import { Button, CardContainer } from "../globalStyles";
 import AboutUs from "./About/AboutUs";
 import ReactCardFlip from "react-card-flip";
 import { FlipCardBtn } from "../globalStyles";
+import * as Scroll from "react-scroll";
+import { animateScroll as scroll } from "react-scroll";
 
 const NavbarLinks = styled.div`
   padding-top: 10px;
@@ -313,6 +315,13 @@ const SignInOrSignUp = (props) => {
 
   //   const [modalIsOpen, setIsOpen] = useState(false);
   //   const [forgotPasswordMessage, setForgotPasswordMessage] = useState('');
+
+  const scrollTop = () => {
+    if (flip === true) {
+      setFlip(!flip);
+    }
+    scroll.scrollToTop();
+  };
 
   const handleFlip = () => {
     setFlip(!flip);
@@ -699,6 +708,7 @@ const SignInOrSignUp = (props) => {
               }
             >
               <SignupButton
+                onClick={scrollTop}
                 className={
                   laptopOrDesktop
                     ? "desktop"
