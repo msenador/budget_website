@@ -5,7 +5,7 @@ import fire from "../../fire";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 
-const Container = styled.div`
+const RegisterContainer = styled.div`
   height: 100vh;
   background-size: cover;
   display: flex;
@@ -49,6 +49,17 @@ const InputContainer = styled.div`
 `;
 
 const RegisterBtn = styled.button`
+  border-radius: 10px;
+  height: 40px;
+  width: 30%;
+  background-color: transparent;
+  border: none;
+  background-color: #067bc2;
+  color: white;
+  cursor: pointer;
+`;
+
+const LoginBtn = styled.button`
   border-radius: 10px;
   height: 40px;
   width: 30%;

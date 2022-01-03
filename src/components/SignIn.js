@@ -5,8 +5,10 @@ import Modal from "react-modal";
 import Contact from "./Contact";
 import { useMediaQuery } from "react-responsive";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
-import { Button } from "../globalStyles";
+import { Button, CardContainer } from "../globalStyles";
 import AboutUs from "./About/AboutUs";
+import ReactCardFlip from "react-card-flip";
+import { FlipCardBtn } from "../globalStyles";
 
 const NavbarLinks = styled.div`
   padding-top: 10px;
@@ -99,6 +101,7 @@ const HomeVideo = styled.video`
   width: 100%;
   position: sticky;
   z-index: -1;
+  margin-top: 100px;
   &.desktop {
     height: 600px;
   }
@@ -202,10 +205,12 @@ const FooterContainer = styled.div`
 const CreateAccountContainer = styled.div`
   height: 480px;
   background-color: #84bc9c;
-  margin: auto;
   box-shadow: 1px 1px 20px -1px grey;
-  width: 100% &.desktop {
-
+  width: 100%;
+  margin-top: 100px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  &.desktop {
   }
   &.tablet {
   }
@@ -228,6 +233,17 @@ const InputContainer = styled.div`
 `;
 
 const RegisterBtn = styled.button`
+  border-radius: 10px;
+  height: 40px;
+  width: 30%;
+  background-color: transparent;
+  border: none;
+  background-color: #067bc2;
+  color: white;
+  cursor: pointer;
+`;
+
+const LoginBtn = styled.button`
   border-radius: 10px;
   height: 40px;
   width: 30%;
@@ -270,8 +286,10 @@ const SignInOrSignUp = (props) => {
     handleSignUp,
     setHasAccount,
     hasAccount,
-    emailError,
-    passwordError,
+    emailLoginError,
+    setEmailLoginError,
+    passwordLoginError,
+    setPasswordLoginError,
     handleLogout,
     firstName,
     setFirstName,
@@ -279,6 +297,7 @@ const SignInOrSignUp = (props) => {
     setConfirmPassword,
   } = props;
 
+  const [flip, setFlip] = useState(false);
   const mobilePhone = useMediaQuery({ query: "(max-width: 540px)" });
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
@@ -294,6 +313,10 @@ const SignInOrSignUp = (props) => {
 
   //   const [modalIsOpen, setIsOpen] = useState(false);
   //   const [forgotPasswordMessage, setForgotPasswordMessage] = useState('');
+
+  const handleFlip = () => {
+    setFlip(!flip);
+  };
 
   const clearErrors = () => {
     setFirstNameErr("");
@@ -411,7 +434,7 @@ const SignInOrSignUp = (props) => {
           </Switch>
         </NavbarLinks>
         <NavbarLogo>
-          <Link to={user ? "/user-in" : "/"}>
+          <Link to="/">
             <Logo
               data-testid="home-logo"
               className={
@@ -445,106 +468,203 @@ const SignInOrSignUp = (props) => {
           </div>
         </NavbarLogo>
 
-        <CreateAccountContainer
-          className={
-            laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-          }
-        >
-          <h1
-            style={{ paddingTop: "20px", textAlign: "center", color: "black" }}
-          >
-            Start Today!
-          </h1>
-
-          <InputContainer
-            className={
-              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-            }
-          >
-            <InputStyles
-              placeholder="First Name"
-              value={firstName}
-              onChange={(e) => {
-                setFirstName(e.target.value);
-              }}
-              onKeyDown={handleRegisterEnterKey}
-            />
-
-            {firstNameErr ? (
-              <ErrMessagePosition>{firstNameErr}</ErrMessagePosition>
-            ) : (
-              <></>
-            )}
-
-            <InputStyles
-              placeholder="Email"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              onKeyDown={handleRegisterEnterKey}
-            />
-
-            {emailErr ? (
-              <ErrMessagePosition>{emailErr}</ErrMessagePosition>
-            ) : (
-              <></>
-            )}
-
-            <InputStyles
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              onKeyDown={handleRegisterEnterKey}
-            />
-
-            {passwordErr ? (
-              <ErrMessagePosition>{passwordErr}</ErrMessagePosition>
-            ) : (
-              <></>
-            )}
-
-            <InputStyles
-              type="password"
-              placeholder="Confirm Password"
-              value={confirmPassword}
-              onChange={(e) => {
-                setConfirmPassword(e.target.value);
-              }}
-              onKeyDown={handleRegisterEnterKey}
-            />
-
-            {confirmPasswordErr ? (
-              <ErrMessagePosition>{confirmPasswordErr}</ErrMessagePosition>
-            ) : (
-              <></>
-            )}
-
-            <RegisterBtn onClick={handleRegister}>REGISTER</RegisterBtn>
-
-            <div
-              style={{
-                padding: "0 30px",
-                marginTop: firstNameErr
-                  ? "-10px"
-                  : emailErr
-                  ? "-10px"
-                  : passwordErr
-                  ? "-10px"
-                  : confirmPasswordErr
-                  ? "-10px"
-                  : "0",
-              }}
+        <ReactCardFlip isFlipped={flip} flipDirection="vertical">
+          <CardContainer key="front" style={{ boxShadow: "none" }}>
+            <CreateAccountContainer
+              className={
+                laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+              }
             >
-              Already have an account? <Link to="/login">Log in</Link>
-            </div>
-          </InputContainer>
-        </CreateAccountContainer>
+              <h1
+                style={{
+                  paddingTop: "20px",
+                  textAlign: "center",
+                  color: "black",
+                }}
+              >
+                Start Today!
+              </h1>
+
+              <InputContainer
+                className={
+                  laptopOrDesktop
+                    ? "desktop"
+                    : mobileTablet
+                    ? "tablet"
+                    : "phone"
+                }
+              >
+                <InputStyles
+                  placeholder="First Name"
+                  value={firstName}
+                  onChange={(e) => {
+                    setFirstName(e.target.value);
+                  }}
+                  onKeyDown={handleRegisterEnterKey}
+                />
+
+                {firstNameErr ? (
+                  <ErrMessagePosition>{firstNameErr}</ErrMessagePosition>
+                ) : (
+                  <></>
+                )}
+
+                <InputStyles
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  onKeyDown={handleRegisterEnterKey}
+                />
+
+                {emailErr ? (
+                  <ErrMessagePosition>{emailErr}</ErrMessagePosition>
+                ) : (
+                  <></>
+                )}
+
+                <InputStyles
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  onKeyDown={handleRegisterEnterKey}
+                />
+
+                {passwordErr ? (
+                  <ErrMessagePosition>{passwordErr}</ErrMessagePosition>
+                ) : (
+                  <></>
+                )}
+
+                <InputStyles
+                  type="password"
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value);
+                  }}
+                  onKeyDown={handleRegisterEnterKey}
+                />
+
+                {confirmPasswordErr ? (
+                  <ErrMessagePosition>{confirmPasswordErr}</ErrMessagePosition>
+                ) : (
+                  <></>
+                )}
+
+                <RegisterBtn onClick={handleRegister}>REGISTER</RegisterBtn>
+
+                <div
+                // style={{
+                //   padding: "0 30px",
+                //   marginTop: firstNameErr
+                //     ? "-10px"
+                //     : emailErr
+                //     ? "-10px"
+                //     : passwordErr
+                //     ? "-10px"
+                //     : confirmPasswordErr
+                //     ? "-10px"
+                //     : "0",
+                // }}
+                >
+                  Already have an account?
+                  <FlipCardBtn onClick={handleFlip}>Log in</FlipCardBtn>
+                </div>
+              </InputContainer>
+            </CreateAccountContainer>
+          </CardContainer>
+
+          <CardContainer key="back" style={{ boxShadow: "none" }}>
+            <CreateAccountContainer
+              style={{
+                marginTop: emailLoginError
+                  ? "-30px"
+                  : passwordLoginError
+                  ? "-30px"
+                  : flip
+                  ? "0"
+                  : "100px",
+              }}
+              className={
+                laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+              }
+            >
+              <h1 style={{ textAlign: "center", color: "white" }}>Log in</h1>
+              <InputContainer
+                className={
+                  laptopOrDesktop
+                    ? "desktop"
+                    : mobileTablet
+                    ? "tablet"
+                    : "phone"
+                }
+              >
+                <InputStyles
+                  placeholder="Email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  onKeyDown={handleLoginEnterKey}
+                />
+
+                {emailLoginError ? (
+                  <ErrMessagePosition>{emailLoginError}</ErrMessagePosition>
+                ) : (
+                  <></>
+                )}
+
+                <InputStyles
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                  onKeyDown={handleLoginEnterKey}
+                />
+
+                {passwordLoginError ? (
+                  <ErrMessagePosition>{passwordLoginError}</ErrMessagePosition>
+                ) : (
+                  <></>
+                )}
+
+                {/* <ForgotPasswordStyles>Forgot password?</ForgotPasswordStyles> */}
+                <LoginBtn onClick={handleLogin}>LOG IN</LoginBtn>
+                <div
+                  style={{
+                    padding: "0 30px",
+                    marginTop: mobileTablet ? "0" : "-10px",
+                  }}
+                >
+                  Don't have an account?
+                  <FlipCardBtn onClick={handleFlip}>Register</FlipCardBtn>
+                </div>
+              </InputContainer>
+            </CreateAccountContainer>
+          </CardContainer>
+        </ReactCardFlip>
 
         <HomeVideo
+          style={{
+            marginTop: flip
+              ? "-30px"
+              : firstNameErr
+              ? "104px"
+              : emailErr
+              ? "104px"
+              : passwordErr
+              ? "104px"
+              : confirmPasswordErr
+              ? "104px"
+              : "89px",
+          }}
           className={
             laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
           }

@@ -218,8 +218,8 @@ const App = () => {
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [emailLoginError, setEmailLoginError] = useState("");
+  const [passwordLoginError, setPasswordLoginError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -240,21 +240,26 @@ const App = () => {
     setPasswordError("");
   };
 
+  const clearLoginErrors = () => {
+    setEmailLoginError("");
+    setPasswordLoginError("");
+  };
+
   const handleLogin = () => {
-    clearErrors();
+    clearLoginErrors();
     fire
       .auth()
       .signInWithEmailAndPassword(email, password)
       .catch((err) => {
         switch (err.code) {
           case "auth/invalid-email":
-            setEmailError("Invalid Email");
+            setEmailLoginError("Invalid Email");
             break;
           case "auth/user-not-found":
-            setEmailError("User not found");
+            setEmailLoginError("User not found");
             break;
           case "auth/wrong-password":
-            setPasswordError("Wrong password");
+            setPasswordLoginError("Wrong password");
             break;
         }
       });
@@ -321,8 +326,10 @@ const App = () => {
             handleSignUp={handleSignUp}
             hasAccount={hasAccount}
             setHasAccount={setHasAccount}
-            emailError={emailError}
-            passwordError={passwordError}
+            emailLoginError={emailLoginError}
+            passwordLoginError={passwordLoginError}
+            setEmailLoginError={setEmailLoginError}
+            setPasswordLoginError={setPasswordLoginError}
           />
         )}
       </div>
