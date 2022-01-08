@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import fire from "../fire";
 import Modal from "react-modal";
@@ -11,6 +11,9 @@ import ReactCardFlip from "react-card-flip";
 import { FlipCardBtn } from "../globalStyles";
 import * as Scroll from "react-scroll";
 import { animateScroll as scroll } from "react-scroll";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import quotes from "./Quotes.json";
 
 const NavbarLinks = styled.div`
   padding-top: 10px;
@@ -263,6 +266,33 @@ const ErrMessagePosition = styled.div`
   color: red;
 `;
 
+const CarouselResponsive = styled(Carousel)`
+  .control-dots {
+    margin-bottom: 70px;
+  }
+  .control-arrow {
+    :hover {
+      background: transparent;
+      pointer-events: none;
+    }
+  }
+  .carousel-status {
+    font-size: 0;
+  }
+  &.tablet {
+    width: 350px;
+    .control-dots {
+      margin-bottom: 81px;
+    }
+  }
+  &.phone {
+    width: 160px;
+    .control-dots {
+      margin-bottom: 76px;
+    }
+  }
+`;
+
 // const customStyles = {
 //   content: {
 //     top: '50%',
@@ -459,10 +489,10 @@ const SignInOrSignUp = (props) => {
                 laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
               }
             >
-              <p>
-                “A budget doesn’t limit your freedom; it gives you freedom.”
-              </p>
-              <QuoteAuthor
+              <CarouselResponsive
+                autoPlay
+                interval={5000}
+                infiniteLoop
                 className={
                   laptopOrDesktop
                     ? "desktop"
@@ -471,12 +501,75 @@ const SignInOrSignUp = (props) => {
                     : "phone"
                 }
               >
-                – Rachel Cruze
-              </QuoteAuthor>
+                {quotes &&
+                  quotes.map((values) => {
+                    return (
+                      <div>
+                        <p>{values.quote}</p>
+                        <QuoteAuthor
+                          className={
+                            laptopOrDesktop
+                              ? "desktop"
+                              : mobileTablet
+                              ? "tablet"
+                              : "phone"
+                          }
+                        >
+                          {values.author}
+                        </QuoteAuthor>
+                      </div>
+                    );
+                  })}
+              </CarouselResponsive>
+              {/* <Carousel>
+                <div>
+                  <p>
+                    “A budget doesn’t limit your freedom; it gives you freedom.”
+                  </p>
+                  <QuoteAuthor
+                    className={
+                      laptopOrDesktop
+                        ? "desktop"
+                        : mobileTablet
+                        ? "tablet"
+                        : "phone"
+                    }
+                  >
+                    – Rachel Cruze
+                  </QuoteAuthor>
+                </div>
+                <div>
+                  <p>Quote 2</p>
+                  <QuoteAuthor
+                    className={
+                      laptopOrDesktop
+                        ? "desktop"
+                        : mobileTablet
+                        ? "tablet"
+                        : "phone"
+                    }
+                  >
+                    – mike hunt
+                  </QuoteAuthor>
+                </div>
+                <div>
+                  <p>Quote 3</p>
+                  <QuoteAuthor
+                    className={
+                      laptopOrDesktop
+                        ? "desktop"
+                        : mobileTablet
+                        ? "tablet"
+                        : "phone"
+                    }
+                  >
+                    – ben dover
+                  </QuoteAuthor>
+                </div>
+              </Carousel> */}
             </QuotesStyles>
           </div>
         </NavbarLogo>
-
         <ReactCardFlip isFlipped={flip} flipDirection="vertical">
           <CardContainer key="front" style={{ boxShadow: "none" }}>
             <CreateAccountContainer
