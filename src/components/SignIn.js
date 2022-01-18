@@ -555,7 +555,7 @@ const SignInOrSignUp = (props) => {
             >
               <CarouselResponsive
                 autoPlay
-                interval={5000}
+                interval={3500}
                 infiniteLoop
                 className={
                   laptopOrDesktop
