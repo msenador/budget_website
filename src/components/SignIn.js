@@ -305,7 +305,7 @@ const ErrMessagePosition = styled.div`
 
 const CarouselResponsive = styled(Carousel)`
   .control-dots {
-    margin-bottom: 70px;
+    margin-bottom: 95px;
   }
   .control-arrow {
     :hover {
