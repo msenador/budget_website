@@ -107,21 +107,46 @@ const HomeVideo = styled.video`
   position: sticky;
   z-index: -1;
   margin-top: 124px;
+  ${({ flip }) =>
+    flip &&
+    `
+    margin-top: -30px;
+  `}
+  ${({ firstNameErr, emailErr, passwordErr, confirmPasswordErr }) =>
+    (firstNameErr || emailErr || passwordErr || confirmPasswordErr) &&
+    `
+    margin-top: 139px;
+  `}
   &.desktop {
     height: 600px;
-    ${({ firstNameErr, emailErr, passwordErr, confirmPasswordErr }) =>
-      (firstNameErr || emailErr || passwordErr || confirmPasswordErr) &&
+    ${({ flip }) =>
+      flip &&
       `
-    margin-top: 139px;
+    margin-top: -23px;
+  `}
+    ${({ emailLoginError, passwordLoginError }) =>
+      (emailLoginError || passwordLoginError) &&
+      `
+    margin-top: 7px;
   `}
   }
 
   &.tablet {
     height: 500px;
+    ${({ emailLoginError, passwordLoginError }) =>
+      (emailLoginError || passwordLoginError) &&
+      `
+    margin-top: -18px;
+  `}
   }
 
   &.phone {
     height: 300px;
+    ${({ emailLoginError, passwordLoginError }) =>
+      (emailLoginError || passwordLoginError) &&
+      `
+    margin-top: -23px;
+  `}
   }
 `;
 
@@ -204,14 +229,6 @@ const FooterContainer = styled.div`
   padding-bottom: 20px;
 `;
 
-// const RegisterContainer = styled.div`
-//   height: 100vh;
-//   background-size: cover;
-//   display: flex;
-//   justify-content: space-around;
-//   background-image: url("./createAccount.png");
-// `;
-
 const CreateAccountContainer = styled.div`
   height: 480px;
   background-color: #84bc9c;
@@ -220,13 +237,26 @@ const CreateAccountContainer = styled.div`
   margin-top: 170px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+  ${({ flip }) =>
+    flip &&
+    `
+    margin-top: 0;
+  `}
   &.desktop {
+    ${({ flip }) =>
+      flip &&
+      `
+    margin-top: 20px;
+  `}
+    ${({ emailLoginError, passwordLoginError }) =>
+      (emailLoginError || passwordLoginError) &&
+      `
+    margin-top: 50px;
+  `}
   }
   &.tablet {
-    margin-top: 100px;
   }
   &.phone {
-    margin-top: 100px;
   }
 `;
 
@@ -690,15 +720,9 @@ const SignInOrSignUp = (props) => {
 
           <CardContainer key="back" style={{ boxShadow: "none" }}>
             <CreateAccountContainer
-              style={{
-                marginTop: emailLoginError
-                  ? "-30px"
-                  : passwordLoginError
-                  ? "-30px"
-                  : flip
-                  ? "0"
-                  : "100px",
-              }}
+              flip={flip}
+              emailLoginError={emailLoginError}
+              passwordLoginError={passwordLoginError}
               className={
                 laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
               }
@@ -768,6 +792,9 @@ const SignInOrSignUp = (props) => {
           emailErr={emailErr}
           passwordErr={passwordErr}
           confirmPasswordErr={confirmPasswordErr}
+          flip={flip}
+          emailLoginError={emailLoginError}
+          passwordLoginError={passwordLoginError}
           data-testid="main-video"
           loop
           src="./lightBulbHand.mp4"
