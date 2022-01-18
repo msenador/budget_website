@@ -419,6 +419,10 @@ const SignInOrSignUp = (props) => {
     scroll.scrollToTop();
   };
 
+  const scrollBottom = () => {
+    scroll.scrollToBottom();
+  };
+
   const handleFlip = () => {
     setFlip(!flip);
   };
@@ -517,13 +521,19 @@ const SignInOrSignUp = (props) => {
     }
   };
 
+  const handleLoginLink = () => {
+    if (flip === false) {
+      setFlip(!flip);
+    }
+  };
+
   return (
     <>
       <Router>
         <NavbarLinks>
           <Switch>
             <Route>
-              <LinkStyles to="/contactus">Contact Us</LinkStyles>
+              <LinkStyles onClick={scrollBottom}>Contact Us</LinkStyles>
             </Route>
           </Switch>
           <Switch>
@@ -531,7 +541,7 @@ const SignInOrSignUp = (props) => {
               {user ? (
                 <LinkStyles onClick={handleLogout}>Log out</LinkStyles>
               ) : (
-                <LinkStyles to="/">Log in</LinkStyles>
+                <LinkStyles onClick={handleLoginLink}>Log in</LinkStyles>
               )}
             </Route>
           </Switch>
