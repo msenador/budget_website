@@ -107,10 +107,11 @@ const HomeVideo = styled.video`
   position: sticky;
   z-index: -1;
   margin-top: 124px;
+  box-shadow: 1px 1px 20px -1px grey;
   ${({ flip }) =>
     flip &&
     `
-    margin-top: -30px;
+    margin-top: -8px;
   `}
   ${({ firstNameErr, emailErr, passwordErr, confirmPasswordErr }) =>
     (firstNameErr || emailErr || passwordErr || confirmPasswordErr) &&
@@ -122,30 +123,40 @@ const HomeVideo = styled.video`
     ${({ flip }) =>
       flip &&
       `
-    margin-top: -23px;
+    margin-top: -8px;
   `}
     ${({ emailLoginError, passwordLoginError }) =>
       (emailLoginError || passwordLoginError) &&
       `
-    margin-top: 7px;
+    margin-top: 22px;
   `}
   }
 
   &.tablet {
+    ${({ flip }) =>
+      flip &&
+      `
+    margin-top: 2px;
+  `}
     height: 500px;
     ${({ emailLoginError, passwordLoginError }) =>
       (emailLoginError || passwordLoginError) &&
       `
-    margin-top: -18px;
+    margin-top: 17px;
   `}
   }
 
   &.phone {
     height: 300px;
+    ${({ flip }) =>
+      flip &&
+      `
+    margin-top: -23px;
+  `}
     ${({ emailLoginError, passwordLoginError }) =>
       (emailLoginError || passwordLoginError) &&
       `
-    margin-top: -23px;
+    margin-top: -8px;
   `}
   }
 `;
@@ -255,6 +266,11 @@ const CreateAccountContainer = styled.div`
   `}
   }
   &.tablet {
+    ${({ flip }) =>
+      flip &&
+      `
+    margin-top: 40px;
+  `}
   }
   &.phone {
   }
@@ -328,6 +344,19 @@ const CarouselResponsive = styled(Carousel)`
       margin-bottom: 76px;
     }
   }
+`;
+
+const ForgotPasswordDiv = styled.div`
+  width: 80%;
+  margin-top: -30px;
+`;
+const ForgotPasswordBtn = styled.button`
+  float: right;
+  background: none;
+  border: none;
+  color: navajowhite;
+  cursor: pointer;
+  text-decoration: underline;
 `;
 
 // const customStyles = {
@@ -467,12 +496,10 @@ const SignInOrSignUp = (props) => {
       .auth()
       .sendPasswordResetEmail(email)
       .then(function () {
-        setForgotPasswordMessage("CHECK YOUR EMAIL TO RESET YOUR PASSWORD");
-        openModal();
+        alert("CHECK YOUR EMAIL TO RESET YOUR PASSWORD");
       })
       .catch(function (err) {
-        setForgotPasswordMessage("EMAIL INVALID OR NOT FOUND");
-        openModal();
+        alert("EMAIL INVALID OR NOT FOUND");
       });
   };
 
@@ -762,8 +789,16 @@ const SignInOrSignUp = (props) => {
                   onKeyDown={handleLoginEnterKey}
                 />
 
+                <ForgotPasswordDiv>
+                  <ForgotPasswordBtn onClick={handleForgotPassword}>
+                    Forgot Password
+                  </ForgotPasswordBtn>
+                </ForgotPasswordDiv>
+
                 {passwordLoginError ? (
-                  <ErrMessagePosition>{passwordLoginError}</ErrMessagePosition>
+                  <ErrMessagePosition style={{ marginTop: "-60px" }}>
+                    {passwordLoginError}
+                  </ErrMessagePosition>
                 ) : (
                   <></>
                 )}
