@@ -816,29 +816,21 @@ const SignInOrSignUp = (props) => {
             <div>Be free.</div>
             <div>Be ready.</div>
           </Slogan>
-          <Link
-            to="/register"
+          <RegisterBtnPosition
+            className={
+              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+            }
             style={{ textDecoration: "none", color: "black" }}
           >
-            <RegisterBtnPosition
+            <SignupButton
+              onClick={scrollTop}
               className={
                 laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
               }
             >
-              <SignupButton
-                onClick={scrollTop}
-                className={
-                  laptopOrDesktop
-                    ? "desktop"
-                    : mobileTablet
-                    ? "tablet"
-                    : "phone"
-                }
-              >
-                Register Now!
-              </SignupButton>
-            </RegisterBtnPosition>
-          </Link>
+              Register Now!
+            </SignupButton>
+          </RegisterBtnPosition>
         </Container>
         <AboutUsContainer
           className={
