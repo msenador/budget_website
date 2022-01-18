@@ -106,9 +106,14 @@ const HomeVideo = styled.video`
   width: 100%;
   position: sticky;
   z-index: -1;
-  margin-top: 100px;
+  margin-top: 124px;
   &.desktop {
     height: 600px;
+    ${({ firstNameErr, emailErr, passwordErr, confirmPasswordErr }) =>
+      (firstNameErr || emailErr || passwordErr || confirmPasswordErr) &&
+      `
+    margin-top: 139px;
+  `}
   }
 
   &.tablet {
@@ -212,14 +217,16 @@ const CreateAccountContainer = styled.div`
   background-color: #84bc9c;
   box-shadow: 1px 1px 20px -1px grey;
   width: 100%;
-  margin-top: 100px;
+  margin-top: 170px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   &.desktop {
   }
   &.tablet {
+    margin-top: 100px;
   }
   &.phone {
+    margin-top: 100px;
   }
 `;
 
@@ -754,22 +761,13 @@ const SignInOrSignUp = (props) => {
         </ReactCardFlip>
 
         <HomeVideo
-          style={{
-            marginTop: flip
-              ? "-30px"
-              : firstNameErr
-              ? "104px"
-              : emailErr
-              ? "104px"
-              : passwordErr
-              ? "104px"
-              : confirmPasswordErr
-              ? "104px"
-              : "89px",
-          }}
           className={
             laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
           }
+          firstNameErr={firstNameErr}
+          emailErr={emailErr}
+          passwordErr={passwordErr}
+          confirmPasswordErr={confirmPasswordErr}
           data-testid="main-video"
           loop
           src="./lightBulbHand.mp4"
