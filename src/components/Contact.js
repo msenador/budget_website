@@ -45,6 +45,10 @@ const InputStyles = styled.input`
   background: transparent;
   color: white;
   height: 20px;
+  &.phone {
+    height: 30px;
+    width: 100%;
+  }
 `;
 
 const TextAreaStyles = styled.textarea`
@@ -53,6 +57,10 @@ const TextAreaStyles = styled.textarea`
   background: transparent;
   color: white;
   border-radius: 5px;
+  &.phone {
+    height: 150px;
+    width: 100%;
+  }
 `;
 
 const SendBtn = styled.button`
@@ -73,6 +81,11 @@ const SendBtn = styled.button`
 
   :active {
     top: 4px;
+  }
+  &.phone {
+    width: 100%;
+    height: 40px;
+    margin-top: 20px;
   }
 `;
 
@@ -128,10 +141,32 @@ const Contact = () => {
           i.e. partnerships, questions, general support
         </div>
         <InputPositions>
-          <InputStyles placeholder="Name" />
-          <InputStyles placeholder="Email" />
-          <TextAreaStyles style={{ height: "100px" }} placeholder="Message" />
-          <SendBtn>SEND</SendBtn>
+          <InputStyles
+            className={
+              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+            }
+            placeholder="Name"
+          />
+          <InputStyles
+            className={
+              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+            }
+            placeholder="Email"
+          />
+          <TextAreaStyles
+            className={
+              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+            }
+            style={{ height: "100px" }}
+            placeholder="Message"
+          />
+          <SendBtn
+            className={
+              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+            }
+          >
+            SEND
+          </SendBtn>
         </InputPositions>
       </ContactUsStyles>
     </Container>
