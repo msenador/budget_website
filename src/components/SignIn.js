@@ -37,7 +37,7 @@ const LinkStyles = styled(Link)`
 const NavbarLogo = styled.div`
   display: flex;
   width: 100%;
-  margin-top: -50px;
+  margin-top: -30px;
   height: 125px;
   justify-content: space-around;
 `;
