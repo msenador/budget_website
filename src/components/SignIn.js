@@ -235,9 +235,8 @@ const AboutUsContainer = styled.div`
 `;
 
 const FooterContainer = styled.div`
-  // height: 150px;
-  // background-color: #087e8b;
-  padding-bottom: 20px;
+  background-color: #84bc9c;
+  height: 50px;
 `;
 
 const CreateAccountContainer = styled.div`
@@ -547,15 +546,13 @@ const SignInOrSignUp = (props) => {
           </Switch>
         </NavbarLinks>
         <NavbarLogo>
-          <Link to="/">
-            <Logo
-              data-testid="home-logo"
-              className={
-                laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-              }
-              src="logo3.png"
-            />
-          </Link>
+          <Logo
+            data-testid="home-logo"
+            className={
+              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+            }
+            src="logo3.png"
+          />
           <div>
             <QuotesStyles
               data-testid="quotes"
@@ -595,52 +592,6 @@ const SignInOrSignUp = (props) => {
                     );
                   })}
               </CarouselResponsive>
-              {/* <Carousel>
-                <div>
-                  <p>
-                    “A budget doesn’t limit your freedom; it gives you freedom.”
-                  </p>
-                  <QuoteAuthor
-                    className={
-                      laptopOrDesktop
-                        ? "desktop"
-                        : mobileTablet
-                        ? "tablet"
-                        : "phone"
-                    }
-                  >
-                    – Rachel Cruze
-                  </QuoteAuthor>
-                </div>
-                <div>
-                  <p>Quote 2</p>
-                  <QuoteAuthor
-                    className={
-                      laptopOrDesktop
-                        ? "desktop"
-                        : mobileTablet
-                        ? "tablet"
-                        : "phone"
-                    }
-                  >
-                    – mike hunt
-                  </QuoteAuthor>
-                </div>
-                <div>
-                  <p>Quote 3</p>
-                  <QuoteAuthor
-                    className={
-                      laptopOrDesktop
-                        ? "desktop"
-                        : mobileTablet
-                        ? "tablet"
-                        : "phone"
-                    }
-                  >
-                    – ben dover
-                  </QuoteAuthor>
-                </div>
-              </Carousel> */}
             </QuotesStyles>
           </div>
         </NavbarLogo>
@@ -734,20 +685,7 @@ const SignInOrSignUp = (props) => {
 
                 <RegisterBtn onClick={handleRegister}>REGISTER</RegisterBtn>
 
-                <div
-                // style={{
-                //   padding: "0 30px",
-                //   marginTop: firstNameErr
-                //     ? "-10px"
-                //     : emailErr
-                //     ? "-10px"
-                //     : passwordErr
-                //     ? "-10px"
-                //     : confirmPasswordErr
-                //     ? "-10px"
-                //     : "0",
-                // }}
-                >
+                <div>
                   Already have an account?
                   <FlipCardBtn onClick={handleFlip}>Log in</FlipCardBtn>
                 </div>
@@ -813,7 +751,6 @@ const SignInOrSignUp = (props) => {
                   <></>
                 )}
 
-                {/* <ForgotPasswordStyles>Forgot password?</ForgotPasswordStyles> */}
                 <LoginBtn onClick={handleLogin}>LOG IN</LoginBtn>
                 <div
                   style={{
@@ -884,11 +821,8 @@ const SignInOrSignUp = (props) => {
         >
           <AboutUs />
         </AboutUsContainer>
+        <Contact />
         <FooterContainer />
-
-        <Route path="/contactus">
-          <Contact />
-        </Route>
       </Router>
     </>
   );

@@ -1949,6 +1949,16 @@
   "resolved" "https://registry.npmjs.org/@protobufjs/utf8/-/utf8-1.1.0.tgz"
   "version" "1.1.0"
 
+"@rakered/email@^1.5.0":
+  "integrity" "sha512-4kUz20TYICjUfS4Ms7HHEPbWSLcvkD7Of9/4RXVoEWGXl0mjSfIF7+v2pbm6DMmspWefNmQnzdG0WhZD+otTMw=="
+  "resolved" "https://registry.npmjs.org/@rakered/email/-/email-1.5.0.tgz"
+  "version" "1.5.0"
+  dependencies:
+    "exit-hook" "github:smeijer-forks/exit-hook"
+    "nodemailer" "^6.4.17"
+    "react" "^17.0.1"
+    "react-dom" "^17.0.1"
+
 "@rollup/plugin-node-resolve@^7.1.1":
   "integrity" "sha512-RxtSL3XmdTAE2byxekYLnx+98kEUOrPHF/KRVjLH+DEIHy6kjIw7YINQzn+NXiH/NTrQLAwYs0GWB+csWygA9Q=="
   "resolved" "https://registry.npmjs.org/@rollup/plugin-node-resolve/-/plugin-node-resolve-7.1.3.tgz"
@@ -5740,6 +5750,10 @@
   "resolved" "https://registry.npmjs.org/exenv/-/exenv-1.2.2.tgz"
   "version" "1.2.2"
 
+"exit-hook@github:smeijer-forks/exit-hook":
+  "resolved" "git+ssh://git@github.com/smeijer-forks/exit-hook.git#b506bb4672d59379f8e6e580d38f1efd29e33cc4"
+  "version" "2.2.1"
+
 "exit@^0.1.2":
   "integrity" "sha1-BjJjj42HfMghB9MKD/8aF8uhzQw="
   "resolved" "https://registry.npmjs.org/exit/-/exit-0.1.2.tgz"
@@ -8833,6 +8847,11 @@
   "integrity" "sha512-uW7fodD6pyW2FZNZnp/Z3hvWKeEW1Y8R1+1CnErE8cXFXzl5blBOoVB41CvMer6P6Q0S5FXDwcHgFd1Wj0U9zg=="
   "resolved" "https://registry.npmjs.org/node-releases/-/node-releases-1.1.73.tgz"
   "version" "1.1.73"
+
+"nodemailer@^6.4.17":
+  "integrity" "sha512-Dz7zVwlef4k5R71fdmxwR8Q39fiboGbu3xgswkzGwczUfjp873rVxt1O46+Fh0j1ORnAC6L9+heI8uUpO6DT7Q=="
+  "resolved" "https://registry.npmjs.org/nodemailer/-/nodemailer-6.7.2.tgz"
+  "version" "6.7.2"
 
 "normalize-package-data@^2.3.2", "normalize-package-data@^2.5.0":
   "integrity" "sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA=="
