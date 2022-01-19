@@ -14,6 +14,7 @@ import { animateScroll as scroll } from "react-scroll";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import quotes from "./Quotes.json";
+import { Icon } from "@iconify/react";
 
 const NavbarLinks = styled.div`
   padding-top: 10px;
@@ -236,7 +237,12 @@ const AboutUsContainer = styled.div`
 
 const FooterContainer = styled.div`
   background-color: #84bc9c;
-  height: 50px;
+  height: 20px;
+  font-style: italic;
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  padding: 20px;
 `;
 
 const CreateAccountContainer = styled.div`
@@ -822,7 +828,15 @@ const SignInOrSignUp = (props) => {
           <AboutUs />
         </AboutUsContainer>
         <Contact />
-        <FooterContainer />
+        <FooterContainer>
+          <div>
+            BudgetStash{" "}
+            <span>
+              <Icon icon="charm:copyright" color="white" />
+            </span>{" "}
+            2022
+          </div>
+        </FooterContainer>
       </Router>
     </>
   );
