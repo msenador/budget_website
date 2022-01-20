@@ -40,7 +40,7 @@ const InputPositions = styled.div`
 `;
 
 const InputStyles = styled.input`
-  width: 80%;
+  width: 100%;
   border-radius: 5px;
   background: transparent;
   color: white;
@@ -52,7 +52,7 @@ const InputStyles = styled.input`
 `;
 
 const TextAreaStyles = styled.textarea`
-  width: 80%;
+  width: 100%;
   resize: none;
   background: transparent;
   color: white;
@@ -127,7 +127,7 @@ const Contact = () => {
             marginTop: "10px",
           }}
         >
-          - Morian Senador, BudgetStash CEO
+          - Morian Senador, Founder
         </div>
       </MissionStatementStyles>
       {mobilePhone ? <MobileHRLine /> : <hr />}
@@ -137,7 +137,7 @@ const Contact = () => {
         }
       >
         <h3 style={{ fontStyle: "italic", marginBottom: "0" }}>Contact Us</h3>
-        <div style={{ fontSize: "10px", marginBottom: "20px" }}>
+        <div style={{ fontSize: "10px", marginBottom: "20px", color: "gray" }}>
           i.e. partnerships, questions, general support
         </div>
         <InputPositions>
