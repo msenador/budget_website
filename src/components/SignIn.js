@@ -787,7 +787,6 @@ const SignInOrSignUp = (props) => {
           loop
           src="./lightBulbHand.mp4"
           autoPlay
-          muted
         />
         <Container
           className={
