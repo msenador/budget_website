@@ -157,7 +157,7 @@ const HomeVideo = styled.video`
     ${({ emailLoginError, passwordLoginError }) =>
       (emailLoginError || passwordLoginError) &&
       `
-    margin-top: -8px;
+    margin-top: 40px;
   `}
   }
 `;
@@ -278,6 +278,11 @@ const CreateAccountContainer = styled.div`
   `}
   }
   &.phone {
+    ${({ emailLoginError, passwordLoginError }) =>
+      (emailLoginError || passwordLoginError) &&
+      `
+  margin-top: 60px;
+`}
   }
 `;
 
@@ -784,10 +789,9 @@ const SignInOrSignUp = (props) => {
           emailLoginError={emailLoginError}
           passwordLoginError={passwordLoginError}
           data-testid="main-video"
-          loop={true}
+          loop
           src="./lightBulbHand.mp4"
-          autoPlay={true}
-          type="video/mp4"
+          autoPlay
         />
         <Container
           className={
