@@ -367,7 +367,7 @@ const CarouselResponsive = styled(Carousel)`
   &.phone {
     width: 160px;
     .control-dots {
-      margin-bottom: 78px;
+      margin-bottom: 80px;
     }
   }
 `;
