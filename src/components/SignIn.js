@@ -153,7 +153,7 @@ const HomeVideo = styled.video`
     ${({ flip }) =>
       flip &&
       `
-    margin-top: -23px;
+    margin-top: 5px;
   `}
     ${({ emailLoginError, passwordLoginError }) =>
       (emailLoginError || passwordLoginError) &&
@@ -284,6 +284,11 @@ const CreateAccountContainer = styled.div`
   `}
   }
   &.phone {
+    ${({ flip }) =>
+      flip &&
+      `
+  margin-top: 20px;
+`}
     ${({ emailLoginError, passwordLoginError }) =>
       (emailLoginError || passwordLoginError) &&
       `
