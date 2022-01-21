@@ -148,7 +148,7 @@ const HomeVideo = styled.video`
   }
 
   &.phone {
-    margin-top: 134px;
+    margin-top: 133px;
     height: 300px;
     ${({ flip }) =>
       flip &&
