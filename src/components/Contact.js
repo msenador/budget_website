@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
+import emailjs from "@emailjs/browser";
 
 const Container = styled.div`
   height: 350px;
@@ -103,6 +104,27 @@ const Contact = () => {
   const laptopOrDesktop = useMediaQuery({
     query: "(min-width: 1025px)",
   });
+  const form = useRef(null);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_1iy93ml",
+        "template_xyptqb9",
+        form.current,
+        "user_e3T93vvxc8HW0qDwv0GLU"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
 
   return (
     <Container
@@ -140,34 +162,40 @@ const Contact = () => {
         <div style={{ fontSize: "10px", marginBottom: "20px", color: "gray" }}>
           i.e. partnerships, questions, general support
         </div>
-        <InputPositions>
-          <InputStyles
-            className={
-              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-            }
-            placeholder="Name"
-          />
-          <InputStyles
-            className={
-              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-            }
-            placeholder="Email"
-          />
-          <TextAreaStyles
-            className={
-              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-            }
-            style={{ height: "100px" }}
-            placeholder="Message"
-          />
-          <SendBtn
-            className={
-              laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
-            }
-          >
-            SEND
-          </SendBtn>
-        </InputPositions>
+        <form ref={form}>
+          <InputPositions>
+            <InputStyles
+              className={
+                laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+              }
+              placeholder="Email"
+              name="customerEmail"
+            />
+            <InputStyles
+              className={
+                laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+              }
+              placeholder="emailSubject"
+              name="emailSubject"
+            />
+            <TextAreaStyles
+              className={
+                laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+              }
+              style={{ height: "100px" }}
+              placeholder="Message"
+              name="message"
+            />
+            <SendBtn
+              className={
+                laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
+              }
+              onClick={sendEmail}
+            >
+              SEND
+            </SendBtn>
+          </InputPositions>
+        </form>
       </ContactUsStyles>
     </Container>
   );
