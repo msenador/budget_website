@@ -157,7 +157,7 @@ const HomeVideo = styled.video`
     ${({ emailLoginError, passwordLoginError }) =>
       (emailLoginError || passwordLoginError) &&
       `
-    margin-top: 40px;
+    margin-top: 38px;
   `}
   }
 `;
