@@ -104,7 +104,7 @@ const AboutUs = () => {
           <Easy />
         </Content>
         <DonateBtnPositioning>
-          <DonateBtn>Donate Today!</DonateBtn>
+          <DonateBtn>Donate</DonateBtn>
         </DonateBtnPositioning>
       </div>
     </>
