@@ -349,11 +349,11 @@ const CarouselResponsive = styled(Carousel)`
   .control-dots {
     margin-bottom: 69px;
   }
-  .control-arrow {
-    :hover {
-      background: transparent;
-      pointer-events: none;
-    }
+  // .control-arrow {
+  //   :hover {
+  //     background: transparent;
+  //     pointer-events: none;
+  //   }
   }
   .carousel-status {
     font-size: 0;
@@ -367,7 +367,7 @@ const CarouselResponsive = styled(Carousel)`
   &.phone {
     width: 160px;
     .control-dots {
-      margin-bottom: 76px;
+      margin-bottom: 78px;
     }
   }
 `;
