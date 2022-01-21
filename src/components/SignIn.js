@@ -292,7 +292,7 @@ const CreateAccountContainer = styled.div`
     ${({ firstNameErr, emailErr, passwordErr, confirmPasswordErr }) =>
       (firstNameErr || emailErr || passwordErr || confirmPasswordErr) &&
       `
-height: 485px;
+height: 490px;
 `}
   }
 `;
