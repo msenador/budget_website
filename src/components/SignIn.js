@@ -827,9 +827,13 @@ const SignInOrSignUp = (props) => {
           emailLoginError={emailLoginError}
           passwordLoginError={passwordLoginError}
           data-testid="main-video"
-          loop
           src="./lightBulbHand.mp4"
-          autoPlay
+          autoPlay={true}
+          loop={true}
+          controls={false}
+          playsInline
+          muted
+          type="video/mp4"
         />
         <Container
           className={
