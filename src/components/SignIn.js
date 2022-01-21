@@ -160,6 +160,11 @@ const HomeVideo = styled.video`
       `
     margin-top: 38px;
   `}
+  ${({ firstNameErr, emailErr, passwordErr, confirmPasswordErr }) =>
+      (firstNameErr || emailErr || passwordErr || confirmPasswordErr) &&
+      `
+margin-top: 148px;
+`}
   }
 `;
 
@@ -283,6 +288,11 @@ const CreateAccountContainer = styled.div`
       (emailLoginError || passwordLoginError) &&
       `
   margin-top: 60px;
+`}
+    ${({ firstNameErr, emailErr, passwordErr, confirmPasswordErr }) =>
+      (firstNameErr || emailErr || passwordErr || confirmPasswordErr) &&
+      `
+height: 485px;
 `}
   }
 `;
