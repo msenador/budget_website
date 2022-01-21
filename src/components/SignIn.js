@@ -153,7 +153,7 @@ const HomeVideo = styled.video`
     ${({ flip }) =>
       flip &&
       `
-    margin-top: 5px;
+    margin-top: 3px;
   `}
     ${({ emailLoginError, passwordLoginError }) =>
       (emailLoginError || passwordLoginError) &&
