@@ -163,7 +163,7 @@ const HomeVideo = styled.video`
   ${({ firstNameErr, emailErr, passwordErr, confirmPasswordErr }) =>
       (firstNameErr || emailErr || passwordErr || confirmPasswordErr) &&
       `
-margin-top: 148px;
+margin-top: 140px;
 `}
   }
 `;
@@ -378,6 +378,16 @@ const ForgotPasswordBtn = styled.button`
   color: navajowhite;
   cursor: pointer;
   text-decoration: underline;
+`;
+
+const AlreadyHaveAccount = styled.div`
+  &.phone {
+    ${({ firstNameErr, emailErr, passwordErr, confirmPasswordErr }) =>
+      (firstNameErr || emailErr || passwordErr || confirmPasswordErr) &&
+      `
+margin-top: -15px;
+`}
+  }
 `;
 
 // const customStyles = {
@@ -707,10 +717,22 @@ const SignInOrSignUp = (props) => {
 
                 <RegisterBtn onClick={handleRegister}>REGISTER</RegisterBtn>
 
-                <div>
+                <AlreadyHaveAccount
+                  className={
+                    laptopOrDesktop
+                      ? "desktop"
+                      : mobileTablet
+                      ? "tablet"
+                      : "phone"
+                  }
+                  firstNameErr={firstNameErr}
+                  emailErr={emailErr}
+                  passwordErr={passwordErr}
+                  confirmPasswordErr={confirmPasswordErr}
+                >
                   Already have an account?
                   <FlipCardBtn onClick={handleFlip}>Log in</FlipCardBtn>
-                </div>
+                </AlreadyHaveAccount>
               </InputContainer>
             </CreateAccountContainer>
           </CardContainer>
