@@ -1,7 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
 import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Container = styled.div`
   height: 350px;
@@ -96,7 +98,24 @@ const MobileHRLine = styled.hr`
   margin-top: -250px;
 `;
 
+const ToastStyledContainer = styled(ToastContainer)`
+  // https://styled-components.com/docs/faqs#how-can-i-override-styles-with-higher-specificity
+  &&&.Toastify__toast-container {
+  }
+  .Toastify__toast {
+    background: gray;
+    color: white;
+  }
+  .Toastify__toast-body {
+  }
+  .Toastify__progress-bar {
+    background: #84bc9c;
+  }
+`;
+
 const Contact = () => {
+  const notify = () => toast("Email sent!");
+  const failEmailSent = () => toast("Failed to send email");
   const mobilePhone = useMediaQuery({ query: "(max-width: 540px)" });
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
@@ -108,22 +127,38 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
+    let customerEmail = form.current.customerEmail.value;
+    let emailSubject = form.current.emailSubject.value;
+    let message = form.current.message.value;
 
-    emailjs
-      .sendForm(
-        "service_1iy93ml",
-        "template_xyptqb9",
-        form.current,
-        "user_e3T93vvxc8HW0qDwv0GLU"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+    if (
+      !customerEmail ||
+      !customerEmail.includes("@") ||
+      !emailSubject ||
+      !message
+    ) {
+      failEmailSent();
+    } else if (customerEmail && emailSubject && message) {
+      notify();
+    }
+
+    // emailjs
+    //   .sendForm(
+    //     "service_1iy93ml",
+    //     "template_xyptqb9",
+    //     form.current,
+    //     "user_e3T93vvxc8HW0qDwv0GLU"
+    //   )
+    //   .then(
+    //     (result) => {
+    //       console.log(result.text);
+    //       notify();
+    //     },
+    //     (error) => {
+    //       console.log(error.text);
+    //       failEmailSent();
+    //     }
+    //   );
   };
 
   return (
@@ -194,6 +229,7 @@ const Contact = () => {
             >
               SEND
             </SendBtn>
+            <ToastStyledContainer />
           </InputPositions>
         </form>
       </ContactUsStyles>
