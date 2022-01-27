@@ -115,9 +115,9 @@ const ToastStyledContainer = styled(ToastContainer)`
 
 const Contact = () => {
   const notify = () =>
-    toast("Email sent!", { position: toast.POSITION.BOTTOM_LEFT });
+    toast("Email sent!", { position: toast.POSITION.BOTTOM_RIGHT });
   const failEmailSent = () =>
-    toast("Failed to send email", { position: toast.POSITION.BOTTOM_LEFT });
+    toast("Failed to send email", { position: toast.POSITION.BOTTOM_RIGHT });
   const mobilePhone = useMediaQuery({ query: "(max-width: 540px)" });
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
