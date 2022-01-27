@@ -114,8 +114,10 @@ const ToastStyledContainer = styled(ToastContainer)`
 `;
 
 const Contact = () => {
-  const notify = () => toast("Email sent!");
-  const failEmailSent = () => toast("Failed to send email");
+  const notify = () =>
+    toast("Email sent!", { position: toast.POSITION.BOTTOM_LEFT });
+  const failEmailSent = () =>
+    toast("Failed to send email", { position: toast.POSITION.BOTTOM_LEFT });
   const mobilePhone = useMediaQuery({ query: "(max-width: 540px)" });
   const mobileTablet = useMediaQuery({
     query: "(min-width: 541px)",
@@ -210,7 +212,7 @@ const Contact = () => {
               className={
                 laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
               }
-              placeholder="emailSubject"
+              placeholder="Subject"
               name="emailSubject"
             />
             <TextAreaStyles
