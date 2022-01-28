@@ -338,6 +338,10 @@ const LoginBtn = styled.button`
   cursor: pointer;
 `;
 
+const ModalBtn = styled(LoginBtn)`
+  width: 50%;
+`;
+
 const ErrMessagePosition = styled.div`
   margin-top: -30px;
   width: 80%;
@@ -395,19 +399,50 @@ margin-top: -15px;
   }
 `;
 
-// const customStyles = {
-//   content: {
-//     top: '50%',
-//     left: '50%',
-//     right: 'auto',
-//     bottom: 'auto',
-//     marginRight: '-50%',
-//     transform: 'translate(-50%, -50%)',
-//     borderRadius: '20px',
-//     border: 'none',
-//     padding: '100px'
-//   },
-// };
+const customStylesDesktop = {
+  content: {
+    background: "aliceblue",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "20px",
+    border: "none",
+    padding: "40px",
+  },
+};
+
+const customStylesMobile = {
+  content: {
+    background: "aliceblue",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "20px",
+    border: "none",
+    padding: "20px",
+  },
+};
+
+const customStylesTablet = {
+  content: {
+    background: "aliceblue",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "20px",
+    border: "none",
+    padding: "40px",
+  },
+};
 
 const SignInOrSignUp = (props) => {
   const {
@@ -444,9 +479,8 @@ const SignInOrSignUp = (props) => {
   const [emailErr, setEmailErr] = useState("");
   const [passwordErr, setPasswordErr] = useState("");
   const [confirmPasswordErr, setConfirmPasswordErr] = useState("");
-
-  //   const [modalIsOpen, setIsOpen] = useState(false);
-  //   const [forgotPasswordMessage, setForgotPasswordMessage] = useState('');
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [forgotPasswordValid, setForgotPasswordValid] = useState("");
 
   const scrollTop = () => {
     if (flip === true) {
@@ -536,10 +570,12 @@ const SignInOrSignUp = (props) => {
       .auth()
       .sendPasswordResetEmail(email)
       .then(function () {
-        alert("CHECK YOUR EMAIL TO RESET YOUR PASSWORD");
+        setForgotPasswordValid(true);
+        openModal();
       })
       .catch(function (err) {
-        alert("EMAIL INVALID OR NOT FOUND");
+        setForgotPasswordValid(false);
+        openModal();
       });
   };
 
@@ -883,6 +919,95 @@ const SignInOrSignUp = (props) => {
             2022
           </div>
         </FooterContainer>
+        {laptopOrDesktop && (
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStylesDesktop}
+            contentLabel="Example Modal"
+          >
+            {forgotPasswordValid ? (
+              <div style={{ textAlign: "center" }}>
+                <h1>Check your email</h1>
+                <h4>
+                  We sent you an email with instructions to reset your password.
+                </h4>
+                <div style={{ fontSize: "13px" }}>
+                  If you haven't recieved this email within a few minutes,
+                  please check your spam folder.
+                </div>
+                <ModalBtn style={{ marginTop: "40px" }} onClick={closeModal}>
+                  OK
+                </ModalBtn>
+              </div>
+            ) : (
+              <div style={{ textAlign: "center" }}>
+                <h1>Invalid email</h1>
+                <ModalBtn onClick={closeModal}>OK</ModalBtn>
+              </div>
+            )}
+          </Modal>
+        )}
+
+        {mobileTablet && (
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStylesTablet}
+            contentLabel="Example Modal"
+          >
+            {forgotPasswordValid ? (
+              <div style={{ textAlign: "center" }}>
+                <h1>Check your email</h1>
+                <h4>
+                  We sent you an email with instructions to reset your password.
+                </h4>
+                <div style={{ fontSize: "13px" }}>
+                  If you haven't recieved this email within a few minutes,
+                  please check your spam folder.
+                </div>
+                <ModalBtn style={{ marginTop: "40px" }} onClick={closeModal}>
+                  OK
+                </ModalBtn>
+              </div>
+            ) : (
+              <div style={{ textAlign: "center" }}>
+                <h1>Invalid email</h1>
+                <ModalBtn onClick={closeModal}>OK</ModalBtn>
+              </div>
+            )}
+          </Modal>
+        )}
+
+        {mobilePhone && (
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={closeModal}
+            style={customStylesMobile}
+            contentLabel="Example Modal"
+          >
+            {forgotPasswordValid ? (
+              <div style={{ textAlign: "center" }}>
+                <h1 style={{ fontSize: "22px" }}>Check your email</h1>
+                <h4 style={{ fontSize: "15px" }}>
+                  We sent you an email with instructions to reset your password.
+                </h4>
+                <div style={{ fontSize: "13px" }}>
+                  If you haven't recieved this email within a few minutes,
+                  please check your spam folder.
+                </div>
+                <ModalBtn style={{ marginTop: "30px" }} onClick={closeModal}>
+                  OK
+                </ModalBtn>
+              </div>
+            ) : (
+              <div style={{ textAlign: "center" }}>
+                <h1>Invalid email</h1>
+                <ModalBtn onClick={closeModal}>OK</ModalBtn>
+              </div>
+            )}
+          </Modal>
+        )}
       </Router>
     </>
   );
