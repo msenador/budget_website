@@ -788,7 +788,7 @@ const SignInOrSignUp = (props) => {
                 laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
               }
             >
-              <h1 style={{ textAlign: "center", color: "white" }}>Log in</h1>
+              <h1 style={{ textAlign: "center", color: "black" }}>Log in</h1>
               <InputContainer
                 className={
                   laptopOrDesktop
