@@ -44,10 +44,10 @@ const NavbarLogo = styled.div`
 
 const Logo = styled.img`
   &.desktop {
-    width: 300px;
-    height: 100px;
+    // width: 300px;
+    height: 130px;
     padding-left: 100px;
-    margin-top: 53px;
+    margin-top: 35px;
   }
   &.tablet {
     width: 185px;
