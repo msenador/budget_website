@@ -45,6 +45,7 @@ const NavbarLogo = styled.div`
 const Logo = styled.img`
   &.desktop {
     width: 300px;
+    height: 100px;
     padding-left: 100px;
     margin-top: 53px;
   }
@@ -624,7 +625,7 @@ const SignInOrSignUp = (props) => {
             className={
               laptopOrDesktop ? "desktop" : mobileTablet ? "tablet" : "phone"
             }
-            src="logo3.png"
+            src="BudgetStash4.png"
           />
           <div>
             <QuotesStyles
