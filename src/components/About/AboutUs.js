@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import Price from "./Price";
 import Security from "./Security";
 import Easy from "./Easy";
+import Paperless from "./Paperless";
 
 const SmallParagraph = styled.div`
   display: flex;
@@ -35,9 +36,10 @@ const Header = styled.h1`
 
 const Content = styled.div`
   display: grid;
-  grid-template-columns: 3fr 3fr 3fr;
+  grid-template-columns: 3fr 3fr;
   text-align: center;
   column-gap: 85px;
+  row-gap: 65px;
   padding: 0 50px;
   &.tablet {
     grid-template-columns: 3fr 3fr;
@@ -101,6 +103,7 @@ const AboutUs = () => {
         >
           <Price />
           <Security />
+          <Paperless />
           <Easy />
         </Content>
         <DonateBtnPositioning>

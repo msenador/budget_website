@@ -21,7 +21,7 @@ const Security = () => {
       </CardContainer>
 
       <CardContainer style={{ backgroundColor: "aliceblue" }} key="back">
-        <h3>Secured by Google's realtime database</h3>
+        <h2>Secured by Google's realtime database</h2>
         <div style={{ fontFamily: "Avenir Next" }}>
           We offer the best data security to our clients by utilizing Google's
           realtime database to store data.

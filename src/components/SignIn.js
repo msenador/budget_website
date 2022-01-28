@@ -44,7 +44,6 @@ const NavbarLogo = styled.div`
 
 const Logo = styled.img`
   &.desktop {
-    // width: 300px;
     height: 130px;
     padding-left: 50px;
     margin-top: 35px;
@@ -232,13 +231,13 @@ const Slogan = styled.div`
 
 const AboutUsContainer = styled.div`
   &.desktop {
-    height: 700px;
+    height: 1110px;
   }
   &.tablet {
     height: 1100px;
   }
   &.phone {
-    height: 1550px;
+    height: 1950px;
   }
 `;
 
