@@ -46,7 +46,7 @@ const Logo = styled.img`
   &.desktop {
     // width: 300px;
     height: 130px;
-    padding-left: 100px;
+    padding-left: 50px;
     margin-top: 35px;
   }
   &.tablet {
