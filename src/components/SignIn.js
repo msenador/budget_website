@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import fire from "../fire";
+// import fire from "../fire";
+import { fire } from "../fire";
 import Modal from "react-modal";
 import Contact from "./Contact";
 import { useMediaQuery } from "react-responsive";

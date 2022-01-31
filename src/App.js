@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import fire from "./fire";
+import { fire } from "./fire";
 import SignInOrSignUp from "./components/SignIn";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";

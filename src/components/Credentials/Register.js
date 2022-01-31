@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
-import fire from "../../fire";
+// import fire from "../../fire";
+import { fire } from "../../fire";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 
