@@ -9,6 +9,7 @@ import { Button, CardContainer } from "../globalStyles";
 import AboutUs from "./About/AboutUs";
 import ReactCardFlip from "react-card-flip";
 import { FlipCardBtn } from "../globalStyles";
+import { animateScroll as scroll } from "react-scroll";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import quotes from "./Quotes.json";
