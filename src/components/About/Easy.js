@@ -2,6 +2,18 @@ import React, { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import { FlipCardBtn, CardContainer } from "../../globalStyles";
 import { Icon } from "@iconify/react";
+import styled from "styled-components";
+
+const CardBtnStyles = styled(FlipCardBtn)`
+  background-color: #84bc9c;
+  width: 70%;
+  color: black;
+  font-style: italic;
+  height: 30px;
+  border-radius: 20px;
+  align-self: center;
+  text-decoration: none;
+`;
 
 const Easy = () => {
   const [flip, setFlip] = useState(false);
@@ -14,10 +26,10 @@ const Easy = () => {
       <CardContainer style={{ backgroundColor: "aliceblue" }} key="front">
         <h1>User Friendly</h1>
         <Icon
-          icon="lucide:mouse-pointer-click"
-          style={{ fontSize: "200px", margin: "auto" }}
+          icon="zondicons:mobile-devices"
+          style={{ fontSize: "150px", margin: "auto" }}
         />
-        <FlipCardBtn onClick={handleFlip}>Learn more</FlipCardBtn>
+        <CardBtnStyles onClick={handleFlip}>Learn more</CardBtnStyles>
       </CardContainer>
 
       <CardContainer style={{ backgroundColor: "aliceblue" }} key="back">
@@ -26,7 +38,7 @@ const Easy = () => {
           Don't worry! Our easy to use interface is user friendly on desktops,
           tablets, and mobile devices!
         </div>
-        <FlipCardBtn onClick={handleFlip}>Back</FlipCardBtn>
+        <CardBtnStyles onClick={handleFlip}>Back</CardBtnStyles>
       </CardContainer>
     </ReactCardFlip>
   );
