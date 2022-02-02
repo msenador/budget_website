@@ -113,7 +113,7 @@ const HomePage = ({ handleLogout, userId, firstName }) => {
       for (const id in categories) {
         categoryList.push({ id, ...categories[id] });
       }
-      setCategoryList(categoryList);
+      setCategoryList(categoryList.reverse());
     });
   }, []);
 
