@@ -71,6 +71,8 @@ const Categories = ({ categoryList, userId, categoryValue }) => {
   const [expand, setExpand] = useState(false);
   const [emptyItem, setEmptyItem] = useState(false);
   const [emptyItemPrice, setEmptyItemPrice] = useState(false);
+  // const [totalOverall, setTotalOverall] = useState([]);
+  let totalOverall = 0;
 
   //   const [newItem, setNewItem] = useState("");
   //   const [itemPrice, setItemPrice] = useState("");
@@ -189,7 +191,7 @@ const Categories = ({ categoryList, userId, categoryValue }) => {
       for (const id in items) {
         itemsList.push({ id, ...items[id] });
       }
-      setItemList(itemsList);
+      setItemList(itemsList.reverse());
     });
   }, [categoryValue]);
 
