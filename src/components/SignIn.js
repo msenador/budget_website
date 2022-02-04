@@ -503,19 +503,6 @@ const SignInOrSignUp = (props) => {
     setConfirmPasswordErr("");
   };
 
-  const clearInputs = () => {
-    setFirstName("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
-  };
-
-  const handleSignUpEnterKey = (e) => {
-    if (e.key === "Enter") {
-      handleSignUp();
-    }
-  };
-
   const handleLoginEnterKey = (e) => {
     if (e.key === "Enter") {
       handleLogin();

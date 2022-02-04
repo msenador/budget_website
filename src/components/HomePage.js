@@ -81,7 +81,7 @@ const LogoutButtonStyles = styled.button`
   // width: 150px;
 `;
 
-const HomePage = ({ handleLogout, userId, firstName }) => {
+const HomePage = ({ handleLogout, userId, firstName, setFirstName }) => {
   let database = fire.database();
 
   const [newCategory, setNewCategory] = useState("");
@@ -115,6 +115,25 @@ const HomePage = ({ handleLogout, userId, firstName }) => {
       }
       setCategoryList(categoryList.reverse());
     });
+    if (firstName !== "") {
+      postFirstName();
+    }
+  }, []);
+
+  useEffect(() => {
+    const nameRef = database.ref(`${userId}/name`);
+    nameRef.on("value", (snapshot) => {
+      const name = snapshot.val();
+      console.log(name.name);
+      setFirstName(name.name);
+      // for (const id in categories) {
+      //   categoryList.push({ id, ...categories[id] });
+      // }
+      // setCategoryList(categoryList.reverse());
+    });
+    if (firstName !== "") {
+      postFirstName();
+    }
   }, []);
 
   const openModal = () => {
@@ -129,6 +148,12 @@ const HomePage = ({ handleLogout, userId, firstName }) => {
     if (e.key === "Enter") {
       handleNewCategory();
     }
+  };
+
+  const postFirstName = () => {
+    fire.database().ref(`${userId}/name`).set({
+      name: firstName,
+    });
   };
 
   return (

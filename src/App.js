@@ -101,7 +101,12 @@ const App = () => {
     <>
       <div className="App">
         {user ? (
-          <HomePage userId={userId} handleLogout={handleLogout} />
+          <HomePage
+            userId={userId}
+            handleLogout={handleLogout}
+            firstName={firstName}
+            setFirstName={setFirstName}
+          />
         ) : (
           <SignInOrSignUp
             confirmPassword={confirmPassword}
