@@ -57,26 +57,6 @@ const App = () => {
       });
   };
 
-  const handleSignUp = () => {
-    clearErrors();
-    fire
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .catch((err) => {
-        switch (err.code) {
-          case "auth/email-already-in-use":
-            setEmailError(err.message);
-            break;
-          case "auth/invalid-email":
-            setEmailError("Invalid Email");
-            break;
-          case "auth/weak-password":
-            setPasswordError(err.message);
-            break;
-        }
-      });
-  };
-
   const handleLogout = () => {
     fire.auth().signOut();
   };
@@ -120,7 +100,6 @@ const App = () => {
             password={password}
             setPassword={setPassword}
             handleLogin={handleLogin}
-            handleSignUp={handleSignUp}
             hasAccount={hasAccount}
             setHasAccount={setHasAccount}
             emailLoginError={emailLoginError}

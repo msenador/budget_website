@@ -7,6 +7,7 @@ import { Button } from "../globalStyles";
 import { useMediaQuery } from "react-responsive";
 import AboutUs from "./About/AboutUs";
 import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
 
 const CardsContainer = styled.div`
   // display: grid;
@@ -60,6 +61,21 @@ const customStyles = {
   },
 };
 
+const customStylesDesktop = {
+  content: {
+    background: "aliceblue",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    borderRadius: "20px",
+    border: "none",
+    padding: "40px",
+  },
+};
+
 const AddCategoryPosition = styled.div`
   // display: flex;
   // justify-content: center;
@@ -87,8 +103,10 @@ const HomePage = ({ handleLogout, userId, firstName, setFirstName }) => {
   const [newCategory, setNewCategory] = useState("");
   const [categoryList, setCategoryList] = useState([]);
   const [deleteId, setDeleteId] = useState("");
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [logoutModalIsOpen, setLogoutModalIsOpen] = useState(false);
+  const [editNameModalIsOpen, setEditNameModalIsOpen] = useState(false);
   const [emptyCategory, setEmptyCategory] = useState(false);
+  const [editName, setEditName] = useState("");
 
   const handleNewCategory = () => {
     if (newCategory === "") {
@@ -136,12 +154,20 @@ const HomePage = ({ handleLogout, userId, firstName, setFirstName }) => {
     }
   }, []);
 
-  const openModal = () => {
-    setIsOpen(true);
+  const openModalLogout = () => {
+    setLogoutModalIsOpen(true);
   };
 
-  const closeModal = () => {
-    setIsOpen(false);
+  const closeModalLogout = () => {
+    setLogoutModalIsOpen(false);
+  };
+
+  const openEditNameModal = () => {
+    setEditNameModalIsOpen(true);
+  };
+
+  const closeEditNameModal = () => {
+    setEditNameModalIsOpen(false);
   };
 
   const handleAddCategoryEnterKey = (e) => {
@@ -156,11 +182,29 @@ const HomePage = ({ handleLogout, userId, firstName, setFirstName }) => {
     });
   };
 
+  const saveEditName = () => {
+    fire.database().ref(`${userId}/name`).set({
+      name: editName,
+    });
+    closeEditNameModal();
+  };
+
   return (
     <>
       <HomePageContainer>
-        {firstName && <div>Welcome {firstName}!</div>}
-        <LogoutButtonStyles onClick={openModal}>Logout</LogoutButtonStyles>
+        {firstName && (
+          <>
+            <div>Welcome {firstName}!</div>
+            <Icon
+              icon="eva:edit-2-fill"
+              onClick={openEditNameModal}
+              style={{ cursor: "pointer" }}
+            />
+          </>
+        )}
+        <LogoutButtonStyles onClick={openModalLogout}>
+          Logout
+        </LogoutButtonStyles>
         <AddCategoryPosition>
           <input
             type="text"
@@ -189,19 +233,34 @@ const HomePage = ({ handleLogout, userId, firstName, setFirstName }) => {
           </CardsContainer>
         </div>
         <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
+          isOpen={logoutModalIsOpen}
+          onRequestClose={closeModalLogout}
           style={customStyles}
           ariaHideApp={false}
         >
           <div>Are you sure you want to logout?</div>
           <div>
             <ConfirmLogout onClick={handleLogout}>YES</ConfirmLogout>
-            <CancelLogout onClick={closeModal}>NO</CancelLogout>
+            <CancelLogout onClick={closeModalLogout}>NO</CancelLogout>
           </div>
         </Modal>
         <div />
       </HomePageContainer>
+      <Modal
+        isOpen={editNameModalIsOpen}
+        onRequestClose={closeEditNameModal}
+        style={customStylesDesktop}
+        contentLabel="Example Modal"
+      >
+        <div style={{ textAlign: "center" }}>
+          <h1>Edit name</h1>
+          <input
+            placeholder="Edit name"
+            onChange={(e) => setEditName(e.target.value)}
+          />
+        </div>
+        <button onClick={saveEditName}>SAVE</button>
+      </Modal>
     </>
   );
 };

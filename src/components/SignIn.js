@@ -451,7 +451,6 @@ const SignInOrSignUp = (props) => {
     password,
     setPassword,
     handleLogin,
-    handleSignUp,
     setHasAccount,
     hasAccount,
     emailLoginError,
@@ -531,6 +530,7 @@ const SignInOrSignUp = (props) => {
     clearErrors();
     if (firstNameNull(firstName) !== true) {
       if (passwordsMatch(password, confirmPassword) === true) {
+        console.log("INSIDE");
         fire
           .auth()
           .createUserWithEmailAndPassword(email, password)
