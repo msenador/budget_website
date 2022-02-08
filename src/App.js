@@ -59,6 +59,8 @@ const App = () => {
 
   const handleLogout = () => {
     fire.auth().signOut();
+    setFirstName("");
+    setConfirmPassword("");
   };
 
   const authListener = () => {
